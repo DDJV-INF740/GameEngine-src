@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Images">
+      <UniqueIdentifier>{659c4c41-60fa-4d7c-9679-3571e3bc6ec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DotX">
+      <UniqueIdentifier>{0cac3922-d790-4a96-97e6-73948302dcd6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Images\OLEImageImporter.h">
+      <Filter>Images</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DotX\DotXModel.h">
+      <Filter>DotX</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Images\OLEImageImporter.cpp">
+      <Filter>Images</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\DotX\DotXModel.cpp">
+      <Filter>DotX</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

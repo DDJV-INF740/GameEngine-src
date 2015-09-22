@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8535D046-350D-405E-AD6B-8DBD22A3F5ED}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>GameCore</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\config\msvc\define root.props" />
+    <Import Project="..\..\..\..\config\msvc\GameCore.props" />
+    <Import Project="..\..\..\..\config\msvc\using physx.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\config\msvc\define root.props" />
+    <Import Project="..\..\..\..\config\msvc\GameCore.props" />
+    <Import Project="..\..\..\..\config\msvc\using physx.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Components\ComponentBase.h" />
+    <ClInclude Include="..\..\Components\IColliderInterface.h" />
+    <ClInclude Include="..\..\Components\ICollisionHandler.h" />
+    <ClInclude Include="..\..\Components\IComponent.h" />
+    <ClInclude Include="..\..\Components\IComponentInterface.h" />
+    <ClInclude Include="..\..\Components\IComponentObject.h" />
+    <ClInclude Include="..\..\Components\IDynamicSimulationInterface.h" />
+    <ClInclude Include="..\..\Components\IFollowPoseInterface.h" />
+    <ClInclude Include="..\..\Components\IIAInterface.h" />
+    <ClInclude Include="..\..\Components\IInputInterface.h" />
+    <ClInclude Include="..\..\Components\IKeyboardInputInterface.h" />
+    <ClInclude Include="..\..\Components\IPlayerInterface.h" />
+    <ClInclude Include="..\..\Components\IPoseInterface.h" />
+    <ClInclude Include="..\..\Components\IRenderInterface.h" />
+    <ClInclude Include="..\..\Components\IRenderViewInterface.h" />
+    <ClInclude Include="..\..\Components\IRigidSimulationInterface.h" />
+    <ClInclude Include="..\..\Components\ISimulationInterface.h" />
+    <ClInclude Include="..\..\Components\IStaticSimulationComponent.h" />
+    <ClInclude Include="..\..\d3d\d3d9.forward.h" />
+    <ClInclude Include="..\..\Factories\ObjectFactory.h" />
+    <ClInclude Include="..\..\GameManagers\IGameAI.h" />
+    <ClInclude Include="..\..\GameManagers\IGameCameras.h" />
+    <ClInclude Include="..\..\GameManagers\IGameLoop.h" />
+    <ClInclude Include="..\..\GameManagers\IGamePlayers.h" />
+    <ClInclude Include="..\..\GameManagers\IGameRendering.h" />
+    <ClInclude Include="..\..\GameManagers\IGameSimulation.h" />
+    <ClInclude Include="..\..\GameManagers\IGameSpawner.h" />
+    <ClInclude Include="..\..\GameManagers\IGameTime.h" />
+    <ClInclude Include="..\..\GameManagers\IGameWindow.h" />
+    <ClInclude Include="..\..\GameObjects\gameobjectfactory.h" />
+    <ClInclude Include="..\..\GameObjects\GameObjectProxy.h" />
+    <ClInclude Include="..\..\GameObjects\IBehaviour.h" />
+    <ClInclude Include="..\..\GameObjects\igameobject.h" />
+    <ClInclude Include="..\..\GameObjects\IGameObjectData.h" />
+    <ClInclude Include="..\..\Game\Game.h" />
+    <ClInclude Include="..\..\Game\IGameEngine.h" />
+    <ClInclude Include="..\..\Game\IGameInterface.h" />
+    <ClInclude Include="..\..\Game\IGameManager.h" />
+    <ClInclude Include="..\..\Models\IModel.h" />
+    <ClInclude Include="..\..\physx\PxPhysicsAPI.forward.h" />
+    <ClInclude Include="..\..\Precompiled.h" />
+    <ClInclude Include="..\..\Rendering\IRenderPrimitive.h" />
+    <ClInclude Include="..\..\targetver.h" />
+    <ClInclude Include="..\..\Tasks\IGameTask.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Components\ComponentBase.cpp" />
+    <ClCompile Include="..\..\Components\IColliderInterface.cpp" />
+    <ClCompile Include="..\..\Components\ICollisionHandler.cpp" />
+    <ClCompile Include="..\..\Components\IComponent.cpp" />
+    <ClCompile Include="..\..\Components\IComponentInterface.cpp" />
+    <ClCompile Include="..\..\Components\IComponentObject.cpp" />
+    <ClCompile Include="..\..\Components\IDynamicSimulationInterface.cpp" />
+    <ClCompile Include="..\..\Components\IFollowPoseInterface.cpp" />
+    <ClCompile Include="..\..\Components\IIAInterface.cpp" />
+    <ClCompile Include="..\..\Components\IInputInterface.cpp" />
+    <ClCompile Include="..\..\Components\IKeyboardInputInterface.cpp" />
+    <ClCompile Include="..\..\Components\IPlayerInterface.cpp" />
+    <ClCompile Include="..\..\Components\IPoseInterface.cpp" />
+    <ClCompile Include="..\..\Components\IRenderInterface.cpp" />
+    <ClCompile Include="..\..\Components\IRenderViewInterface.cpp" />
+    <ClCompile Include="..\..\Components\IRigidSimulationInterface.cpp" />
+    <ClCompile Include="..\..\Components\ISimulationInterface.cpp" />
+    <ClCompile Include="..\..\Components\IStaticSimulationComponent.cpp" />
+    <ClCompile Include="..\..\Factories\ObjectFactory.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameAI.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameCameras.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameLoop.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGamePlayers.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameRendering.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameSimulation.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameSpawner.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameTime.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameWindow.cpp" />
+    <ClCompile Include="..\..\GameObjects\GameObjectFactory.cpp" />
+    <ClCompile Include="..\..\GameObjects\GameObjectProxy.cpp" />
+    <ClCompile Include="..\..\GameObjects\IBehaviour.cpp" />
+    <ClCompile Include="..\..\GameObjects\IGameObject.cpp" />
+    <ClCompile Include="..\..\GameObjects\IGameObjectData.cpp" />
+    <ClCompile Include="..\..\Game\Game.cpp" />
+    <ClCompile Include="..\..\Game\IGameEngine.cpp" />
+    <ClCompile Include="..\..\Game\IGameInterface.cpp" />
+    <ClCompile Include="..\..\Game\IGameManager.cpp" />
+    <ClCompile Include="..\..\Models\IModel.cpp" />
+    <ClCompile Include="..\..\Precompiled.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Rendering\IRenderPrimitive.cpp" />
+    <ClCompile Include="..\..\Tasks\IGameTask.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

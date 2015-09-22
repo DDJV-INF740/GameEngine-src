@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Models">
+      <UniqueIdentifier>{b9d05336-22c2-4d3f-93ed-a22c9dc8be67}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Models\MeshModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Models\ModelRendering.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Precompiled.h" />
+    <ClInclude Include="..\..\targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Models\ModelRendering.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Models\MeshModel.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Precompiled.cpp" />
+  </ItemGroup>
+</Project>

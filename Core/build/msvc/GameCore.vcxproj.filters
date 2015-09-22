@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Models">
+      <UniqueIdentifier>{3a6c798b-00a1-41b0-8b0c-35929ac4d844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{0473e1ff-8af6-43cf-83d7-7a260740da36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{29bc5145-d203-4f1b-9402-7cb10838127e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PhysX">
+      <UniqueIdentifier>{69c4ee12-614b-4e44-acdd-827ecb2e46f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{7a76e53c-5a0c-42cc-8b0d-258e6bd30363}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d">
+      <UniqueIdentifier>{914dd1a3-1a05-4bf7-acaa-11d3a0c94cda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{66d4a0d8-2063-42e7-9282-d8b5bca0233f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManagers">
+      <UniqueIdentifier>{80c8837f-0043-4a95-a24d-11a5452b6361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factories">
+      <UniqueIdentifier>{ea58b445-df2f-4ecd-9e74-0815be8a9c92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tasks">
+      <UniqueIdentifier>{4b3e3ed5-03c3-48bb-be81-be717077633e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Precompiled.h" />
+    <ClInclude Include="..\..\targetver.h" />
+    <ClInclude Include="..\..\Tasks\IGameTask.h">
+      <Filter>Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Rendering\IRenderPrimitive.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\physx\PxPhysicsAPI.forward.h">
+      <Filter>PhysX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Models\IModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameObjects\IBehaviour.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameObjects\igameobject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameObjects\IGameObjectData.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameObjects\gameobjectfactory.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameObjects\GameObjectProxy.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameRendering.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameSimulation.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameSpawner.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameTime.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameWindow.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameAI.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameCameras.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameLoop.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGamePlayers.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Game\IGameInterface.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Game\IGameManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Game\IGameEngine.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Factories\ObjectFactory.h">
+      <Filter>Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\d3d\d3d9.forward.h">
+      <Filter>d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IInputInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IKeyboardInputInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IPlayerInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IPoseInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IRenderInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IRenderViewInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IRigidSimulationInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\ISimulationInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IStaticSimulationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\ComponentBase.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IColliderInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\ICollisionHandler.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IComponentInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IComponentObject.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IDynamicSimulationInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IFollowPoseInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Components\IIAInterface.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Precompiled.cpp" />
+    <ClCompile Include="..\..\Tasks\IGameTask.cpp">
+      <Filter>Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Rendering\IRenderPrimitive.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Models\IModel.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameObjects\IBehaviour.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameObjects\IGameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameObjects\IGameObjectData.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameObjects\GameObjectFactory.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameObjects\GameObjectProxy.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameRendering.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameSimulation.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameSpawner.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameTime.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameWindow.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameAI.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameCameras.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameLoop.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGamePlayers.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\IGameManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\IGameEngine.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\IGameInterface.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Factories\ObjectFactory.cpp">
+      <Filter>Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IKeyboardInputInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IPlayerInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IPoseInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IRenderInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IRenderViewInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IRigidSimulationInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\ISimulationInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IStaticSimulationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\ComponentBase.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IColliderInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\ICollisionHandler.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IComponentInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IComponentObject.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IDynamicSimulationInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IFollowPoseInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IIAInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IInputInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+#pragma once
+
+//=============================================================================
+// EXTERNAL DECLARATIONS
+//=============================================================================
+#include "Core/Components/IComponentInterface.h"
+#include "Core/Components//IInputInterface.h"
+
+//=============================================================================
+// CLASS IKeyboardInputComponent
+//=============================================================================
+class IKeyboardInputInterface : virtual public IInputInterface
+{
+public:
+	static IInputInterface::IdType TypeId();
+
+public:
+	virtual void onKeyDown(int aVirtKey) = 0;
+	virtual void onKeyUp(int aVirtKey) = 0;
+};
