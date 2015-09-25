@@ -13,22 +13,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="targetver.h">
+    <ClCompile Include="..\..\Precompiled.cpp">
       <Filter>Precompiled</Filter>
-    </ClInclude>
-    <ClInclude Include="Models\ModelFactory.h">
+    </ClCompile>
+    <ClCompile Include="..\..\Models\ModelFactory.cpp">
       <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Precompiled.h">
-      <Filter>Precompiled</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Models\ModelFactory.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="Precompiled.cpp">
+    <ClInclude Include="..\..\Precompiled.h">
       <Filter>Precompiled</Filter>
-    </ClCompile>
+    </ClInclude>
+    <ClInclude Include="..\..\Models\modelfactory.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -29,7 +29,6 @@ class SimulationComponentBase :
 public:
 	virtual void onAttached(const GameObjectRef &iGameObject) override;
 	virtual void onDetached(const GameObjectRef &iGameObject) override;
-	virtual void setPxActor(physx::PxActor *iPxActor);
 	virtual void onContact(const physx::PxContactPair &aContactPair) override;
 	virtual void onTrigger(bool triggerEnter, physx::PxShape *actorShape, physx::PxShape *contactShape) override;
 	virtual void setHandler(ICollisionHandlerRef iHandler) override;
@@ -67,12 +66,14 @@ public:
 		return sInterfaces;
 	}
 
+public:
+	static physx::PxRigidDynamic* createPxActor();
+
 	virtual physx::PxTransform pose() override;
 	virtual void setPose(const physx::PxTransform &iPose) override;
 
 public:
 	virtual physx::PxRigidDynamic& pxActor() override;
-	virtual void setPxActor(physx::PxRigidDynamic *iPxActor);
 };
 
 //=============================================================================
@@ -103,7 +104,7 @@ public:
 	}
 
 public:
-	virtual void setPxActor(physx::PxRigidStatic *iPxActor);
+	static physx::PxRigidStatic* createPxActor();
 
 public: // IStaticSimulationInterface
 	virtual physx::PxRigidStatic& pxActor() override;

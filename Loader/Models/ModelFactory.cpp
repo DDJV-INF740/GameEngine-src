@@ -6,11 +6,11 @@
 #include <PxPhysicsAPI.h>
 #include <d3d9.h>
 #include <d3dx9mesh.h>
-#include "GameCore/Game/Game.h"
-#include "GameCore/GameManagers/IGameRendering.h"
-#include "GameCore/GameManagers/IGameSimulation.h"
+#include "Core/Game/Game.h"
+#include "Core/GameManagers/IGameRendering.h"
+#include "Core/GameManagers/IGameSimulation.h"
 #include <vector>
-#include "GameAssets/Models/MeshModel.h"
+#include "Assets/Models/MeshModel.h"
 
 using namespace physx;
 

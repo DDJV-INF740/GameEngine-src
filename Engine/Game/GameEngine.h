@@ -41,6 +41,11 @@ public:
 		return _ref.lock();
 	}
 
+	virtual ~GameEngine()
+	{
+		removeAllComponents();
+	}
+
 
 public:
 	std::map<int, std::vector<IGameTask*>> _tasks;

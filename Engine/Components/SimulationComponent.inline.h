@@ -13,6 +13,9 @@ template<class TDerived>
 void SimulationComponentBase<TDerived>::onAttached( const GameObjectRef &iGameObject )
 {
 	_go = iGameObject;
+	_pxActor = TDerived::createPxActor();
+	_pxActor->userData = static_cast<IGameObject*>(_go.lock().get());
+	Game<IGameSimulation>()->scene().addActor(*_pxActor);
 }
 
 template<class TDerived>
@@ -23,14 +26,6 @@ void SimulationComponentBase<TDerived>::onDetached( const GameObjectRef &iGameOb
 		_pxActor->release();
 		_pxActor = nullptr;
 	}
-}
-
-template<class TDerived>
-void SimulationComponentBase<TDerived>::setPxActor( physx::PxActor *iPxActor )
-{
-	_pxActor = iPxActor;
-	_pxActor->userData = static_cast<IGameObject*>(_go.lock().get());
-	Game<IGameSimulation>()->scene().addActor(*_pxActor);
 }
 
 template<class TDerived>

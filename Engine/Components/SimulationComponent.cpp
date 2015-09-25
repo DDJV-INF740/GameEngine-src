@@ -18,13 +18,6 @@ physx::PxRigidDynamic& DynamicSimulationComponent::pxActor()
 
 //-----------------------------------------------------------------------------
 //
-void DynamicSimulationComponent::setPxActor(physx::PxRigidDynamic *iPxActor)
-{
- 	base::setPxActor(iPxActor);
-}
-
-//-----------------------------------------------------------------------------
-//
 physx::PxTransform DynamicSimulationComponent::pose()
 {
 	return pxActor().getGlobalPose();
@@ -35,6 +28,13 @@ physx::PxTransform DynamicSimulationComponent::pose()
 void DynamicSimulationComponent::setPose( const physx::PxTransform &iPose )
 {
 	pxActor().setGlobalPose(iPose);
+}
+
+//-----------------------------------------------------------------------------
+//
+physx::PxRigidDynamic* DynamicSimulationComponent::createPxActor()
+{
+	return Game<IGameSimulation>()->physics().createRigidDynamic(physx::PxTransform::createIdentity());
 }
 
 
@@ -57,17 +57,18 @@ void StaticSimulationComponent::setPose( const physx::PxTransform &iPose )
 
 //-----------------------------------------------------------------------------
 //
-void StaticSimulationComponent::setPxActor(physx::PxRigidStatic *iPxActor)
-{
-	base::setPxActor(iPxActor);
-}
-
-//-----------------------------------------------------------------------------
-//
 physx::PxRigidStatic& StaticSimulationComponent::pxActor()
 {
 	return (physx::PxRigidStatic&)*_pxActor;
 }
+
+//-----------------------------------------------------------------------------
+//
+physx::PxRigidStatic* StaticSimulationComponent::createPxActor()
+{
+	return Game<IGameSimulation>()->physics().createRigidStatic(physx::PxTransform::createIdentity());
+}
+
 
 //=============================================================================
 // COMPONENT REGISTRATION

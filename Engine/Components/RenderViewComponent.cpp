@@ -38,7 +38,7 @@ void RenderViewComponent::renderView()
 		light.Diffuse.g = 1.0f;
 		light.Diffuse.b = 1.0f;
 		light.Direction.x = 1.0f;
-		light.Direction.y = -1.0f;
+		light.Direction.y = 2.0f;
 		light.Direction.z = 1.0f;
 		light.Ambient.r = 0.2f;
 		light.Ambient.g = 0.2f;
@@ -69,7 +69,7 @@ void RenderViewComponent::renderView()
 	D3DXMATRIX matProjection;     // the projection transform matrix
 
 	D3DXMatrixPerspectiveFovLH(&matProjection,
-		D3DXToRadian(45),    // the horizontal field of view
+		D3DXToRadian(60),    // the horizontal field of view
 		(FLOAT)SCREEN_WIDTH / (FLOAT)SCREEN_HEIGHT, // aspect ratio
 		1.0f,    // the near view-plane
 		1000.0f);    // the far view-plane
