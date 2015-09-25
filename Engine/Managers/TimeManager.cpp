@@ -14,7 +14,7 @@ double TimeManager::lastFrameTime()
 
 void TimeManager::setGameRate( float iRate )
 {
-	_sessionTimer.setRate(1.0f);
+	_sessionTimer.setRate(iRate);
 }
 
 TimeManager::TimeManager() 
