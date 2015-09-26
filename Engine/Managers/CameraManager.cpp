@@ -29,7 +29,7 @@ public:
 //
 int CameraManager::cameraCount()
 {
-	return _imp->_cameras.size();
+	return (int)_imp->_cameras.size();
 }
 
 //-----------------------------------------------------------------------------

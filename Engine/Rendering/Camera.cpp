@@ -35,7 +35,7 @@ public:
 		PxVec3 cameraDist = iPlayerPose.q.rotate(PxVec3(0, 2.0f, 10.0f));
 		
 		PxTransform wCameraPose;
-		wCameraPose.q = iPlayerPose.q * PxQuat(M_PI, PxVec3(0, 1, 0)) * PxQuat(M_PI/16, PxVec3(1, 0, 0)); // for now...
+		wCameraPose.q = iPlayerPose.q * PxQuat(float(M_PI), PxVec3(0.0f, 1.0f, 0.0f)) * PxQuat(float(M_PI) / 16, PxVec3(1, 0, 0)); // for now...
 		PxVec3 wFront(0, 0, 1);
 		wFront = wCameraPose.q.rotate(wFront);
 		wCameraPose.p = iPlayerPose.p - 10*wFront + PxVec3(0, 1, 0);

@@ -59,7 +59,7 @@ SkyboxRenderData::SkyboxRenderData()
 int SkyboxRenderData::load( const TCHAR *iTexturePath, LPDIRECT3DDEVICE9 iD3dDev )
 {
 	::D3DXCreateTextureFromFile(iD3dDev, iTexturePath, &_texture);
-	printf("loaded %S\n", iTexturePath);
+	_tprintf("loaded %TS\n", iTexturePath);
 
 	// create a vertex buffer interface called _vbuffer
 	iD3dDev->CreateVertexBuffer(sizeof(vertices), 0, CUSTOMVERTEX::FORMAT, D3DPOOL_MANAGED, &_vbuffer, NULL);

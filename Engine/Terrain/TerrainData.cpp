@@ -66,7 +66,7 @@ int TerrainData::load()
 	imgLoader.getNativeSize(&_renderData._width, &_renderData._height);
 	buffer = (unsigned char*)malloc(_renderData._width*_renderData._height);
 	imgLoader.draw(buffer, OLEImageImporter::FORMAT_L8);
-	printf("loaded  %S\n", kHeightPixMapFile);
+	_tprintf("loaded  %TS\n", kHeightPixMapFile);
 
 	LPDIRECT3DDEVICE9 d3ddev = Game<IGameRendering>()->d3dDevice();
 	int verticeCount = _renderData._width*_renderData._height;

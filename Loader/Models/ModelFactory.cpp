@@ -20,18 +20,18 @@ using namespace physx;
 class MemoryStream: public PxOutputStream, public PxInputStream
 {
 public:
-	virtual PxU32 write(const void* src, PxU32 count)
+	virtual PxU32 write(const void* src, PxU32 count) override
 	{
-		int oldSize = _data.size();
+		size_t oldSize = _data.size();
 		_data.resize(_data.size() + count);
 		memcpy(&_data[oldSize], src, count);
 		return count;
 	}
 
-	virtual PxU32 read(void* dest, PxU32 count)
+	virtual PxU32 read(void* dest, PxU32 count) override
 	{
-		if (count > _data.size())
-			count = _data.size();
+		if (count > (PxU32)_data.size())
+			count = (PxU32)_data.size();
 		memcpy(dest, &_data[0], count);
 		_data.erase(_data.begin(), _data.begin()+count);
 		return count;
@@ -45,7 +45,7 @@ public:
 //=============================================================================
 // PRIVATE FUNCTIONS
 //=============================================================================
-static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &physics, ID3DXMesh *mesh)
+static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &iPhysics, ID3DXMesh *iMesh)
 {
 	//Used to retrieve information from X file
 	typedef struct {
@@ -54,25 +54,25 @@ static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &physics, ID3DXMesh *mes
 		D3DXVECTOR2 TexCoord;
 	} Mesh_FVF;
 
-	int NumVerticies = mesh->GetNumVertices();
-	DWORD FVFSize = D3DXGetFVFVertexSize(mesh->GetFVF());
+	int aNumVerticies = iMesh->GetNumVertices();
+	DWORD FVFSize = D3DXGetFVFVertexSize(iMesh->GetFVF());
 
 	//Create pointer for vertices
-	PxVec3* verts = new PxVec3[NumVerticies];
+	PxVec3* verts = new PxVec3[aNumVerticies];
 
 	char *DXMeshPtr;
-	mesh->LockVertexBuffer(D3DLOCK_READONLY, (void**)&DXMeshPtr);
-	for(int i = 0; i < NumVerticies; i++)
+	iMesh->LockVertexBuffer(D3DLOCK_READONLY, (void**)&DXMeshPtr);
+	for(int i = 0; i < aNumVerticies; i++)
 	{
 		Mesh_FVF *DXMeshFVF = (Mesh_FVF*)DXMeshPtr;
 		verts[i] = PxVec3(DXMeshFVF->VertexPos.x, DXMeshFVF->VertexPos.y, DXMeshFVF->VertexPos.z);
 		DXMeshPtr += FVFSize;
 	}
-	mesh->UnlockVertexBuffer();
+	iMesh->UnlockVertexBuffer();
 
 	// Create descriptor for convex mesh
 	PxConvexMeshDesc convexDesc;
-	convexDesc.points.count		= NumVerticies;
+	convexDesc.points.count		= aNumVerticies;
 	convexDesc.points.stride	= sizeof(PxVec3);
 	convexDesc.points.data		= verts;
 	convexDesc.flags			= PxConvexFlag::eCOMPUTE_CONVEX;
@@ -84,14 +84,14 @@ static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &physics, ID3DXMesh *mes
 
 	assert(toleranceScale.isValid());
 
-	PxCooking *cooker = PxCreateCooking(PX_PHYSICS_VERSION, physics.getFoundation(), PxCookingParams(toleranceScale));
+	PxCooking *cooker = PxCreateCooking(PX_PHYSICS_VERSION, iPhysics.getFoundation(), PxCookingParams(toleranceScale));
 
 	// Cooking from memory
 	MemoryStream buf;
 	PxConvexMesh *convexMesh = nullptr;
 	if(cooker->cookConvexMesh(convexDesc, buf))
 	{
-		convexMesh = physics.createConvexMesh(buf);
+		convexMesh = iPhysics.createConvexMesh(buf);
 	}	
 	cooker->release();
 

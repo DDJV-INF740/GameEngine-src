@@ -10,7 +10,7 @@
 const char* GameObjectBase::debugName() const 
 {
 	static char name[256] = {0};
-	sprintf_s(name, sizeof(name), "%s-0x%08X", typeId(), (int)this);
+	sprintf_s(name, sizeof(name), "%s-%p", typeId(), this);
 	return name;
 }
 

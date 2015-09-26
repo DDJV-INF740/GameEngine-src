@@ -62,7 +62,7 @@ IPlayerInterface* PlayerManager::player( int index )
 
 int PlayerManager::playerCount()
 {
-	return _player.size();
+	return (int)_player.size();
 }
 
 PlayerManager::PlayerManager()
