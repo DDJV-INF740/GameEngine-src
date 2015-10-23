@@ -38,7 +38,7 @@ void RenderViewComponent::renderView()
 		light.Diffuse.g = 1.0f;
 		light.Diffuse.b = 1.0f;
 		light.Direction.x = 1.0f;
-		light.Direction.y = 2.0f;
+		light.Direction.y = -2.0f;
 		light.Direction.z = 1.0f;
 		light.Ambient.r = 0.2f;
 		light.Ambient.g = 0.2f;
