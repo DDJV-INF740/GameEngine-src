@@ -1,9 +1,9 @@
 #include "Precompiled.h"
 #include "SpawnTask.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameSpawner.h"
+#include "Core/GameManagers/ISpawnManager.h"
 
 void SpawnTask::update()
 {
-	Game<IGameSpawner>()->update();
+	Game<ISpawnManager>()->update();
 }

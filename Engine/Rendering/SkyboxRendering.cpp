@@ -6,7 +6,7 @@
 #include "SkyboxRendering.h"
 #include "SkyboxRenderData.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameRendering.h"
+#include "Core/GameManagers/IRenderManager.h"
 #include "Core/Components/IPoseInterface.h"
 
 #include "PxPhysicsAPI.h"
@@ -22,7 +22,7 @@ SkyboxRendering::SkyboxRendering( const SkyboxRenderData &iData )
 //
 void SkyboxRendering::render( const GameObjectRef &iGameObject )
 {
-	LPDIRECT3DDEVICE9 d3ddev = Game<IGameRendering>()->d3dDevice();
+	LPDIRECT3DDEVICE9 d3ddev = Game<IRenderManager>()->d3dDevice();
 	// select which vertex format we are using
 	d3ddev->SetFVF(SkyboxRenderData::CUSTOMVERTEX::FORMAT);
 

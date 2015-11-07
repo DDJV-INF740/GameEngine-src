@@ -6,7 +6,7 @@
 
 class IGameObject;
 
-class IGameSpawner: virtual public IGameInterface
+class ISpawnManager: virtual public IGameInterface
 {
 public:
 	static IdType TypeId();
@@ -23,4 +23,4 @@ public:
 	{	return std::dynamic_pointer_cast<T>(spawn(T::TypeId(), aInitialPose)); }
 };
 
-typedef std::shared_ptr<IGameSpawner> GameSpawnerRef;
+typedef std::shared_ptr<ISpawnManager> GameSpawnerRef;

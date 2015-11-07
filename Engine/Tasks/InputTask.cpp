@@ -7,8 +7,8 @@
 #include "Components/InputComponent.h"
 #include "Managers/PlayerManager.h"
 #include "Managers/InputManager.h"
-#include "Core/GameManagers/IGameLoop.h"
-#include "Core/GameManagers/IGameTime.h"
+#include "Core/GameManagers/IGameLoopManager.h"
+#include "Core/GameManagers/ITimeManager.h"
 #include <windows.h>
 
 //=============================================================================
@@ -24,7 +24,7 @@ void InputTask::update()
 
 		if(msg.message == WM_QUIT)
 		{
-			Game<IGameLoop>()->requestExit(true);
+			Game<IGameLoopManager>()->requestExit(true);
 	        break;
 		}
 		else if (msg.message == WM_KEYDOWN || msg.message == WM_KEYUP)
@@ -40,7 +40,7 @@ void InputTask::update()
 			switch(nVirtKey)
 			{
 			case(VK_TAB):
-				Game<IGameTime>()->setGameRate(isDown ? 0.1f : 1.0f);
+				Game<ITimeManager>()->setGameRate(isDown ? 0.1f : 1.0f);
 				break;
 			}
 		}

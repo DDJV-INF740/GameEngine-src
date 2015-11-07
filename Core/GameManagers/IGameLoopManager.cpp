@@ -2,9 +2,10 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "IGameRendering.h"
+#include "IGameLoopManager.h"
 
 //=============================================================================
-// INTERFACE IGameRendering
+// INTERFACE IRenderManager
 //=============================================================================
-IGameInterface::IdType IGameRendering::TypeId() { return "IGameRendering"; }
+IGameLoopManager::IdType IGameLoopManager::TypeId() { return "IGameLoopManager"; }
+

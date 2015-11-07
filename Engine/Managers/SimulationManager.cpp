@@ -2,8 +2,8 @@
 
 #include "Core/GameObjects/IGameObject.h"
 #include "Core/Components/IColliderInterface.h"
-#include "Core/GameManagers/IGameLoop.h"
-#include "Core/GameManagers/IGameTime.h"
+#include "Core/GameManagers/IGameLoopManager.h"
+#include "Core/GameManagers/ITimeManager.h"
 #include "Core/Game/Game.h"
 
 #include "SimulationManager.h"
@@ -105,7 +105,7 @@ public:
 	void fatalError(const char *str)
 	{
 		printf("%s", str);
-		Game<IGameLoop>()->requestExit(true);
+		Game<IGameLoopManager>()->requestExit(true);
 	}
 
 	//-------------------------------------------------------------------------
@@ -273,7 +273,7 @@ public:
 
 	void update()
 	{
-		PxReal remainingToSimulate = PxReal(Game<IGameTime>()->currentTime() - Game<IGameTime>()->lastFrameTime());
+		PxReal remainingToSimulate = PxReal(Game<ITimeManager>()->currentTime() - Game<ITimeManager>()->lastFrameTime());
 
 		while (remainingToSimulate > 0)
 		{

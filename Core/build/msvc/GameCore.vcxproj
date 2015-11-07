@@ -141,7 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Components\ComponentBase.h" />
     <ClInclude Include="..\..\Components\IColliderInterface.h" />
     <ClInclude Include="..\..\Components\ICollisionHandler.h" />
     <ClInclude Include="..\..\Components\IComponent.h" />
@@ -161,15 +160,15 @@
     <ClInclude Include="..\..\Components\IStaticSimulationComponent.h" />
     <ClInclude Include="..\..\d3d\d3d9.forward.h" />
     <ClInclude Include="..\..\Factories\ObjectFactory.h" />
-    <ClInclude Include="..\..\GameManagers\IGameAI.h" />
-    <ClInclude Include="..\..\GameManagers\IGameCameras.h" />
-    <ClInclude Include="..\..\GameManagers\IGameLoop.h" />
-    <ClInclude Include="..\..\GameManagers\IGamePlayers.h" />
-    <ClInclude Include="..\..\GameManagers\IGameRendering.h" />
-    <ClInclude Include="..\..\GameManagers\IGameSimulation.h" />
-    <ClInclude Include="..\..\GameManagers\IGameSpawner.h" />
-    <ClInclude Include="..\..\GameManagers\IGameTime.h" />
-    <ClInclude Include="..\..\GameManagers\IGameWindow.h" />
+    <ClInclude Include="..\..\GameManagers\IAIManager.h" />
+    <ClInclude Include="..\..\GameManagers\ICameraManager.h" />
+    <ClInclude Include="..\..\GameManagers\IGameLoopManager.h" />
+    <ClInclude Include="..\..\GameManagers\IPlayerManager.h" />
+    <ClInclude Include="..\..\GameManagers\IRenderManager.h" />
+    <ClInclude Include="..\..\GameManagers\ISimulationManager.h" />
+    <ClInclude Include="..\..\GameManagers\ISpawnManager.h" />
+    <ClInclude Include="..\..\GameManagers\ITimeManager.h" />
+    <ClInclude Include="..\..\GameManagers\IWindowManager.h" />
     <ClInclude Include="..\..\GameObjects\gameobjectfactory.h" />
     <ClInclude Include="..\..\GameObjects\GameObjectProxy.h" />
     <ClInclude Include="..\..\GameObjects\IBehaviour.h" />
@@ -187,7 +186,6 @@
     <ClInclude Include="..\..\Tasks\IGameTask.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Components\ComponentBase.cpp" />
     <ClCompile Include="..\..\Components\IColliderInterface.cpp" />
     <ClCompile Include="..\..\Components\ICollisionHandler.cpp" />
     <ClCompile Include="..\..\Components\IComponent.cpp" />
@@ -206,15 +204,15 @@
     <ClCompile Include="..\..\Components\ISimulationInterface.cpp" />
     <ClCompile Include="..\..\Components\IStaticSimulationComponent.cpp" />
     <ClCompile Include="..\..\Factories\ObjectFactory.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameAI.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameCameras.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameLoop.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGamePlayers.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameRendering.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameSimulation.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameSpawner.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameTime.cpp" />
-    <ClCompile Include="..\..\GameManagers\IGameWindow.cpp" />
+    <ClCompile Include="..\..\GameManagers\IAIManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\ICameraManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\IGameLoopManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\IPlayerManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\IRenderManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\ISimulationManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\ISpawnManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\ITimeManager.cpp" />
+    <ClCompile Include="..\..\GameManagers\IWindowManager.cpp" />
     <ClCompile Include="..\..\GameObjects\GameObjectFactory.cpp" />
     <ClCompile Include="..\..\GameObjects\GameObjectProxy.cpp" />
     <ClCompile Include="..\..\GameObjects\IBehaviour.cpp" />

@@ -6,7 +6,7 @@
 #include "PlayerTask.h"
 #include "Managers/PlayerManager.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGamePlayers.h"
+#include "Core/GameManagers/IPlayerManager.h"
 //=============================================================================
 // CLASS PlayerTask
 //=============================================================================
@@ -22,5 +22,5 @@ void PlayerTask::cleanup()
 //
 void PlayerTask::update()
 {
-	Game<IGamePlayers>()->update();
+	Game<IPlayerManager>()->update();
 }

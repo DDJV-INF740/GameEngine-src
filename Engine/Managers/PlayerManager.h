@@ -5,7 +5,7 @@
 #include <vector>
 #include "Engine/Components/PlayerComponent.h"
 #include "Engine/Game/GameComponent.h"
-#include "Core/GameManagers/IGamePlayers.h"
+#include "Core/GameManagers/IPlayerManager.h"
 
 //=============================================================================
 // FORWARD DECLARATIONS
@@ -26,14 +26,14 @@ typedef std::weak_ptr<IGameEngine> GameEngineWeakRef;
 //=============================================================================
 class PlayerManager
 	: public GameComponent<PlayerManager>
-	, public IGamePlayers
+	, public IPlayerManager
 {
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
 	{
 		static IComponentInterface::IdType sInterfaces[] = {
-			IGamePlayers::TypeId(),
+			IPlayerManager::TypeId(),
 			0
 		};
 
@@ -44,7 +44,7 @@ public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}
 	virtual void onDetached(const GameEngineRef &iGameEngine) override {}
 
-public: // IGamePlayers
+public: // IPlayerManager
 	virtual int playerCount() override;
 	virtual IPlayerInterface* player(int index) override;
 	virtual IPlayerInterface* mainController() override;

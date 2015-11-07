@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "PlayerComponent.h"
-#include "Core/GameManagers/IGamePlayers.h"
+#include "Core/GameManagers/IPlayerManager.h"
 #include "Core/Game/Game.h"
 #include "Engine/Components/ComponentFactory.h"
 
@@ -18,7 +18,7 @@
 //
 void PlayerComponent::onDetached( const GameObjectRef &iGameObject )
 {
-	Game<IGamePlayers>()->removePlayer(this);
+	Game<IPlayerManager>()->removePlayer(this);
 	_go.reset();
 }
 
@@ -27,7 +27,7 @@ void PlayerComponent::onDetached( const GameObjectRef &iGameObject )
 void PlayerComponent::onAttached( const GameObjectRef &iGameObject )
 {
 	_go = iGameObject;
-	Game<IGamePlayers>()->addPlayer(this);
+	Game<IPlayerManager>()->addPlayer(this);
 }
 
 //-----------------------------------------------------------------------------

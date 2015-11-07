@@ -5,7 +5,7 @@
 #include <vector>
 #include "Engine/Components/PlayerComponent.h"
 #include "Engine/Game/GameComponent.h"
-#include "Core/GameManagers/IGameTime.h"
+#include "Core/GameManagers/ITimeManager.h"
 #include "Engine/Game/GameTimer.h"
 
 //=============================================================================
@@ -22,14 +22,14 @@ typedef std::weak_ptr<IGameEngine> GameEngineWeakRef;
 //=============================================================================
 class TimeManager
 	: public GameComponent<TimeManager>
-	, public IGameTime
+	, public ITimeManager
 {
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
 	{
 		static IComponentInterface::IdType sInterfaces[] = {
-			IGameTime::TypeId(),
+			ITimeManager::TypeId(),
 			0
 		};
 
@@ -40,7 +40,7 @@ public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}
 	virtual void onDetached(const GameEngineRef &iGameEngine) override {}
 
-public: // IGamePlayers
+public: // IPlayerManager
 	virtual double currentTime();
 	virtual double lastFrameTime();
 	virtual void setGameRate(float iRate);

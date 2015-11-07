@@ -62,33 +62,6 @@
     <ClInclude Include="..\..\GameObjects\GameObjectProxy.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameRendering.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameSimulation.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameSpawner.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameTime.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameWindow.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameAI.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameCameras.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGameLoop.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameManagers\IGamePlayers.h">
-      <Filter>GameManagers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Game\IGameInterface.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -134,9 +107,6 @@
     <ClInclude Include="..\..\Components\IStaticSimulationComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Components\ComponentBase.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Components\IColliderInterface.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -160,6 +130,33 @@
     </ClInclude>
     <ClInclude Include="..\..\Components\IIAInterface.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IAIManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\ICameraManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IGameLoopManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IPlayerManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IRenderManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\ISimulationManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\ISpawnManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\ITimeManager.h">
+      <Filter>GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameManagers\IWindowManager.h">
+      <Filter>GameManagers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,33 +184,6 @@
     </ClCompile>
     <ClCompile Include="..\..\GameObjects\GameObjectProxy.cpp">
       <Filter>GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameRendering.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameSimulation.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameSpawner.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameTime.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameWindow.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameAI.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameCameras.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGameLoop.cpp">
-      <Filter>GameManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameManagers\IGamePlayers.cpp">
-      <Filter>GameManagers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Game\IGameManager.cpp">
       <Filter>Game</Filter>
@@ -254,9 +224,6 @@
     <ClCompile Include="..\..\Components\IStaticSimulationComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Components\ComponentBase.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Components\IColliderInterface.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -283,6 +250,33 @@
     </ClCompile>
     <ClCompile Include="..\..\Components\IInputInterface.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IAIManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\ICameraManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IGameLoopManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IPlayerManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IRenderManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\ISimulationManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\ISpawnManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\ITimeManager.cpp">
+      <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameManagers\IWindowManager.cpp">
+      <Filter>GameManagers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

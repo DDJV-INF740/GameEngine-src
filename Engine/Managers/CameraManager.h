@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponent.h"
-#include "Core/GameManagers/IGameCameras.h"
+#include "Core/GameManagers/ICameraManager.h"
 #include "Core/GameObjects/IGameObject.h"
 #include "Engine/Game/GameComponent.h"
 #include <vector>
@@ -14,21 +14,21 @@
 //=============================================================================
 class CameraManager
 	: public GameComponent<CameraManager>
-	, public IGameCameras
+	, public ICameraManager
 {
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
 	{
 		static IComponentInterface::IdType sInterfaces[] = {
-			IGameCameras::TypeId(),
+			ICameraManager::TypeId(),
 			0
 		};
 
 		return sInterfaces;
 	}
 
-public: // IGameCameras
+public: // ICameraManager
 	virtual int cameraCount() override;
 	virtual GameObjectRef camera(int index) override;
 	virtual GameObjectProxyRef mainCamera() override;

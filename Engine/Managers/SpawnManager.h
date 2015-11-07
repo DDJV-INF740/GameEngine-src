@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponent.h"
-#include "Core/GameManagers/IGameSpawner.h"
+#include "Core/GameManagers/ISpawnManager.h"
 #include "Core/Game/IGameManager.h"
 #include "Engine/Game/GameComponent.h"
 //=============================================================================
@@ -11,14 +11,14 @@
 //=============================================================================
 class SpawnManager
 	: public GameComponent<SpawnManager>
-	, public IGameSpawner
+	, public ISpawnManager
 {
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
 	{
 		static IComponentInterface::IdType sInterfaces[] = {
-			IGameSpawner::TypeId(),
+			ISpawnManager::TypeId(),
 			0
 		};
 

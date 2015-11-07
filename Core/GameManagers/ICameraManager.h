@@ -7,9 +7,9 @@
 #include "Core/GameObjects/GameObjectProxy.h"
 
 //=============================================================================
-// CLASS IGamePlayers
+// CLASS IPlayerManager
 //=============================================================================
-class IGameCameras: virtual public IGameInterface
+class ICameraManager: virtual public IGameInterface
 {
 public:
 	static IdType TypeId();

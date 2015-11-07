@@ -6,7 +6,7 @@
 #include "Core/Game/Game.h"
 #include "Rendering/Camera.h"
 #include "Components/ComponentFactory.h"
-#include "Core/GameManagers/IGameRendering.h"
+#include "Core/GameManagers/IRenderManager.h"
 #include "Core/GameObjects/IGameObject.h"
 
 //=============================================================================
@@ -17,7 +17,7 @@
 //
 void RenderComponent::onDetached(const GameObjectRef &iGameObject)
 {
-	Game<IGameRendering>()->removeFromRenderList(this);
+	Game<IRenderManager>()->removeFromRenderList(this);
 	_go.reset();
 }
 
@@ -26,7 +26,7 @@ void RenderComponent::onDetached(const GameObjectRef &iGameObject)
 void RenderComponent::setRenderPrimitive( const IRenderPrimitiveRef &iRenderPrimitive )
 {
 	_renderPrimitive = iRenderPrimitive;
-	Game<IGameRendering>()->insertInRenderList(this);
+	Game<IRenderManager>()->insertInRenderList(this);
 }
 
 //-----------------------------------------------------------------------------

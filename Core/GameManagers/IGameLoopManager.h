@@ -9,18 +9,14 @@
 //=============================================================================
 
 //=============================================================================
-// INTERFACE IGameTime
+// INTERFACE IRenderManager
 //=============================================================================
-class IGameTime: virtual public IGameInterface
+class IGameLoopManager: virtual public IGameInterface
 {
 public:
 	static IdType TypeId();
 
 public:
-	virtual double currentTime() = 0;
-	virtual double lastFrameTime() = 0;
-	virtual void setGameRate(float iRate) = 0;
-
-	virtual void startFrame() = 0;
-	virtual void startSession() = 0;
+	virtual bool exitRequested() = 0;
+	virtual void requestExit(bool iRequest) = 0;
 };

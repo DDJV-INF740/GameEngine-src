@@ -7,8 +7,8 @@
 #include <d3d9.h>
 #include <d3dx9mesh.h>
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameRendering.h"
-#include "Core/GameManagers/IGameSimulation.h"
+#include "Core/GameManagers/IRenderManager.h"
+#include "Core/GameManagers/ISimulationManager.h"
 #include <vector>
 #include "Assets/Models/MeshModel.h"
 
@@ -105,7 +105,7 @@ static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &iPhysics, ID3DXMesh *iM
 //=============================================================================
 MeshModel* ModelFactory::createSphere( float iRadius )
 {
-	LPDIRECT3DDEVICE9 d3dDevice = Game<IGameRendering>()->d3dDevice();
+	LPDIRECT3DDEVICE9 d3dDevice = Game<IRenderManager>()->d3dDevice();
 	LPD3DXMESH wD3DMesh = nullptr;;
 	D3DXCreateSphere(d3dDevice, iRadius, 8, 8, &wD3DMesh, nullptr);
 	return new MeshModel(wD3DMesh);
@@ -115,6 +115,6 @@ MeshModel* ModelFactory::createSphere( float iRadius )
 //
 PxConvexMesh* ModelFactory::convexMeshFromModel(const MeshModel &iModel)
 {
-	return GenerateConvexFromDXMesh(Game<IGameSimulation>()->physics(), iModel.mesh());
+	return GenerateConvexFromDXMesh(Game<ISimulationManager>()->physics(), iModel.mesh());
 }
 

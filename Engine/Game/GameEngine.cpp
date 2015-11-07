@@ -4,7 +4,7 @@
 #include "Precompiled.h"
 #include "GameEngine.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameLoop.h"
+#include "Core/GameManagers/IGameLoopManager.h"
 
 static GameEngineRef _instance;
 
@@ -33,7 +33,7 @@ bool GameEngine::run()
 		}
 	}
 		
-	return Game<IGameLoop>()->exitRequested() == false;
+	return Game<IGameLoopManager>()->exitRequested() == false;
 }
 
 

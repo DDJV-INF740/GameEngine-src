@@ -7,10 +7,10 @@
 #include "Engine/GameObjects/GameObject.h"
 #include "Engine/Components/FollowPoseComponent.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGamePlayers.h"
+#include "Core/GameManagers/IPlayerManager.h"
 #include "Core/Components/IPlayerInterface.h"
 #include "Engine/Components/RenderViewComponent.h"
-#include "Core/GameManagers/IGameCameras.h"
+#include "Core/GameManagers/ICameraManager.h"
 
 #define M_PI       3.14159265358979323846
 
@@ -50,19 +50,19 @@ public:
 	virtual void onSpawn(const PxTransform &aPose) override
 	{
 		auto wPoseComponent = addComponent<FollowPoseComponent>();
-		wPoseComponent->follow(Game<IGamePlayers>()->mainGameObject());
+		wPoseComponent->follow(Game<IPlayerManager>()->mainGameObject());
 		wPoseComponent->setPoseAdjustment(AdjustCameraPosition);
 
 		auto wRenderViewComponent = addComponent<RenderViewComponent>();
 
-		Game<IGameCameras>()->addCamera(ref());
+		Game<ICameraManager>()->addCamera(ref());
 	}
 
 	//-------------------------------------------------------------------------
 	//
 	virtual void onUnspawn() override
 	{
-		Game<IGameCameras>()->removeCamera(ref());
+		Game<ICameraManager>()->removeCamera(ref());
 	}
 
 };

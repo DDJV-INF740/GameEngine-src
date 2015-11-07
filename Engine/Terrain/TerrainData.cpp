@@ -2,8 +2,8 @@
 
 #include "TerrainData.h"
 #include "Import/Images/OLEImageImporter.h"
-#include "Core/GameManagers/IGameRendering.h"
-#include "Core/GameManagers/IGameSimulation.h"
+#include "Core/GameManagers/IRenderManager.h"
+#include "Core/GameManagers/ISimulationManager.h"
 #include "Core/Game/Game.h"
 #include <d3d9.h>
 
@@ -68,7 +68,7 @@ int TerrainData::load()
 	imgLoader.draw(buffer, OLEImageImporter::FORMAT_L8);
 	_tprintf("loaded  %TS\n", kHeightPixMapFile);
 
-	LPDIRECT3DDEVICE9 d3ddev = Game<IGameRendering>()->d3dDevice();
+	LPDIRECT3DDEVICE9 d3ddev = Game<IRenderManager>()->d3dDevice();
 	int verticeCount = _renderData._width*_renderData._height;
 
 	// create a vertex buffer interface called _vbuffer
@@ -154,7 +154,7 @@ int TerrainData::load()
 	}
 	_renderData._ibuffer->Unlock();
 
-	PxPhysics &physics = Game<IGameSimulation>()->physics();
+	PxPhysics &physics = Game<ISimulationManager>()->physics();
 
 	_material = physics.createMaterial(0.5f, 0.5f, 0.1f);    //static friction, dynamic friction, restitution
 

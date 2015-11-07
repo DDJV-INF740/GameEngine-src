@@ -5,12 +5,12 @@
 //=============================================================================
 #include "AITask.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameAI.h"
+#include "Core/GameManagers/IAIManager.h"
 
 //=============================================================================
 // CLASS AITask
 //=============================================================================
 void AITask::update()
 {
-	Game<IGameAI>()->update();
+	Game<IAIManager>()->update();
 }

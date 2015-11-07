@@ -1,11 +1,10 @@
 #include "Precompiled.h"
-
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "IGameCameras.h"
+#include "IRenderManager.h"
 
 //=============================================================================
-// CLASS IGamePlayers
+// INTERFACE IRenderManager
 //=============================================================================
-IGameInterface::IdType IGameCameras::TypeId() { return "IGameCameras"; }
+IGameInterface::IdType IRenderManager::TypeId() { return "IRenderManager"; }

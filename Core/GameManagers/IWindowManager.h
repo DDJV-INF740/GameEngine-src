@@ -7,16 +7,17 @@
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
+typedef struct HWND__ *HWND;
 
 //=============================================================================
-// INTERFACE IGameRendering
+// CLASS IWindowManager
 //=============================================================================
-class IGameLoop: virtual public IGameInterface
+class IWindowManager: virtual public IGameInterface
 {
 public:
 	static IdType TypeId();
 
 public:
-	virtual bool exitRequested() = 0;
-	virtual void requestExit(bool iRequest) = 0;
+	virtual HWND window() = 0;
 };
+

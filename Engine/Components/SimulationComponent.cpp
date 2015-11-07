@@ -34,7 +34,7 @@ void DynamicSimulationComponent::setPose( const physx::PxTransform &iPose )
 //
 physx::PxRigidDynamic* DynamicSimulationComponent::createPxActor()
 {
-	return Game<IGameSimulation>()->physics().createRigidDynamic(physx::PxTransform::createIdentity());
+	return Game<ISimulationManager>()->physics().createRigidDynamic(physx::PxTransform::createIdentity());
 }
 
 
@@ -66,7 +66,7 @@ physx::PxRigidStatic& StaticSimulationComponent::pxActor()
 //
 physx::PxRigidStatic* StaticSimulationComponent::createPxActor()
 {
-	return Game<IGameSimulation>()->physics().createRigidStatic(physx::PxTransform::createIdentity());
+	return Game<ISimulationManager>()->physics().createRigidStatic(physx::PxTransform::createIdentity());
 }
 
 

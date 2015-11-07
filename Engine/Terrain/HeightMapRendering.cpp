@@ -6,7 +6,7 @@
 #include "HeightMapRendering.h"
 #include <d3d9.h>
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameRendering.h"
+#include "Core/GameManagers/IRenderManager.h"
 #include "TerrainData.h"
 
 using namespace physx;
@@ -22,7 +22,7 @@ HeightMapRendering::HeightMapRendering( HeightMapRenderData *iData ) : _data(iDa
 
 void HeightMapRendering::render( const GameObjectRef &iGameObject )
 {
-	LPDIRECT3DDEVICE9 d3ddev = Game<IGameRendering>()->d3dDevice();
+	LPDIRECT3DDEVICE9 d3ddev = Game<IRenderManager>()->d3dDevice();
 
 	// select which vertex format we are using
 	d3ddev->SetFVF(TerrainData::CUSTOMVERTEX::FORMAT);

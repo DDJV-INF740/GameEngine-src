@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponent.h"
-#include "Core/GameManagers/IGameLoop.h"
+#include "Core/GameManagers/IGameLoopManager.h"
 #include "Engine/Game/GameComponent.h"
 
 //=============================================================================
@@ -11,14 +11,14 @@
 //=============================================================================
 class GameLoopManager
 	: public GameComponent<GameLoopManager>
-	, public IGameLoop
+	, public IGameLoopManager
 {
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
 	{
 		static IComponentInterface::IdType sInterfaces[] = {
-			IGameLoop::TypeId(),
+			IGameLoopManager::TypeId(),
 			0
 		};
 
@@ -29,7 +29,7 @@ public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}
 	virtual void onDetached(const GameEngineRef &iGameEngine) override {}
 
-public: // IGameLoop
+public: // IGameLoopManager
 	virtual bool exitRequested() override;
 	virtual void requestExit(bool iRequest) override;
 

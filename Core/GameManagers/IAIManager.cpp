@@ -2,10 +2,10 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "IGameAI.h"
+#include "IAIManager.h"
 
 //=============================================================================
-// INTERFACE IGameRendering
+// INTERFACE IRenderManager
 //=============================================================================
-IGameAI::IdType IGameAI::TypeId() { return "IGameAI"; }
+IAIManager::IdType IAIManager::TypeId() { return "IAIManager"; }
 

@@ -4,7 +4,7 @@
 //=============================================================================
 #include "RenderManager.h"
  #include <algorithm>
-#include "Core/GameManagers/IGameWindow.h"
+#include "Core/GameManagers/IWindowManager.h"
 
 // include the Direct3D Library files
 #pragma comment (lib, "d3d9.lib")
@@ -81,7 +81,7 @@ void RenderManager::onDetached( const GameEngineRef &iGameEngine )
 
 void RenderManager::onAttached( const GameEngineRef &iGameEngine )
 {
-	auto wGameWindow = iGameEngine->as<IGameWindow>();
+	auto wGameWindow = iGameEngine->as<IWindowManager>();
 	ASSERT(wGameWindow != nullptr); // The engine must have a window before the render manager is initialized
 	HWND hWnd = wGameWindow->window();
 

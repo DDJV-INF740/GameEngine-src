@@ -2,10 +2,10 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "IGameTime.h"
+#include "ITimeManager.h"
 
 //=============================================================================
-// INTERFACE IGameRendering
+// INTERFACE IRenderManager
 //=============================================================================
-IGameTime::IdType IGameTime::TypeId() { return "IGameTime"; }
+ITimeManager::IdType ITimeManager::TypeId() { return "ITimeManager"; }
 

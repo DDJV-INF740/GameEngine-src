@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponent.h"
-#include "Core/GameManagers/IGameSimulation.h"
+#include "Core/GameManagers/ISimulationManager.h"
 #include "Engine/Game/GameComponent.h"
 
 //=============================================================================
@@ -11,14 +11,14 @@
 //=============================================================================
 class SimulationManager
 	: public GameComponent<SimulationManager>
-	, public IGameSimulation
+	, public ISimulationManager
 {
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
 	{
 		static IComponentInterface::IdType sInterfaces[] = {
-			IGameSimulation::TypeId(),
+			ISimulationManager::TypeId(),
 			0
 		};
 
@@ -33,7 +33,7 @@ public: // IComponen
 	virtual void onAttached(const GameEngineRef &iGameEngine) override;
 	virtual void onDetached(const GameEngineRef &iGameEngine) override;
 
-public: // IGameSimulation
+public: // ISimulationManager
 	virtual physx::PxPhysics& physics();
 	virtual physx::PxScene& scene();
 

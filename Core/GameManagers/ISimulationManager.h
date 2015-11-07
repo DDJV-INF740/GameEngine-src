@@ -3,7 +3,7 @@
 #include "Core/Game/IGameInterface.h"
 #include "Core/physx/PxPhysicsAPI.forward.h"
 
-class IGameSimulation: virtual public IGameInterface
+class ISimulationManager: virtual public IGameInterface
 {
 public:
 	static IdType TypeId();

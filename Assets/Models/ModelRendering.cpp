@@ -7,7 +7,7 @@
 #include "Core/GameObjects/IGameObject.h"
 #include "Core/Models/IModel.h"
 #include "Core/Components/IPoseInterface.h"
-#include "Core/GameManagers/IGameRendering.h"
+#include "Core/GameManagers/IRenderManager.h"
 #include "Core/Components/IRenderViewInterface.h"
 #include "Core/Game/Game.h"
 #include <d3d9.h>
@@ -29,7 +29,7 @@ ModelRendering::ModelRendering(const IModel &iModel)
 //
 void ModelRendering::render(const GameObjectRef &iGameObject)
 {
-	LPDIRECT3DDEVICE9 wD3dDevice = Game<IGameRendering>()->d3dDevice();
+	LPDIRECT3DDEVICE9 wD3dDevice = Game<IRenderManager>()->d3dDevice();
 
 	PxMat44 wMatrixTransfo(PxIdentity);
 	IPoseInterfaceRef wGOPose = iGameObject->as<IPoseInterface>();

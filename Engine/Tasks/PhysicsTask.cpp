@@ -5,7 +5,7 @@
 //=============================================================================
 #include "PhysicsTask.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameSimulation.h"
+#include "Core/GameManagers/ISimulationManager.h"
 
 //-----------------------------------------------------------------------------
 //
@@ -23,5 +23,5 @@ void PhysicsTask::cleanup()
 //
 void PhysicsTask::update()
 {
-	Game<IGameSimulation>()->update();
+	Game<ISimulationManager>()->update();
 }

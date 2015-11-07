@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponent.h"
-#include "Core/GameManagers/IGameWindow.h"
+#include "Core/GameManagers/IWindowManager.h"
 #include "Engine/Game/GameComponent.h"
 #include <windows.h>
 
@@ -12,14 +12,14 @@
 //=============================================================================
 class WindowManager
 	: public GameComponent<WindowManager>
-	, virtual public IGameWindow
+	, virtual public IWindowManager
 {
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
 	{
 		static IComponentInterface::IdType sInterfaces[] = {
-			IGameWindow::TypeId(),
+			IWindowManager::TypeId(),
 			0
 		};
 
@@ -30,7 +30,7 @@ public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override;
 	virtual void onDetached(const GameEngineRef &iGameEngine) override;
 
-public: // IGameWindow
+public: // IWindowManager
 	virtual HWND window() override;
 
 public:

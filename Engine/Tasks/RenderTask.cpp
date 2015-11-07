@@ -4,8 +4,8 @@
 #include "Precompiled.h"
 #include "RenderTask.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameRendering.h"
-#include "Core/GameManagers/IGameCameras.h"
+#include "Core/GameManagers/IRenderManager.h"
+#include "Core/GameManagers/ICameraManager.h"
 #include "Core/Components/IRenderViewInterface.h"
 
 #include "Rendering/Camera.h"
@@ -18,7 +18,7 @@
 //
 void RenderTask::update()
 {
-	Game<IGameCameras>()->render();
+	Game<ICameraManager>()->render();
 }
 
 //-----------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 //=============================================================================
 #include "SimulationComponent.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameSimulation.h"
+#include "Core/GameManagers/ISimulationManager.h"
 
 //=============================================================================
 // CLASS SimulationComponentBase
@@ -15,7 +15,7 @@ void SimulationComponentBase<TDerived>::onAttached( const GameObjectRef &iGameOb
 	_go = iGameObject;
 	_pxActor = TDerived::createPxActor();
 	_pxActor->userData = static_cast<IGameObject*>(_go.lock().get());
-	Game<IGameSimulation>()->scene().addActor(*_pxActor);
+	Game<ISimulationManager>()->scene().addActor(*_pxActor);
 }
 
 template<class TDerived>

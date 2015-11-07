@@ -4,7 +4,7 @@
 //=============================================================================
 #include "RenderViewComponent.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameRendering.h"
+#include "Core/GameManagers/IRenderManager.h"
 #include "Core/GameObjects/IGameObject.h"
 #include "Core/Components/IRenderInterface.h"
 #include <d3d9.h>
@@ -20,7 +20,7 @@ using namespace physx;
 
 void RenderViewComponent::renderView()
 {
-	LPDIRECT3DDEVICE9 d3ddev = Game<IGameRendering>()->d3dDevice();
+	LPDIRECT3DDEVICE9 d3ddev = Game<IRenderManager>()->d3dDevice();
 
 	d3ddev->BeginScene();
 	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
@@ -76,7 +76,7 @@ void RenderViewComponent::renderView()
 
 	d3ddev->SetTransform(D3DTS_PROJECTION, &matProjection);    // set the projection
 
-	const IGameRendering::RenderList& wRenderList = Game<IGameRendering>()->renderList();
+	const IRenderManager::RenderList& wRenderList = Game<IRenderManager>()->renderList();
 
 	for (auto iter = wRenderList.begin(); iter != wRenderList.end(); ++iter)
 	{

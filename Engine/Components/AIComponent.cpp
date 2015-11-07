@@ -5,7 +5,7 @@
 #include "AIComponent.h"
 #include "ComponentFactory.h"
 #include "Core/Game/Game.h"
-#include "Core/GameManagers/IGameAI.h"
+#include "Core/GameManagers/IAIManager.h"
 
 //=============================================================================
 // CLASS AIComponent
@@ -23,7 +23,7 @@ void AIComponent::setBehaviour(const IBehaviourRef &iBehaviour)
 void AIComponent::onAttached( const GameObjectRef &iGameObject )
 {
 	_go = iGameObject;
-	Game<IGameAI>()->addComponent(this);
+	Game<IAIManager>()->addComponent(this);
 }
 
 //-----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ void AIComponent::updateAI()
 //
 void AIComponent::onDetached( const GameObjectRef &iGameObject )
 {
-	Game<IGameAI>()->removeComponent(this);
+	Game<IAIManager>()->removeComponent(this);
 }
 
 //=============================================================================
