@@ -6,7 +6,8 @@
 #include "Core/GameObjects/IGameObject.h"
 #include <memory>
 
-
+namespace engine
+{
 //=============================================================================
 // INTERFACE IBehaviour
 //=============================================================================
@@ -20,3 +21,4 @@ public:
 // TYPE DEFINITIONS
 //=============================================================================
 typedef std::shared_ptr<IBehaviour> IBehaviourRef;
+} // namespace engine

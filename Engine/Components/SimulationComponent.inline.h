@@ -6,6 +6,8 @@
 #include "Core/Game/Game.h"
 #include "Core/GameManagers/ISimulationManager.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS SimulationComponentBase
 //=============================================================================
@@ -53,3 +55,4 @@ void SimulationComponentBase<TDerived>::setHandler( ICollisionHandlerRef iHandle
 }
 
 
+} // namespace engine

@@ -5,6 +5,8 @@
 #include "GameManagerFactory.h"
 #include <map>
 
+namespace engine {
+
 //=============================================================================
 // CLASS GameManagerFactory
 //=============================================================================
@@ -15,3 +17,4 @@ GameManagerFactory& GameManagerFactory::Instance()
 }
 
 
+} // namespace engine

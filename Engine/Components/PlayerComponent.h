@@ -7,6 +7,8 @@
 #include "Core/Components/IPlayerInterface.h"
 #include "Engine/GameObjects/GameObjectComponent.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS PlayerComponent
 //=============================================================================
@@ -41,3 +43,4 @@ private:
 	GameObjectWeakRef _go;
 	IBehaviourRef _behaviour;
 };
+} // namespace engine

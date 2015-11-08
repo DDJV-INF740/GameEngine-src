@@ -5,6 +5,8 @@
 //=============================================================================
 #include "FollowPoseComponent.h"
 #include "Core/GameObjects/IGameObject.h"
+namespace engine
+{
 
 //=============================================================================
 // CLASS FollowPoseComponent
@@ -73,10 +75,16 @@ FollowPoseComponent::FollowPoseComponent() : _poseAdjustment(nullptr)
 
 }
 
+} // namespace engine
+
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
 #include "Engine/Components/ComponentFactory.h"
+
+namespace engine {
+
 IComponent::IdType FollowPoseComponent::TypeId() { return "FollowPoseComponent"; }
 RegisterComponentType<FollowPoseComponent> *gRegisteredComponent = new RegisterComponentType<FollowPoseComponent>();
 
+} // namespace engine

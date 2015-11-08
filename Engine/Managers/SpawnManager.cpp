@@ -10,6 +10,8 @@
 
 using namespace physx;
 
+namespace engine {
+
 //=============================================================================
 // CLASS SpawnManager::SpawnManagerImp
 //=============================================================================
@@ -91,6 +93,11 @@ IComponent::IdType SpawnManager::TypeId()
 {
 	return "SpawnManager";
 }
+} // namespace engine
 
 #include "Engine/Managers/GameManagerFactory.h"
+
+namespace engine {
+
 RegisterGameManagerType<SpawnManager> gSpawnManagerRegistration;
+} // namespace engine

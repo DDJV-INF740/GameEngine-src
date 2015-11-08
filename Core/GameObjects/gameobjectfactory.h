@@ -5,6 +5,9 @@
 #include "Core/GameObjects/IGameObjectData.h"
 #include "Core/GameObjects/IGameObject.h"
 
+namespace engine
+{
+
 //=============================================================================
 // CLASS GameObjectFactory
 //=============================================================================
@@ -39,3 +42,4 @@ public:
 		GameObjectFactory::unregisterGameObjectType(T::TypeId());
 	}
 };
+} // namespace engine

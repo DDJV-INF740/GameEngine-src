@@ -5,6 +5,9 @@
 #include "Core/Components/IComponentInterface.h"
 #include <memory>
 
+namespace engine
+{
+	
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -30,3 +33,4 @@ public:
 	virtual void onDetached(const GameObjectRef &iGameObject) = 0;
 };
 
+} // namespace engine

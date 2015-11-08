@@ -10,6 +10,7 @@
 #include <map>
 
 #pragma warning( disable : 4250 )
+namespace engine  {
 
 //=============================================================================
 // CLASS GameObjectBase
@@ -95,3 +96,4 @@ protected:
 	GameObjectWeakRef _ref;
 };
 
+} // namespace engine

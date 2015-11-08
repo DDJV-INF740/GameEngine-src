@@ -4,6 +4,9 @@
 //=============================================================================
 #include "IGameObject.h"
 
+namespace engine
+{
+
 //=============================================================================
 // CLASS GameObjectProxy
 //=============================================================================
@@ -39,3 +42,4 @@ private:
 typedef std::shared_ptr<GameObjectProxy> GameObjectProxyRef;
 typedef std::weak_ptr<GameObjectProxy> GameObjectProxyWeakRef;
 
+} // namespace engine

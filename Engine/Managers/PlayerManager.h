@@ -7,6 +7,8 @@
 #include "Engine/Game/GameComponent.h"
 #include "Core/GameManagers/IPlayerManager.h"
 
+namespace engine {
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -61,3 +63,4 @@ private:
 	GameObjectProxyRef _mainGameObjectProxy;
 
 };
+} // namespace engine

@@ -6,6 +6,9 @@
 #include "IComponentInterface.h"
 #include "Core/GameObjects/IBehaviour.h"
 
+namespace engine
+{
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -23,3 +26,4 @@ public:
 	virtual void updatePlayer() = 0;
 	virtual GameObjectRef gameObject() = 0;
 };
+} // namespace engine

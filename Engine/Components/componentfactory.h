@@ -7,10 +7,12 @@
 #include "Core/Factories/ObjectFactory.h"
 #include <typeinfo>
 
+namespace engine {
+
 //=============================================================================
 // CLASS ComponentFactory
 //=============================================================================
-class ComponentFactory: public ObjectFactory<IComponent>
+class ComponentFactory : public ObjectFactory<IComponent>
 {
 
 public:
@@ -34,3 +36,5 @@ public:
 		ComponentFactory::Instance().unregisterType<T>();
 	}
 };
+
+} // namespace engine

@@ -1,5 +1,6 @@
 #pragma once
-
+namespace engine
+{
 //=============================================================================
 // INTERFACE IGameTask
 //=============================================================================
@@ -12,3 +13,4 @@ public:
 	virtual void cleanup() = 0;
 	virtual void update() = 0;
 };
+} // namespace engine

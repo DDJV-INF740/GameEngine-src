@@ -5,6 +5,8 @@
 //=============================================================================
 #include "Core/Rendering/IRenderPrimitive.h"
 
+namespace engine {
+
 //=============================================================================
 // FORWARD DEFINITIONS
 //=============================================================================
@@ -22,3 +24,4 @@ public:
 	ModelRendering(const IModel &iModel);
 	virtual void render(const GameObjectRef &iGameObject) override;
 };
+} // namespace engine

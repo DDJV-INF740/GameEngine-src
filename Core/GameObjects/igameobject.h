@@ -7,6 +7,8 @@
 #include "Core/PhysX/PxPhysicsAPI.forward.h"
 #include <memory>
 
+namespace engine
+{
 //=============================================================================
 // INTERFACE IGameObject
 //=============================================================================
@@ -31,3 +33,4 @@ public:
 	virtual const char *debugName() const = 0;
 };
 
+} // namespace engine

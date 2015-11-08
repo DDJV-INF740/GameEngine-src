@@ -1,6 +1,8 @@
 #include "Precompiled.h"
 #include "TimeManager.h"
 
+namespace engine {
+
 
 double TimeManager::currentTime()
 {
@@ -38,12 +40,17 @@ void TimeManager::startSession()
 	_sessionTimer.reset();
 	_sessionTimer.setRate(1.0f);
 }
+} // namespace engine
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
 #include "Engine/Managers/GameManagerFactory.h"
+namespace engine 	{
+
+	
 IComponent::IdType TimeManager::TypeId() { return "TimeManager"; }
 static RegisterGameManagerType<TimeManager> gRegisteredComponent;
 
+} // namespace engine
 

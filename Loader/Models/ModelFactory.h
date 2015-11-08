@@ -5,6 +5,8 @@
 //=============================================================================
 #include "Core/physx/PxPhysicsAPI.forward.h"
 
+namespace engine {
+
 //=============================================================================
 // FORWARD DEFINITIONS
 //=============================================================================
@@ -16,3 +18,4 @@ public:
 	static MeshModel* createSphere(float iRadius);
 	static physx::PxConvexMesh* convexMeshFromModel(const MeshModel &iMeshModel);
 };
+} // namespace engine

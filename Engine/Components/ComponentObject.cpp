@@ -3,3 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "ComponentObject.h"
+
+namespace engine
+{
+}

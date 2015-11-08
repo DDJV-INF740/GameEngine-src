@@ -8,6 +8,8 @@
 #include "Engine/Game/GameComponent.h"
 #include <vector>
 
+namespace engine {
+
 
 //=============================================================================
 // CLASS CameraManager
@@ -45,3 +47,4 @@ private:
 	class CameraManagerImp;
 	CameraManagerImp *_imp;
 };
+} // namespace engine

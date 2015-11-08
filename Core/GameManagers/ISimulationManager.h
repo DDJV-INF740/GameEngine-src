@@ -3,6 +3,9 @@
 #include "Core/Game/IGameInterface.h"
 #include "Core/physx/PxPhysicsAPI.forward.h"
 
+namespace engine
+{
+
 class ISimulationManager: virtual public IGameInterface
 {
 public:
@@ -14,3 +17,4 @@ public:
 
 	virtual void update() = 0;
 };
+} // namespace engine

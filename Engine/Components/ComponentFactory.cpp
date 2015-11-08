@@ -5,6 +5,9 @@
 #include "ComponentFactory.h"
 #include <map>
 
+namespace engine
+{
+
 //=============================================================================
 // CLASS ComponentFactory
 //=============================================================================
@@ -15,3 +18,4 @@ ComponentFactory& ComponentFactory::Instance()
 }
 
 
+} // namespace engine

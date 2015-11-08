@@ -11,6 +11,8 @@
 
 #include <bitset>
 
+namespace engine {
+
 //=============================================================================
 // CLASS KeyboardController
 //=============================================================================
@@ -51,3 +53,4 @@ protected:
 	std::bitset<KEY_COUNT> _keys;
 	GameObjectWeakRef _go;
 };
+} // namespace engine

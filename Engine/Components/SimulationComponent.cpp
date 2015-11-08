@@ -6,6 +6,9 @@
 #include "Components/ComponentFactory.h"
 #include "PxPhysicsAPI.h"
 
+namespace engine {
+
+
 //=============================================================================
 // CLASS DynamicSimulationComponent
 //=============================================================================
@@ -25,7 +28,7 @@ physx::PxTransform DynamicSimulationComponent::pose()
 
 //-----------------------------------------------------------------------------
 //
-void DynamicSimulationComponent::setPose( const physx::PxTransform &iPose )
+void DynamicSimulationComponent::setPose(const physx::PxTransform &iPose)
 {
 	pxActor().setGlobalPose(iPose);
 }
@@ -50,7 +53,7 @@ physx::PxTransform StaticSimulationComponent::pose()
 
 //-----------------------------------------------------------------------------
 //
-void StaticSimulationComponent::setPose( const physx::PxTransform &iPose )
+void StaticSimulationComponent::setPose(const physx::PxTransform &iPose)
 {
 	pxActor().setGlobalPose(iPose);
 }
@@ -69,12 +72,15 @@ physx::PxRigidStatic* StaticSimulationComponent::createPxActor()
 	return Game<ISimulationManager>()->physics().createRigidStatic(physx::PxTransform::createIdentity());
 }
 
+} // namespace engine
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
+namespace engine {
 IComponent::IdType DynamicSimulationComponent::TypeId() { return "DynamicSimulationComponent"; }
 IComponent::IdType StaticSimulationComponent::TypeId() { return "StaticSimulationComponent"; }
 
 RegisterComponentType<DynamicSimulationComponent>* gRegisterPxRigidDynamicSimulationComponent = new RegisterComponentType<DynamicSimulationComponent>();
 RegisterComponentType<StaticSimulationComponent>* gRegisterPxRigidStaticSimulationComponent = new RegisterComponentType<StaticSimulationComponent>();
+}

@@ -7,6 +7,8 @@
 #include "Engine/Game/GameComponent.h"
 #include <windows.h>
 
+namespace engine {
+
 //=============================================================================
 // CLASS WindowManager
 //=============================================================================
@@ -39,3 +41,4 @@ public:
 private:
 	HWND _hWnd;
 };
+} // namespace engine

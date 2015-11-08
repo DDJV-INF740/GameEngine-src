@@ -16,6 +16,7 @@ using namespace physx;
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
+namespace engine {
 
 
 void RenderViewComponent::renderView()
@@ -102,12 +103,17 @@ void RenderViewComponent::onDetached( const GameObjectRef &iGameObject )
 {
 	_go.reset();
 }
+} // namespace engine
 
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
 #include "Engine/Components/ComponentFactory.h"
+
+namespace engine {
+
 IComponent::IdType RenderViewComponent::TypeId() { return "RenderViewComponent"; }
 RegisterComponentType<RenderViewComponent> gRegisteredComponent;
 
+} // namespace engine

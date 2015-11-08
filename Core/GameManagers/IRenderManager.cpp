@@ -4,7 +4,11 @@
 //=============================================================================
 #include "IRenderManager.h"
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IRenderManager
 //=============================================================================
 IGameInterface::IdType IRenderManager::TypeId() { return "IRenderManager"; }
+} // namespace engine

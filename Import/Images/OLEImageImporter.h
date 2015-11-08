@@ -28,9 +28,9 @@
 #include <vector>
 #include <tchar.h>
 
-#ifdef WRAPPER_LAYER_NAMESPACE
-namespace WRAPPER_LAYER_NAMESPACE {
-#endif
+namespace engine {
+
+
 //==============================================================================
 //	CLASS OLEImageImporter
 //==============================================================================
@@ -84,9 +84,7 @@ private:
 	OLEImageImporterImp *mImp;
 };
 
-#ifdef WRAPPER_LAYER_NAMESPACE
-}
-#endif
+} // namespace engine
 
 #endif // __WRAPPER_OLE_OLEIMAGEIMPORTER__
 

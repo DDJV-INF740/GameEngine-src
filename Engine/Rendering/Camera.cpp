@@ -16,6 +16,8 @@
 
 using namespace physx;
 
+namespace engine {
+
 //=============================================================================
 // CLASS Camera
 //=============================================================================
@@ -68,10 +70,14 @@ public:
 };
 
 
+} // namespace engine
 
 //-----------------------------------------------------------------------------
 //
 #include "Core/GameObjects/GameObjectFactory.h"
+namespace engine {
+
 IGameObject::IdType ICamera::TypeId() {	return Camera::TypeId(); }
 RegisterGameObjectType<Camera> gRegisterGameObject;
+} // namespace engine
 

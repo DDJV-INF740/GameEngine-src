@@ -5,6 +5,9 @@
 //=============================================================================
 #include "Core/Components/IComponentInterface.h"
 
+namespace engine
+{
+
 //=============================================================================
 // CONSTANTS
 //=============================================================================
@@ -33,3 +36,4 @@ public:
 	virtual bool isPressed(ControllerKey aKey) const = 0;
 	virtual void setKey(ControllerKey aKey, bool aIsPressed) = 0;
 };
+} // namespace engine

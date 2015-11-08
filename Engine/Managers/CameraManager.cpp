@@ -9,6 +9,8 @@
 
 #include <algorithm>
 
+namespace engine {
+
 class CameraManager::CameraManagerImp
 {
 public:
@@ -105,6 +107,11 @@ CameraManager::~CameraManager()
 {
 	delete _imp;
 }
+} // namespace engine
 
 #include "Engine/Managers/GameManagerFactory.h"
+
+namespace engine {
+
 RegisterGameManagerType<CameraManager> gCameraManagerRegistration;
+} // namespace engine

@@ -5,6 +5,8 @@
 #include "Assets/Models/MeshModel.h"
 #include "Core/d3d/d3d9.forward.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS DotXModel
 //=============================================================================
@@ -20,3 +22,4 @@ private:
 	class DotXModelImp;
 	DotXModelImp *_imp;
 };
+} // namespace engine

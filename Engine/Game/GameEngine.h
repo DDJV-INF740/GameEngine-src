@@ -12,6 +12,8 @@
 
 #pragma warning( disable : 4250 )
 
+namespace engine {
+
 
 //=============================================================================
 // CLASS Game
@@ -52,3 +54,4 @@ public:
 	GameEngineWeakRef _ref;
 };
 
+} // namespace engine

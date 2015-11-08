@@ -3,6 +3,8 @@
 #include "Core/d3d/d3d9.forward.h"
 #include "PxPhysicsAPI.h"
 
+namespace engine {
+
 class HeightMapRenderData
 {
 public:
@@ -20,3 +22,4 @@ public:
 	LPDIRECT3DVERTEXBUFFER9 _vbuffer;
 	LPDIRECT3DINDEXBUFFER9 _ibuffer;
 };
+} // namespace engine

@@ -5,6 +5,8 @@
 #include "Core/Components/IComponent.h"
 #include "Core/Components/ComponentBase.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS GameObjectComponent
 //=============================================================================
@@ -20,3 +22,4 @@ public:
 		return TDerived::Interfaces();
 	}
 };
+} // namespace engine

@@ -4,6 +4,9 @@
 #include "Core/GameObjects/IGameObject.h"
 #include <set>
 
+namespace engine
+{
+
 class IGameObject;
 
 class ISpawnManager: virtual public IGameInterface
@@ -24,3 +27,4 @@ public:
 };
 
 typedef std::shared_ptr<ISpawnManager> GameSpawnerRef;
+} // namespace engine

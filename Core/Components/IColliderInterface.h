@@ -6,6 +6,9 @@
 #include "Core/Components/ICollisionHandler.h"
 #include "Core/Components/IComponentInterface.h"
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IColliderInterface
 //=============================================================================
@@ -19,3 +22,5 @@ public:
 	virtual void onTrigger(bool triggerEnter, physx::PxShape *actorShape, physx::PxShape *contactShape) = 0;
 	virtual void setHandler(ICollisionHandlerRef ICollisionHandler) = 0;
 };
+
+} // namespace engine

@@ -15,6 +15,8 @@
 
 #pragma warning( disable : 4250 )
 
+namespace engine {
+
 //=============================================================================
 // CLASS SimulationComponentBase
 //=============================================================================
@@ -113,5 +115,7 @@ public: // IPoseInterface
 	virtual physx::PxTransform pose() override;
 	virtual void setPose(const physx::PxTransform &iPose) override;
 };
+
+} // namespace engine
 
 #include "SimulationComponent.inline.h"

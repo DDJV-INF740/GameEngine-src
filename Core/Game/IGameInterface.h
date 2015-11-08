@@ -1,4 +1,7 @@
 #pragma once
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IGameInterface
 //=============================================================================
@@ -11,3 +14,4 @@ public:
 	typedef const char* IdType;
 	static IdType NullId;
 };
+} // namespace engine

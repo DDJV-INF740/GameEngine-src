@@ -6,6 +6,8 @@
 #include "Core/GameManagers/IRenderManager.h"
 #include "Engine/Game/GameComponent.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS RenderManager
 //=============================================================================
@@ -42,3 +44,4 @@ private:
 	LPDIRECT3DDEVICE9 _d3ddev;
 	RenderList _renderList;
 };
+} // namespace engine

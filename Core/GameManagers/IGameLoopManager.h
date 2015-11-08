@@ -4,6 +4,9 @@
 //=============================================================================
 #include "Core/Game/IGameInterface.h"
 
+namespace engine
+{
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -20,3 +23,4 @@ public:
 	virtual bool exitRequested() = 0;
 	virtual void requestExit(bool iRequest) = 0;
 };
+} // namespace engine

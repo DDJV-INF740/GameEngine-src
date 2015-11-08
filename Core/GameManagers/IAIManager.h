@@ -4,6 +4,9 @@
 //=============================================================================
 #include "Core/Game/IGameInterface.h"
 
+namespace engine
+{
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -22,3 +25,4 @@ public:
 	virtual void removeComponent(IAIInterface *iAIInstance) = 0;
 	virtual void update() = 0;
 };
+} // namespace engine

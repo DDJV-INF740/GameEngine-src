@@ -6,6 +6,8 @@
 #include "Core/Components/IFollowPoseInterface.h"
 #include "Engine/GameObjects/GameObjectComponent.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS FollowPoseComponent
 //=============================================================================
@@ -51,3 +53,4 @@ private:
 };
 
 
+} // namespace engine

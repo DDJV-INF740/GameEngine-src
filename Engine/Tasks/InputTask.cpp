@@ -11,6 +11,8 @@
 #include "Core/GameManagers/ITimeManager.h"
 #include <windows.h>
 
+namespace engine {
+
 //=============================================================================
 // CLASS InputTask
 //=============================================================================
@@ -56,3 +58,4 @@ void InputTask::init()
 //
 void InputTask::cleanup()
 {}
+} // namespace engine

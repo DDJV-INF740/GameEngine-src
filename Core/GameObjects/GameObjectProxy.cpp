@@ -5,6 +5,9 @@
 #include "GameObjectProxy.h"
 #include <string>
 
+namespace engine
+{
+
 //=============================================================================
 // CLASS GameObjectProxy
 //=============================================================================
@@ -95,3 +98,4 @@ GameObjectRef GameObjectProxy::ref()
 	return wProxy == nullptr ? nullptr : wProxy->ref();
 }
 
+} // namespace engine

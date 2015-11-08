@@ -5,6 +5,8 @@
 #include "GameTimer.h"
 #include <windows.h>
 
+namespace engine {
+
 //=============================================================================
 // CLASS GameTimer
 //=============================================================================
@@ -57,3 +59,4 @@ double GameTimer::now()
 	TimeStamp nowTime = GetTimeStamp();
 	return _accTime + GetElapsedTime(_startTime, nowTime) * _rate;
 }
+} // namespace engine

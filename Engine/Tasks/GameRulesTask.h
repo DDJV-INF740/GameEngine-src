@@ -2,6 +2,8 @@
 
 #include "Core/Tasks/IGameTask.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS GameRulesTask
 //=============================================================================
@@ -17,3 +19,4 @@ public:
 	virtual void update()
 	{}
 };
+} // namespace engine

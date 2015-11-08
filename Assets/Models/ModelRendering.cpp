@@ -15,6 +15,8 @@
 #include "PxPhysicsAPI.h"
 using namespace physx;
 
+namespace engine {
+
 //=============================================================================
 // CLASS ModelRendering
 //=============================================================================
@@ -41,3 +43,4 @@ void ModelRendering::render(const GameObjectRef &iGameObject)
 	wD3dDevice->SetTransform(D3DTS_WORLD, (D3DMATRIX*)&wMatrixTransfo);
 	_model.render();
 }
+} // namespace engine

@@ -11,6 +11,8 @@
 
 using namespace physx;
 
+namespace engine {
+
 //=============================================================================
 // CLASS HeightMapRendering
 //=============================================================================
@@ -42,3 +44,4 @@ void HeightMapRendering::render( const GameObjectRef &iGameObject )
 	}
 }
 
+} // namespace engine

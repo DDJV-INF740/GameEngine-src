@@ -6,6 +6,8 @@
 #include "Core/Models/IModel.h"
 #include "Core/d3d/d3d9.forward.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS MeshModel 
 //=============================================================================
@@ -25,4 +27,5 @@ public:
 private:
 	LPD3DXMESH _d3dMesh;
 };
+} // namespace engine
 

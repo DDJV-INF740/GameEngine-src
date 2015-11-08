@@ -7,6 +7,8 @@
 #include <d3dx9mesh.h>
 #include <cstdio>
 
+namespace engine {
+
 //=============================================================================
 // CLASS DotXModel::DotXModelImp
 //=============================================================================
@@ -125,4 +127,4 @@ void DotXModel::render() const
 {
 	_imp->render();
 }
-
+} // namespace engine

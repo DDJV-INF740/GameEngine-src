@@ -7,6 +7,9 @@
 #include "IPoseInterface.h"
 #include "Core/physx/PxPhysicsAPI.forward.h"
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE ISimulationInterface
 //=============================================================================
@@ -18,3 +21,4 @@ public:
 public:
 	virtual physx::PxRigidActor& pxActor() = 0;
 };
+} // namespace engine

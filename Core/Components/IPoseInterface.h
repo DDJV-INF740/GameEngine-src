@@ -7,6 +7,9 @@
 #include "PxPhysicsAPI.h"
 #include <memory>
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IPoseInterface
 //=============================================================================
@@ -27,3 +30,4 @@ typedef std::shared_ptr<IPoseInterface> IPoseInterfaceRef;
 typedef std::weak_ptr<IPoseInterface> IPoseInterfaceWeakRef;
 
 
+} // namespace engine

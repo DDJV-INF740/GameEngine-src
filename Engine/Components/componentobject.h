@@ -5,6 +5,9 @@
 #include "Core/Components/IComponentObject.h"
 #include <map>
 
+namespace engine
+{
+
 //=============================================================================
 // CLASS ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>
 // Template parameters:
@@ -32,6 +35,7 @@ private:
 	std::map<ComponentIdType, std::shared_ptr<TComponent>> _components;
 	std::map<InterfaceIdType, std::shared_ptr<TComponentInterface>> _interfaces;
 };
+} // namespace engine
 
 //=============================================================================
 // TEMPLATE IMPLEMENTATION

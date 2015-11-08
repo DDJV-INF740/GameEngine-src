@@ -4,6 +4,9 @@
 //=============================================================================
 #include "Core/Tasks/IGameTask.h"
 
+namespace engine {
+
+
 //=============================================================================
 // CLASS PlayerTask
 //=============================================================================
@@ -14,3 +17,4 @@ public:
 	virtual void cleanup() override;
 	virtual void update() override;
 };
+} // namespace engine

@@ -3,3 +3,6 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "GameObjectComponent.h"
+
+namespace engine {
+}

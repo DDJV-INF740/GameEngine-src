@@ -6,6 +6,9 @@
 #include "Core/GameObjects/IGameObject.h"
 #include "Core/GameObjects/GameObjectProxy.h"
 
+namespace engine
+{
+
 //=============================================================================
 // CLASS IPlayerManager
 //=============================================================================
@@ -24,3 +27,4 @@ public:
 
 	virtual void render() = 0;
 };
+} // namespace engine

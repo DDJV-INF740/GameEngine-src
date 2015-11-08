@@ -9,6 +9,8 @@
 #include "Core/GameObjects/IGameObject.h"
 #include <memory>
 
+namespace engine {
+
 //=============================================================================
 // CLASS RenderComponent
 //=============================================================================
@@ -43,3 +45,4 @@ private:
 	GameObjectWeakRef _go;
 };
 
+} // namespace engine

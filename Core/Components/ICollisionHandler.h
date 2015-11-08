@@ -5,6 +5,9 @@
 #include "Core/physx/PxPhysicsAPI.forward.h"
 #include <memory>
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE ICollisionHandler
 //=============================================================================
@@ -16,3 +19,5 @@ public:
 };
 
 typedef std::shared_ptr<ICollisionHandler> ICollisionHandlerRef;
+
+} // namespace engine

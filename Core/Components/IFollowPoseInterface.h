@@ -4,6 +4,9 @@
 //=============================================================================
 #include "Core/Components/IPoseInterface.h"
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IFollowPoseInterface
 //=============================================================================
@@ -20,3 +23,5 @@ public:
 	virtual void setPoseAdjustment(AdjustPoseCb iPoseAdjustment) = 0;
 	virtual GameObjectRef followed() = 0;
 };
+
+} // namespace engine

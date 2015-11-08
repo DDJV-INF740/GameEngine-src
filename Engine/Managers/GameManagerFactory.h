@@ -7,6 +7,8 @@
 #include "Core/Factories/ObjectFactory.h"
 #include <typeinfo>
 
+namespace engine {
+
 //=============================================================================
 // CLASS GameManagerFactory
 //=============================================================================
@@ -33,3 +35,4 @@ public:
 		GameManagerFactory::Instance().unregisterType<T>();
 	}
 };
+} // namespace engine

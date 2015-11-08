@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <assert.h>
 
+namespace engine {
+
 class InputManager
 {
 private:
@@ -53,3 +55,4 @@ public:
 private:
 	std::vector<IInputInterface*> _inputInterfaces;
 };
+} // namespace engine

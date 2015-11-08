@@ -34,9 +34,7 @@ namespace {
 static const long HIMETRIC_INCH = 2540;
 }
 
-#ifdef WRAPPER_LAYER_NAMESPACE
-namespace WRAPPER_LAYER_NAMESPACE {
-#endif
+namespace engine {
 
 //==============================================================================
 //	CLASS OLEImageImporter::OLEImageImporterImp
@@ -426,6 +424,4 @@ int OLEImageImporter::bytesPerPixel(PixelFormat format)
 	return 4;
 }
 
-#ifdef WRAPPER_LAYER_NAMESPACE
-}
-#endif
+} // namespace engine

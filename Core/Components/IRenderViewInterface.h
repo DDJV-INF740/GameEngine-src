@@ -6,6 +6,9 @@
 #include "Core/Components/IPoseInterface.h"
 #include "Core/d3d/d3d9.forward.h"
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IRenderViewInterface
 //=============================================================================
@@ -17,3 +20,4 @@ public:
 public:
 	virtual void renderView() = 0;
 };
+} // namespace engine

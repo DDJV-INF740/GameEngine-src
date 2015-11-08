@@ -9,5 +9,5 @@ typedef struct IDirect3DIndexBuffer9 *LPDIRECT3DINDEXBUFFER9, *PDIRECT3DINDEXBUF
 typedef struct IDirect3DTexture9 *LPDIRECT3DTEXTURE9, *PDIRECT3DTEXTURE9;
 typedef struct ID3DXMesh *LPD3DXMESH;
 typedef struct HWND__ *HWND;
-typedef struct IDirect3D9                    IDirect3D9;
+typedef struct IDirect3D9 IDirect3D9;
 

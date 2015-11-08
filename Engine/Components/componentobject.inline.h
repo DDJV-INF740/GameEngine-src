@@ -4,6 +4,8 @@
 //=============================================================================
 #include "ComponentObject.h"
 
+namespace engine
+{
 //=============================================================================
 // CLASS ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>
 //=============================================================================
@@ -117,3 +119,4 @@ void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory
 	_interfaces.erase(wFound);
 }
 
+} // namespace engine

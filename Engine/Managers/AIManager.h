@@ -8,6 +8,8 @@
 #include "Engine/Game/GameComponent.h"
 #include <vector>
 
+namespace engine {
+
 //=============================================================================
 // CLASS AIManager
 //=============================================================================
@@ -42,3 +44,4 @@ private:
 
 };
 
+} // namespace engine

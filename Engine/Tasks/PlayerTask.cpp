@@ -4,9 +4,11 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "PlayerTask.h"
-#include "Managers/PlayerManager.h"
 #include "Core/Game/Game.h"
 #include "Core/GameManagers/IPlayerManager.h"
+
+namespace engine {
+
 //=============================================================================
 // CLASS PlayerTask
 //=============================================================================
@@ -24,3 +26,5 @@ void PlayerTask::update()
 {
 	Game<IPlayerManager>()->update();
 }
+
+} // namespace engine

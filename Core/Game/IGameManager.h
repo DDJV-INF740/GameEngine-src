@@ -5,6 +5,9 @@
 #include "Core/Game/IGameInterface.h"
 #include <memory>
 
+namespace engine
+{
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -30,3 +33,4 @@ public:
 	virtual void onAttached(const GameEngineRef &iGameEngine) = 0;
 	virtual void onDetached(const GameEngineRef &iGameEngine) = 0;
 };
+} // namespace engine

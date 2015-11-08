@@ -6,6 +6,9 @@
 #include "Core/GameManagers/ISpawnManager.h"
 #include "Core/Game/IGameManager.h"
 #include "Engine/Game/GameComponent.h"
+
+namespace engine {
+
 //=============================================================================
 // CLASS SpawnManager
 //=============================================================================
@@ -51,3 +54,4 @@ private:
 
 
 
+} // namespace engine

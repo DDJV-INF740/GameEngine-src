@@ -5,6 +5,9 @@
 #include "GameObjectFactory.h"
 #include <map>
 
+namespace engine
+{
+
 //=============================================================================
 // CLASS GameObjectFactoryEntry
 //=============================================================================
@@ -75,3 +78,4 @@ GameObjectRef GameObjectFactory::createInstance(const GameObjectId &aGameObjectI
 	return newGameObject;
 }
 
+} // namespace engine

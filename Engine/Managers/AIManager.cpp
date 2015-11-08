@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <assert.h>
 
+namespace engine {
+
 void AIManager::addComponent( IAIInterface *iAIInstance )
 {
 	_aiInstances.push_back(iAIInstance);
@@ -25,12 +27,16 @@ void AIManager::update()
 		(*iter)->updateAI();
 	}
 }
+} // namespace engine
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
 #include "Engine/Managers/GameManagerFactory.h"
+
+namespace engine {
+
 IComponent::IdType AIManager::TypeId() { return "AIManager"; }
 static RegisterGameManagerType<AIManager> gRegisteredComponent;
 
-
+}

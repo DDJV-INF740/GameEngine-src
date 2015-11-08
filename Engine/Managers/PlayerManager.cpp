@@ -8,6 +8,8 @@
 #include <algorithm>
 #include <assert.h>
 
+namespace engine {
+
 //=============================================================================
 // CLASS PlayerManager
 //=============================================================================
@@ -69,12 +71,17 @@ PlayerManager::PlayerManager()
 	: _player()
 	, _mainGameObjectProxy(new GameObjectProxy)
 {}
+} // namespace engine
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
 #include "Engine/Managers/GameManagerFactory.h"
+
+namespace engine {
+
 IComponent::IdType PlayerManager::TypeId() { return "PlayerManager"; }
 static RegisterGameManagerType<PlayerManager> gRegisteredComponent;
+} // namespace engine
 
 

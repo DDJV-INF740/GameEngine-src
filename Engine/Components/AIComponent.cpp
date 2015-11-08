@@ -7,6 +7,9 @@
 #include "Core/Game/Game.h"
 #include "Core/GameManagers/IAIManager.h"
 
+namespace engine
+{ 
+
 //=============================================================================
 // CLASS AIComponent
 //=============================================================================
@@ -46,3 +49,4 @@ void AIComponent::onDetached( const GameObjectRef &iGameObject )
 IComponent::IdType AIComponent::TypeId() { return "AIComponent"; }
 RegisterComponentType<AIComponent> *gRegisterAIComponent = new RegisterComponentType<AIComponent>();
 
+} // namespace engine

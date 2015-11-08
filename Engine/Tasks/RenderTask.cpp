@@ -10,6 +10,8 @@
 
 #include "Rendering/Camera.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS RenderTask
 //=============================================================================
@@ -30,3 +32,4 @@ void RenderTask::init()
 //
 void RenderTask::cleanup()
 {}
+} // namespace engine

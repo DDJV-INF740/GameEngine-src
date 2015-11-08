@@ -7,6 +7,8 @@
 #include "Core/Game/Game.h"
 #include "Core/GameManagers/IAIManager.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS AITask
 //=============================================================================
@@ -14,3 +16,4 @@ void AITask::update()
 {
 	Game<IAIManager>()->update();
 }
+} // namespace engine

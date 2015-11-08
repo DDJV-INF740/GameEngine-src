@@ -1,4 +1,8 @@
 #pragma once
+
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IComponentInterface
 //=============================================================================
@@ -12,4 +16,4 @@ public:
 	static IdType NullId;
 };
 
-
+} // namespace engine

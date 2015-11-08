@@ -5,6 +5,8 @@
 #include "MeshModel.h"
 #include <d3dx9mesh.h>
 
+namespace engine {
+
 //=============================================================================
 // CLASS MeshModel
 //=============================================================================
@@ -51,3 +53,4 @@ void MeshModel::setMesh( LPD3DXMESH iMesh )
 {
 	_d3dMesh = iMesh;
 }
+} // namespace engine

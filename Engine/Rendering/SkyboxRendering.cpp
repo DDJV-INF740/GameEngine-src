@@ -12,6 +12,8 @@
 #include "PxPhysicsAPI.h"
 using namespace physx;
 
+namespace engine {
+
 //-------------------------------------------------------------------------
 //
 SkyboxRendering::SkyboxRendering( const SkyboxRenderData &iData ) 
@@ -51,3 +53,4 @@ void SkyboxRendering::render( const GameObjectRef &iGameObject )
 	d3ddev->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
 	d3ddev->SetTexture(0, nullptr);
 }
+} // namespace engine

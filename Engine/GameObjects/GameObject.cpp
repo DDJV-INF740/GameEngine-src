@@ -4,6 +4,8 @@
 #include "Precompiled.h"
 #include "GameObject.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS GameObject
 //=============================================================================
@@ -14,3 +16,4 @@ const char* GameObjectBase::debugName() const
 	return name;
 }
 
+} // namespace engine

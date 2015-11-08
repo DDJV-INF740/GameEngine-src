@@ -6,6 +6,8 @@
 #include "Managers/InputManager.h"
 #include <windows.h>
 
+namespace engine {
+
 //=============================================================================
 // PRIVATE FUNCTIONS
 //=============================================================================
@@ -83,11 +85,15 @@ void KeyboardInputComponent::onDetached( const GameObjectRef &iGameObject )
 	InputManager::Instance.removeComponent(this);
 	_go.reset();
 }
+} // namespace engine
+
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
 #include "Components/ComponentFactory.h"
+
+namespace engine {
 IComponent::IdType KeyboardInputComponent::TypeId() { return "KeyboardInputComponent"; }
 RegisterComponentType<KeyboardInputComponent> *gRegisterKeyboardInputComponent = new RegisterComponentType<KeyboardInputComponent>();
-
+} // namespace engine

@@ -6,6 +6,8 @@
 #include "Core/GameManagers/ISimulationManager.h"
 #include "Engine/Game/GameComponent.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS SimulationManager
 //=============================================================================
@@ -44,3 +46,4 @@ private:
 	class SimulationManagerImp;
 	SimulationManagerImp *_imp;
 };
+} // namespace engine

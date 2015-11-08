@@ -9,6 +9,8 @@
 #include "Core/GameManagers/IRenderManager.h"
 #include "Core/GameObjects/IGameObject.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS RenderComponent
 //=============================================================================
@@ -43,9 +45,13 @@ void RenderComponent::onAttached( const GameObjectRef &iGameObject )
 {
 	_go = iGameObject;
 }
+} // namespace engine
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
+namespace engine {
+
 IComponent::IdType RenderComponent::TypeId() { return "RenderComponent"; }
 RegisterComponentType<RenderComponent> *gRegisterRenderComponent = new RegisterComponentType<RenderComponent>();
+} // namespace engine

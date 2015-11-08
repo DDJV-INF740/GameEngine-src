@@ -6,6 +6,8 @@
 #include "SkyboxRenderData.h"
 #include <d3dx9tex.h>
 
+namespace engine {
+
 //=============================================================================
 // GLOBALS AND CONSTANTS
 //=============================================================================
@@ -101,3 +103,4 @@ SkyboxRenderData::~SkyboxRenderData()
 		_ibuffer = nullptr;
 	}
 }
+} // namespace engine

@@ -8,6 +8,8 @@
 #include "Core/GameManagers/ITimeManager.h"
 #include "Engine/Game/GameTimer.h"
 
+namespace engine {
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -55,3 +57,4 @@ private:
 	double _currentTime;
 	GameTimer _sessionTimer;
 };
+} // namespace engine

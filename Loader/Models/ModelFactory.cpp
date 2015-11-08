@@ -14,6 +14,8 @@
 
 using namespace physx;
 
+namespace engine {
+
 //=============================================================================
 // class MemoryStream
 //=============================================================================
@@ -118,3 +120,4 @@ PxConvexMesh* ModelFactory::convexMeshFromModel(const MeshModel &iModel)
 	return GenerateConvexFromDXMesh(Game<ISimulationManager>()->physics(), iModel.mesh());
 }
 
+} // namespace engine

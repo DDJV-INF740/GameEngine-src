@@ -4,6 +4,8 @@
 //=============================================================================
 #include "Core/Tasks/IGameTask.h"
 
+namespace engine {
+
 //=============================================================================
 // CLASS AITask
 //=============================================================================
@@ -14,3 +16,4 @@ public:
 	virtual void cleanup() override {}
 	virtual void update() override;
 };
+} // namespace engine

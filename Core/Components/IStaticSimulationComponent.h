@@ -7,6 +7,9 @@
 #include "IRigidSimulationInterface.h"
 #include "PxPhysicsAPI.h"
 
+namespace engine
+{
+
 //=============================================================================
 // INTERFACE IStaticSimulationInterface
 //=============================================================================
@@ -18,3 +21,4 @@ public:
 public:
 	virtual physx::PxRigidStatic& pxActor() = 0;
 };
+}  // namespace engine

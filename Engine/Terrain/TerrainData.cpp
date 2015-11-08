@@ -10,6 +10,8 @@
 
 using namespace physx;
 
+namespace engine {
+
 
 //-----------------------------------------------------------------------------
 //
@@ -206,3 +208,4 @@ TerrainData::~TerrainData()
 		delete [] _heightMap;
 	}
 }
+} // namespace engine

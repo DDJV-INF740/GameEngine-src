@@ -6,6 +6,9 @@
 #include "Core/d3d/d3d9.forward.h"
 #include <vector>
 
+namespace engine
+{
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -29,3 +32,4 @@ public:
 	virtual void insertInRenderList(IRenderInterface *primitive) = 0;
 	virtual const RenderList& renderList() = 0;
 };
+} // namespace engine

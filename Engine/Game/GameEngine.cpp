@@ -6,6 +6,8 @@
 #include "Core/Game/Game.h"
 #include "Core/GameManagers/IGameLoopManager.h"
 
+namespace engine {
+
 static GameEngineRef _instance;
 
 
@@ -57,3 +59,4 @@ void GameEngine::addTask( IGameTask *iTask, int iProprity )
 }
 
 
+} // namespace engine

@@ -6,6 +6,9 @@
 #include "Core/Game/IGameManager.h"
 #include "Core/Game/IGameInterface.h"
 
+namespace engine
+{
+
 class IGameInterface;
 class IGameTask;
 
@@ -33,3 +36,4 @@ public:
 	virtual void setRef(const GameEngineRef &aRef) = 0;
 };
 
+} // namespace engine

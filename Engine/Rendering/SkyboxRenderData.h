@@ -6,6 +6,8 @@
 #include "Core/d3d/d3d9.forward.h"
 #include <d3d9.h>
 
+namespace engine {
+
 struct SkyboxRenderData
 {
 public:
@@ -26,3 +28,4 @@ public:
 
 	int load(const TCHAR *iTexturePath, LPDIRECT3DDEVICE9 iD3dDev);
 };
+} // namespace engine

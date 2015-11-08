@@ -5,6 +5,7 @@
 #include "Core/Components/IComponent.h"
 #include "Core/GameManagers/IGameLoopManager.h"
 #include "Engine/Game/GameComponent.h"
+namespace engine {
 
 //=============================================================================
 // CLASS GameLoopManager
@@ -41,3 +42,4 @@ public:
 private:
 	bool _exitRequested;
 };
+} // namespace engine

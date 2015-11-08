@@ -10,6 +10,8 @@
 #include <algorithm>
 #include <assert.h>
 
+namespace engine {
+
 //=============================================================================
 // CLASS PlayerComponent
 //=============================================================================
@@ -51,9 +53,12 @@ void PlayerComponent::setBehaviour( IBehaviourRef iBehaviour )
 	_behaviour = iBehaviour;
 }
 
+} // namespace engine
 
 //=============================================================================
 // COMPONENT REGISTRATION
 //=============================================================================
+namespace engine {
 IComponent::IdType PlayerComponent::TypeId() { return "PlayerComponent"; }
 RegisterComponentType<PlayerComponent> *gRegisterPlayerComponent = new RegisterComponentType<PlayerComponent>();
+}

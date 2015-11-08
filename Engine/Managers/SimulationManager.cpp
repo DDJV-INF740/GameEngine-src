@@ -11,6 +11,8 @@
 
 using namespace physx;
 
+namespace engine {
+
 //=============================================================================
 // PRIVATE FUNCTIONS
 //=============================================================================
@@ -326,12 +328,6 @@ void SimulationManager::update()
 	_imp->update();
 }
 
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-#include "Engine/Managers/GameManagerFactory.h"
-IComponent::IdType SimulationManager::TypeId() { return "SimulationManager"; }
-
 void SimulationManager::onAttached( const GameEngineRef &iGameEngine )
 {
 	_imp->initialize();
@@ -341,6 +337,18 @@ void SimulationManager::onDetached( const GameEngineRef &iGameEngine )
 {
 	_imp->cleanup();
 }
+} // namespace engine
 
+  //=============================================================================
+  // COMPONENT REGISTRATION
+  //=============================================================================
+#include "Engine/Managers/GameManagerFactory.h"
+
+
+namespace engine {
+
+IComponent::IdType SimulationManager::TypeId() { return "SimulationManager"; }
 RegisterGameManagerType<SimulationManager> gManagerRegistration;
+} // namespace engine
+
 

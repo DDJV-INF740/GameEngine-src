@@ -4,6 +4,8 @@
 //=============================================================================
 #include "Core/Game/IGameInterface.h"
 
+namespace engine
+{
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -24,3 +26,4 @@ public:
 	virtual void startFrame() = 0;
 	virtual void startSession() = 0;
 };
+} // namespace engine

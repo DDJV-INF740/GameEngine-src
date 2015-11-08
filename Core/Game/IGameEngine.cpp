@@ -4,4 +4,8 @@
 #include "Precompiled.h"
 #include "IGameEngine.h"
 
-	static IGameEngine& Instance();
+namespace engine
+{
+
+static IGameEngine& Instance();
+} // namespace engine

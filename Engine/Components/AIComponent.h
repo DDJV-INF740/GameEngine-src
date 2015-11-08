@@ -9,6 +9,8 @@
 #include "Engine/GameObjects/GameObjectComponent.h"
 #include <memory>
 
+namespace engine
+{ 
 //=============================================================================
 // CLASS AIComponent
 //=============================================================================
@@ -41,3 +43,5 @@ private:
 	GameObjectWeakRef _go;
 	IBehaviourRef _behaviour;
 };
+
+} // namespace engine

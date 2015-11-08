@@ -6,6 +6,8 @@
 #include "WindowManager.h"
 #include <windows.h>
 
+namespace engine {
+
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
@@ -83,6 +85,10 @@ IComponent::IdType WindowManager::TypeId()
 {
 	return "WindowManager";
 }
+} // namespace engine
 
 #include "Engine/Managers/GameManagerFactory.h"
+namespace engine {
+
 RegisterGameManagerType<WindowManager> gWindowManagerRegistration;
+} // namespace engine

@@ -10,6 +10,7 @@
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
 
+namespace engine {
 
 //=============================================================================
 // CLASS RenderManager
@@ -59,9 +60,11 @@ IDirect3D9* RenderManager::d3d()
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
+} // namespace engine
 
 #include "d3d9.h"
 
+namespace engine {
 
 
 void RenderManager::onDetached( const GameEngineRef &iGameEngine )
@@ -111,7 +114,12 @@ void RenderManager::onAttached( const GameEngineRef &iGameEngine )
 
 	_d3ddev->SetRenderState(D3DRS_LIGHTING, FALSE);    // turn off the 3D lighting}
 }
+} // namespace engine
 
 #include "Engine/Managers/GameManagerFactory.h"
+
+namespace engine {
+
 RegisterGameManagerType<RenderManager> gRenderManagerRegistration;
+} // namespace engine
 
