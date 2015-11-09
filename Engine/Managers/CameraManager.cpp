@@ -52,7 +52,7 @@ GameObjectProxyRef CameraManager::mainCamera()
 //
 void CameraManager::addCamera( const GameObjectRef &aCamera )
 {
-	_imp->_cameras.push_back(aCamera);
+	_imp->_cameras.emplace_back(aCamera);
 	if (_imp->_mainCamera->proxy() == nullptr)
 	{
 		_imp->_mainCamera->setProxy(aCamera);

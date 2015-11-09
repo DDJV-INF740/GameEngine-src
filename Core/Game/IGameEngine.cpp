@@ -6,6 +6,5 @@
 
 namespace engine
 {
-
 static IGameEngine& Instance();
 } // namespace engine

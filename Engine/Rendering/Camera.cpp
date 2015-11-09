@@ -28,7 +28,7 @@ class Camera
 public:
 	//-------------------------------------------------------------------------
 	//
-	Camera(const IGameObjectDataRef &aDataRef)
+	Camera(const GameObjectDataRef &aDataRef)
 		: GameObject(aDataRef)
 	{}
 
@@ -51,11 +51,11 @@ public:
 	//
 	virtual void onSpawn(const PxTransform &aPose) override
 	{
-		auto wPoseComponent = addComponent<FollowPoseComponent>();
+		auto wPoseComponent = createComponent<FollowPoseComponent>();
 		wPoseComponent->follow(Game<IPlayerManager>()->mainGameObject());
 		wPoseComponent->setPoseAdjustment(AdjustCameraPosition);
 
-		auto wRenderViewComponent = addComponent<RenderViewComponent>();
+		auto wRenderViewComponent = createComponent<RenderViewComponent>();
 
 		Game<ICameraManager>()->addCamera(ref());
 	}

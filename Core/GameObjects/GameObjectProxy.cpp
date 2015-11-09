@@ -11,7 +11,6 @@ namespace engine
 //=============================================================================
 // CLASS GameObjectProxy
 //=============================================================================
-
 void GameObjectProxy::setProxy( const GameObjectRef iIGameObject )
 {
 	_proxy = iIGameObject;
@@ -41,46 +40,31 @@ IGameObject::IdType GameObjectProxy::typeId() const
 	return wProxy == nullptr ? "GameObjectProxy" : wProxy->typeId();
 }
 
-std::shared_ptr<IComponent> GameObjectProxy::getComponentType( ComponentIdType type )
+std::shared_ptr<IComponent> GameObjectProxy::getComponent( ComponentIdType type )
 {
 	GameObjectRef wProxy = proxy();
-	return wProxy == nullptr ? nullptr : wProxy->getComponentType(type);
+	return wProxy == nullptr ? nullptr : wProxy->getComponent(type);
 }
 
-std::shared_ptr<IComponent> GameObjectProxy::addComponentType( ComponentIdType type )
+std::shared_ptr<IComponent> GameObjectProxy::createComponent( ComponentIdType type )
 {
 	GameObjectRef wProxy = proxy();
-	return wProxy == nullptr ? nullptr : wProxy->addComponentType(type);
+	return wProxy == nullptr ? nullptr : wProxy->createComponent(type);
 }
 
-void GameObjectProxy::removeComponentType( ComponentIdType type )
+void GameObjectProxy::removeComponent( ComponentIdType type )
 {
 	GameObjectRef wProxy = proxy();
 	if (wProxy != nullptr)
 	{
-		wProxy->removeComponentType(type);
+		wProxy->removeComponent(type);
 	}
 }
 
-std::shared_ptr<IComponentInterface> GameObjectProxy::getInterfaceType( InterfaceIdType type )
+std::shared_ptr<IComponentInterface> GameObjectProxy::getInterface( InterfaceIdType type )
 {
 	GameObjectRef wProxy = proxy();
-	return wProxy == nullptr ? nullptr : wProxy->getInterfaceType(type);
-}
-
-std::shared_ptr<IComponentInterface> GameObjectProxy::addInterfaceType( InterfaceIdType iType, const std::shared_ptr<IComponentInterface> &iInterface )
-{
-	GameObjectRef wProxy = proxy();
-	return wProxy == nullptr ? nullptr : wProxy->addInterfaceType(iType, iInterface);
-}
-
-void GameObjectProxy::removeInterfaceType( InterfaceIdType iType )
-{
-	GameObjectRef wProxy = proxy();
-	if (wProxy != nullptr)
-	{
-		wProxy->removeInterfaceType(iType);
-	}
+	return wProxy == nullptr ? nullptr : wProxy->getInterface(type);
 }
 
 void GameObjectProxy::removeAllComponents()

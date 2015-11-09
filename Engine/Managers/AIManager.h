@@ -34,7 +34,7 @@ public: // IComponent
 	virtual void onDetached(const GameEngineRef &iGameEngine) override {}
 
 public: // IAIManager
-	void addComponent(IAIInterface *iAIInstance);
+	void createComponent(IAIInterface *iAIInstance);
 	void removeComponent(IAIInterface *iAIInstance);
 
 	void update();

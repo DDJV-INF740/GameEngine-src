@@ -2,8 +2,8 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameManager.h"
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManagerComponent.h"
+#include "Core/Game/IManager.h"
 #include "Core/Game/IGameEngine.h"
 #include "Core/Components/ComponentBase.h"
 
@@ -14,14 +14,14 @@ namespace engine {
 //=============================================================================
 template<class TDerived>
 class GameComponent
-	: virtual public IGameManager
-	, virtual public IGameInterface
+	: virtual public IManagerComponent
+	, virtual public IManager
 {
 public:
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}
 	virtual void onDetached(const GameEngineRef &iGameEngine) override {}
 
-	virtual IGameInterface::IdType* interfaces() override
+	virtual IManager::IdType* interfaces() override
 	{
 		return TDerived::Interfaces();
 	}

@@ -2,7 +2,7 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 
 //=============================================================================
 // FORWARD DECLARATIONS
@@ -15,7 +15,7 @@ namespace engine
 //=============================================================================
 // CLASS IWindowManager
 //=============================================================================
-class IWindowManager: virtual public IGameInterface
+class IWindowManager: virtual public IManager
 {
 public:
 	static IdType TypeId();

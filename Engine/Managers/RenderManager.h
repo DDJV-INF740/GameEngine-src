@@ -40,8 +40,8 @@ public: // IRenderManager
 	virtual const RenderList& renderList();
 
 private:
-	IDirect3D9 *_d3d;
-	LPDIRECT3DDEVICE9 _d3ddev;
+	d3d9::unique_ptr<IDirect3D9> _d3d;
+	d3d9::unique_ptr<IDirect3DDevice9> _d3ddev;
 	RenderList _renderList;
 };
 } // namespace engine

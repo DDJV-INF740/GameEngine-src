@@ -11,5 +11,5 @@ namespace engine
 //=============================================================================
 // CLASS IPlayerManager
 //=============================================================================
-IGameInterface::IdType ICameraManager::TypeId() { return "ICameraManager"; }
+IManager::IdType ICameraManager::TypeId() { return "ICameraManager"; }
 } // namespace engine

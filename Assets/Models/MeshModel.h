@@ -14,18 +14,17 @@ namespace engine {
 class MeshModel : public IModel
 {
 public:
-	LPD3DXMESH mesh() const;
-	void setMesh(LPD3DXMESH iMesh);
+	ID3DXMesh* mesh() const;
+	void setMesh(d3d9::unique_ptr<ID3DXMesh> iMesh);
 
 public:
 	MeshModel(LPD3DXMESH iMesh);
-	MeshModel();
-	~MeshModel();
+	MeshModel() = default;
 
 	virtual void render() const override;
 
 private:
-	LPD3DXMESH _d3dMesh;
+	d3d9::unique_ptr<ID3DXMesh> _d3dMesh;
 };
 } // namespace engine
 

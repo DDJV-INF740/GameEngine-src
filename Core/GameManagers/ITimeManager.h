@@ -2,10 +2,11 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
+#include "Core/Game/GameClockBase.h"
 
-namespace engine
-{
+namespace engine {
+
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -13,14 +14,19 @@ namespace engine
 //=============================================================================
 // INTERFACE ITimeManager
 //=============================================================================
-class ITimeManager: virtual public IGameInterface
+class ITimeManager: virtual public IManager
 {
+
+public:
+	using duration = GameClockBase::duration;
+	using time_point = GameClockBase::time_point;
+
 public:
 	static IdType TypeId();
 
 public:
-	virtual double currentTime() = 0;
-	virtual double lastFrameTime() = 0;
+	virtual time_point currentTime() = 0;
+	virtual time_point lastFrameTime() = 0;
 	virtual void setGameRate(float iRate) = 0;
 
 	virtual void startFrame() = 0;

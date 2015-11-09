@@ -2,7 +2,7 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 #include "Core/GameObjects/IGameObject.h"
 #include "Core/GameObjects/GameObjectProxy.h"
 
@@ -12,7 +12,7 @@ namespace engine
 //=============================================================================
 // CLASS IPlayerManager
 //=============================================================================
-class ICameraManager: virtual public IGameInterface
+class ICameraManager: virtual public IManager
 {
 public:
 	static IdType TypeId();

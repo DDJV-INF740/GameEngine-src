@@ -2,50 +2,45 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Precompiled.h"
-#include "GameTimer.h"
-#include <windows.h>
+#include "GameClock.h"
+#include <chrono>
+
+using namespace std;
+using namespace std::chrono;
 
 namespace engine {
 
 //=============================================================================
-// CLASS GameTimer
+// CLASS GameClock
 //=============================================================================
 //------------------------------------------------------------------------------
 //
-static GameTimer::TimeStamp GetTimeStamp()
+static GameClock::native_time_point GetTimeStamp()
 {
-	LARGE_INTEGER tick;
-	QueryPerformanceCounter(&tick);
-	return tick.QuadPart;
+	return high_resolution_clock::now();
 }
 
 //------------------------------------------------------------------------------
 //
-static double GetElapsedTime(GameTimer::TimeStamp startTime, GameTimer::TimeStamp endTime)
+static GameClock::duration GetElapsedTime(GameClock::native_time_point startTime, GameClock::native_time_point endTime)
 {
-	static LARGE_INTEGER freq = {0};
-	if (!freq.QuadPart) 
-		QueryPerformanceFrequency(&freq);
-
-	GameTimer::TimeStamp diff = endTime - startTime;
-
-	return double(diff)/freq.QuadPart;
+	return endTime - startTime;
 }
 
 //------------------------------------------------------------------------------
 //
-void GameTimer::reset(float aRate)
+void GameClock::reset(float aRate)
 {
-	_accTime = 0;
+	_accTime = 0ms;
 	_startTime = GetTimeStamp();
 	_rate = 1.0f;
 }
 
 //------------------------------------------------------------------------------
 //
-void GameTimer::setRate(float aRate)
+void GameClock::setRate(float aRate)
 {
-	TimeStamp nowTime = GetTimeStamp();
+	native_time_point nowTime = GetTimeStamp();
 
 	_accTime += GetElapsedTime(_startTime, nowTime) * _rate;
 	_startTime = nowTime;
@@ -54,9 +49,9 @@ void GameTimer::setRate(float aRate)
 
 //------------------------------------------------------------------------------
 //
-double GameTimer::now()
+GameClock::time_point GameClock::now() noexcept
 {
-	TimeStamp nowTime = GetTimeStamp();
-	return _accTime + GetElapsedTime(_startTime, nowTime) * _rate;
+	native_time_point nowTime = GetTimeStamp();
+	return time_point(_accTime + GetElapsedTime(_startTime, nowTime) * _rate);
 }
 } // namespace engine

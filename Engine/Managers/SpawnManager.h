@@ -4,7 +4,7 @@
 //=============================================================================
 #include "Core/Components/IComponent.h"
 #include "Core/GameManagers/ISpawnManager.h"
-#include "Core/Game/IGameManager.h"
+#include "Core/Game/IManagerComponent.h"
 #include "Engine/Game/GameComponent.h"
 
 namespace engine {

@@ -26,8 +26,8 @@ public:
 //=============================================================================
 // TYPE DEFINITIONS
 //=============================================================================
-typedef std::shared_ptr<IPoseInterface> IPoseInterfaceRef;
-typedef std::weak_ptr<IPoseInterface> IPoseInterfaceWeakRef;
+using IPoseInterfaceRef = std::shared_ptr<IPoseInterface>;
+using IPoseInterfaceWeakRef = std::weak_ptr<IPoseInterface>;
 
 
 } // namespace engine

@@ -43,29 +43,30 @@ template<class TDerived, class TDataType = GameObjectWithNoData, class TParent=G
 class GameObject: public TParent
 {
 public:
-	GameObject(const IGameObjectDataRef &aDataRef)
+	GameObject(const GameObjectDataRef &aDataRef)
 		: _data(std::static_pointer_cast<TDataType>(aDataRef))
 	{}
 
 	virtual ~GameObject() {}
 
 public:
-	typedef std::shared_ptr<TDataType> DataRef;
+	using DataRef = std::shared_ptr<TDataType>;
 
 public:
 	//-------------------------------------------------------------------------
 	//
-	static IGameObject* createInstance(const IGameObjectDataRef &aDataRef)
+	static GameObjectRef createInstance(const GameObjectDataRef &aDataRef)
 	{
-		IGameObject *wGameObject = new TDerived(aDataRef);
+		std::shared_ptr<TDerived> wGameObject = std::make_shared<TDerived>(aDataRef);
+		wGameObject->setRef(wGameObject);
 		return wGameObject;
 	}
 
 	//-------------------------------------------------------------------------
 	//
-	static IGameObjectData* loadData()
+	static std::shared_ptr<IGameObjectData> loadData()
 	{
-		TDataType *data = new TDataType;
+		std::shared_ptr<TDataType> data = std::make_shared<TDataType>();
 		data->load();
 		return data;
 	}
@@ -79,16 +80,17 @@ public:
 
 	//-------------------------------------------------------------------------
 	//
-	void setRef(const GameObjectRef &aRef) override
-	{
-		_ref = aRef;
-	}
-
-	//-------------------------------------------------------------------------
-	//
 	GameObjectRef ref() override
 	{
 		return _ref.lock();
+	}
+
+protected:
+	//-------------------------------------------------------------------------
+	//
+	void setRef(const GameObjectRef &aRef)
+	{
+		_ref = aRef;
 	}
 
 protected:

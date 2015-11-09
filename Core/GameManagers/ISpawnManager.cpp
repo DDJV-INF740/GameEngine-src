@@ -5,7 +5,7 @@
 namespace engine
 {
 
-IGameInterface::IdType ISpawnManager::TypeId()
+IManager::IdType ISpawnManager::TypeId()
 {
 	return "ISpawnManager";
 }

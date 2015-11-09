@@ -14,44 +14,60 @@
 
 namespace engine {
 
+class GameTasks
+{
+public:
+	GameTasks() = default;
+	~GameTasks();
+	void init();
+	void update();
+	IGameTask* addTask(std::unique_ptr<IGameTask> iTask, int iPriority);
+	std::unique_ptr<IGameTask>  removeTask(IGameTask *iTask);
+	void reset();
+	int getPriority(IGameTask *iTask);
+	void setPriority(IGameTask *iTask, int iPriority);
+
+private:
+	std::map<int, std::vector<std::unique_ptr<IGameTask>>> _tasks;
+};
+
 
 //=============================================================================
 // CLASS Game
 //=============================================================================
 class GameEngine 
 	: virtual public IGameEngine
-	, public ComponentObject<IGameEngine, IGameManager, IGameInterface, GameManagerFactory>
+	, public ComponentObject<IGameEngine, IManagerComponent, IManager, GameManagerFactory>
 {
 public:
 	virtual bool init() override;
 	virtual bool run() override;
 	virtual bool cleanup() override; 
 
-	virtual void addTask(IGameTask *iTask, int iProprity);
+	virtual IGameTask* addTask(std::unique_ptr<IGameTask> iTask, int iPriority) override;
 
-	//-------------------------------------------------------------------------
-	//
-	void setRef(const GameEngineRef &aRef) override
+	template<class T>
+	IGameTask* addTask(int iPriority) 
 	{
-		_ref = aRef;
+		return IGameEngine::addTask<T>(iPriority);
 	}
+
+	virtual std::unique_ptr<IGameTask> removeTask(IGameTask *iTask) override;
+	virtual void setTaskPriority(IGameTask *iTask, int iPriority) override;
+	virtual int getTaskPriority(IGameTask *iTask) override;
 
 	//-------------------------------------------------------------------------
 	//
 	GameEngineRef ref() override
 	{
-		return _ref.lock();
+		return Instance();
 	}
 
-	virtual ~GameEngine()
-	{
-		removeAllComponents();
-	}
+	virtual ~GameEngine();
 
 
 public:
-	std::map<int, std::vector<IGameTask*>> _tasks;
-	GameEngineWeakRef _ref;
+	GameTasks _tasks;
 };
 
 } // namespace engine

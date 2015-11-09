@@ -4,5 +4,5 @@
 namespace engine
 {
 
-	IGameInterface::IdType IWindowManager::TypeId() { return "IWindowManager"; }
+	IManager::IdType IWindowManager::TypeId() { return "IWindowManager"; }
 } // namespace engine

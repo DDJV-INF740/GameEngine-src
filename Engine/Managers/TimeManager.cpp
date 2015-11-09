@@ -4,12 +4,12 @@
 namespace engine {
 
 
-double TimeManager::currentTime()
+TimeManager::time_point TimeManager::currentTime() noexcept
 {
 	return _currentTime;
 }
 
-double TimeManager::lastFrameTime()
+TimeManager::time_point TimeManager::lastFrameTime() noexcept
 {
 	return _lastFrameTime;
 }
@@ -20,8 +20,8 @@ void TimeManager::setGameRate( float iRate )
 }
 
 TimeManager::TimeManager() 
-	: _lastFrameTime(0)
-	, _currentTime(0)
+	: _lastFrameTime()
+	, _currentTime()
 	, _sessionTimer()
 {
 	_sessionTimer.reset();
@@ -35,10 +35,9 @@ void TimeManager::startFrame()
 
 void TimeManager::startSession()
 {
-	_currentTime = 0; 
-	_lastFrameTime = 0;
-	_sessionTimer.reset();
-	_sessionTimer.setRate(1.0f);
+	_currentTime = TimeManager::time_point::min(); 
+	_lastFrameTime = TimeManager::time_point::min();
+	_sessionTimer.reset(1.0f);
 }
 } // namespace engine
 

@@ -1,14 +1,13 @@
-#include "Precompiled.h"
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "IRenderManager.h"
+#include "Precompiled.h"
+#include "IManager.h"
 
 namespace engine
 {
-
 //=============================================================================
-// INTERFACE IRenderManager
+// CLASS IComponentInterface
 //=============================================================================
-IManager::IdType IRenderManager::TypeId() { return "IRenderManager"; }
+IManager::IdType IManager::NullId = nullptr;
 } // namespace engine

@@ -50,7 +50,7 @@ public:
 	virtual void onDetached(const GameObjectRef &iGameObject) override;
 
 protected:
-	std::bitset<KEY_COUNT> _keys;
+	std::bitset<(int)ControllerKey::KEY_COUNT> _keys;
 	GameObjectWeakRef _go;
 };
 } // namespace engine

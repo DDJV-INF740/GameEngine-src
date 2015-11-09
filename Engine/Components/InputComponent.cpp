@@ -17,24 +17,24 @@ ControllerKey TranslateKey(int aVirtKey)
 	{
 	case(VK_UP):
 	case('W'):
-		return KEY_UP;
+		return ControllerKey::KEY_UP;
 	case(VK_DOWN):
 	case('S'):
-		return KEY_DOWN;
+		return ControllerKey::KEY_DOWN;
 	case('A'):
 	case(VK_LEFT):
-		return KEY_LEFT;
+		return ControllerKey::KEY_LEFT;
 	case('D'):
 	case(VK_RIGHT):
-		return KEY_RIGHT;
+		return ControllerKey::KEY_RIGHT;
 	case(VK_SPACE):
-		return KEY_ABUTTON;
+		return ControllerKey::KEY_ABUTTON;
 	case(VK_SHIFT):
-		return KEY_SHIFTBUTTON;
+		return ControllerKey::KEY_SHIFTBUTTON;
 	case(VK_CONTROL):
-		return KEY_CTRLBUTTON;
+		return ControllerKey::KEY_CTRLBUTTON;
 	}
-	return KEY_NONE;
+	return ControllerKey::KEY_NONE;
 }
 
 //=============================================================================
@@ -57,8 +57,8 @@ void KeyboardInputComponent::onKeyUp(int aVirtKey)
 //=============================================================================
 bool KeyboardInputComponent::isPressed( ControllerKey aKey ) const
 {
-	if (aKey != KEY_NONE)
-		return _keys[aKey];
+	if (aKey != ControllerKey::KEY_NONE)
+		return _keys[(int)aKey];
 	return false;
 }
 
@@ -66,8 +66,8 @@ bool KeyboardInputComponent::isPressed( ControllerKey aKey ) const
 //
 void KeyboardInputComponent::setKey( ControllerKey aKey, bool aIsPressed )
 {
-	if (aKey != KEY_NONE)
-		_keys[aKey] = aIsPressed;
+	if (aKey != ControllerKey::KEY_NONE)
+		_keys[(int)aKey] = aIsPressed;
 }
 
 //-----------------------------------------------------------------------------
@@ -75,7 +75,7 @@ void KeyboardInputComponent::setKey( ControllerKey aKey, bool aIsPressed )
 void KeyboardInputComponent::onAttached( const GameObjectRef &iGameObject )
 {
 	_go = iGameObject;
-	InputManager::Instance.addComponent(this);
+	InputManager::Instance.createComponent(this);
 }
 
 //-----------------------------------------------------------------------------

@@ -9,7 +9,7 @@ namespace engine
 class IModel
 {
 public:
-	virtual ~IModel() {}
+	virtual ~IModel() = default;
 	virtual void render() const = 0;
 };
 } // namespace engine

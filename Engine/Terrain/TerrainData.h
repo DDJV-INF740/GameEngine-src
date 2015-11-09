@@ -9,6 +9,7 @@
 #include <tchar.h>
 #include <windows.h>
 #include <d3d9.h>
+#include "Core/physx/PxPhysicsAPI.forward.h"
 
 namespace engine {
 
@@ -28,13 +29,11 @@ public:
 public:
 	HeightMapRenderData _renderData;
 
-	physx::PxMaterial *_material;
-	physx::PxHeightFieldSample *_heightMap;
-	physx::PxHeightField *_heightField;
+	physx::unique_ptr<physx::PxMaterial> _material;
+	std::unique_ptr<physx::PxHeightFieldSample[]> _heightMap;
+	physx::unique_ptr<physx::PxHeightField> _heightField;
 
 public:
-	TerrainData();
-	~TerrainData();
 
 	//-------------------------------------------------------------------------
 	//

@@ -34,7 +34,7 @@
     <ClInclude Include="..\..\GameObjects\GameObjectComponent.h" />
     <ClInclude Include="..\..\Game\GameComponent.h" />
     <ClInclude Include="..\..\Game\GameEngine.h" />
-    <ClInclude Include="..\..\Game\GameTimer.h" />
+    <ClInclude Include="..\..\Game\GameClock.h" />
     <ClInclude Include="..\..\Managers\AIManager.h" />
     <ClInclude Include="..\..\Managers\CameraManager.h" />
     <ClInclude Include="..\..\Managers\GameLoopManager.h" />
@@ -77,7 +77,7 @@
     <ClCompile Include="..\..\GameObjects\GameObjectComponent.cpp" />
     <ClCompile Include="..\..\Game\GameComponent.cpp" />
     <ClCompile Include="..\..\Game\GameEngine.cpp" />
-    <ClCompile Include="..\..\Game\GameTimer.cpp" />
+    <ClCompile Include="..\..\Game\GameClock.cpp" />
     <ClCompile Include="..\..\Managers\AIManager.cpp" />
     <ClCompile Include="..\..\Managers\CameraManager.cpp" />
     <ClCompile Include="..\..\Managers\GameLoopManager.cpp" />

@@ -3,15 +3,16 @@ namespace engine
 {
 
 //=============================================================================
-// INTERFACE IGameInterface
+// INTERFACE IManager
 //=============================================================================
-class IGameInterface
+class IManager
 {
 public:
-	virtual ~IGameInterface() {}
+	virtual ~IManager() = default;
 
 public:
-	typedef const char* IdType;
+	using IdType = const char*;
 	static IdType NullId;
 };
+
 } // namespace engine

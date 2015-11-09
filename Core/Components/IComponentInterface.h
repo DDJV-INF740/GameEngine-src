@@ -12,7 +12,7 @@ public:
 	virtual ~IComponentInterface() {}
 
 public:
-	typedef const char* IdType;
+	using IdType = const char*;
 	static IdType NullId;
 };
 

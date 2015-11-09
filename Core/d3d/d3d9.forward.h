@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 //=============================================================================
 // FORWARD DECLARATIONS
@@ -11,3 +12,17 @@ typedef struct ID3DXMesh *LPD3DXMESH;
 typedef struct HWND__ *HWND;
 typedef struct IDirect3D9 IDirect3D9;
 
+namespace d3d9 {
+	// custom deleter for unique_ptr
+	template<class _Ty>
+	struct d3d9_deleter
+	{
+		void operator()(_Ty *_Ptr) const _NOEXCEPT
+		{
+			_Ptr->Release();
+		}
+	};
+
+	template<class _Ty>
+	using unique_ptr = std::unique_ptr<_Ty, d3d9_deleter<_Ty>>;
+}

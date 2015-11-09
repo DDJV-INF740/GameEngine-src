@@ -83,9 +83,6 @@
     <ClCompile Include="..\..\Game\GameEngine.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Game\GameTimer.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Game\GameComponent.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -115,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Components\AIComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\GameClock.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,9 +207,6 @@
     <ClInclude Include="..\..\Game\GameEngine.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Game\GameTimer.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Components\AIComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -242,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Components\SimulationComponent.inline.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Game\GameClock.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

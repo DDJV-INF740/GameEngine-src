@@ -8,8 +8,10 @@
 
 #include "SimulationManager.h"
 #include "PxPhysicsAPI.h"
+#include "Engine/Game/GameClock.h"
 
 using namespace physx;
+using namespace std::chrono;
 
 namespace engine {
 
@@ -114,30 +116,34 @@ public:
 	//
 	void initialize()
 	{
-		_foundation = PxCreateFoundation(PX_PHYSICS_VERSION, gDefaultAllocatorCallback, gDefaultErrorCallback);
+		_foundation = physx::unique_ptr<PxFoundation>(
+			PxCreateFoundation(PX_PHYSICS_VERSION, gDefaultAllocatorCallback, gDefaultErrorCallback));
 		if(!_foundation)
 			fatalError("PxCreateFoundation failed!");
 
 		bool recordMemoryAllocations = true;
-		_profileZoneManager = &PxProfileZoneManager::createProfileZoneManager(_foundation);
+		_profileZoneManager = physx::unique_ptr<PxProfileZoneManager>(
+			&PxProfileZoneManager::createProfileZoneManager(_foundation.get())
+			);
 		if(!_profileZoneManager)
 			fatalError("PxProfileZoneManager::createProfileZoneManager failed!");
 
 #ifdef PX_WINDOWS
 		PxCudaContextManagerDesc cudaContextManagerDesc;
-		_cudaContextManager = PxCreateCudaContextManager(*_foundation, cudaContextManagerDesc, _profileZoneManager);
+		_cudaContextManager = physx::unique_ptr<PxCudaContextManager>(
+			PxCreateCudaContextManager(*_foundation, cudaContextManagerDesc, _profileZoneManager.get()));
 		if( _cudaContextManager )
 		{
 			if( !_cudaContextManager->contextIsValid() )
 			{
-				_cudaContextManager->release();
-				_cudaContextManager = NULL;
+				_cudaContextManager.reset();
 			}
 		}
 #endif
 
-		_physics = PxCreatePhysics(PX_PHYSICS_VERSION, *_foundation,
-			PxTolerancesScale(), recordMemoryAllocations, _profileZoneManager );
+		_physics = physx::unique_ptr<PxPhysics>(
+			PxCreatePhysics(PX_PHYSICS_VERSION, *_foundation,
+			PxTolerancesScale(), recordMemoryAllocations, _profileZoneManager.get()));
 		if(!_physics)
 			fatalError("PxCreatePhysics failed!");
 
@@ -149,8 +155,9 @@ public:
 		if (_physics->getPvdConnectionManager() != nullptr)
 		{
 			PxVisualDebuggerConnectionFlags connectionFlags(PxVisualDebuggerExt::getAllConnectionFlags());
-			_visualDebuggerConnection = PxVisualDebuggerExt::createConnection(_physics->getPvdConnectionManager(), 
-				"localhost", 5425, 100, connectionFlags);
+			_visualDebuggerConnection = physx::unique_ptr<debugger::comm::PvdConnection>(
+				PxVisualDebuggerExt::createConnection(_physics->getPvdConnectionManager(),
+				"localhost", 5425, 100, connectionFlags));
 			if (_visualDebuggerConnection == nullptr)
 				printf("    NOT CONNECTED!\n");
 			else
@@ -166,10 +173,10 @@ public:
 
 		if(!sceneDesc.cpuDispatcher)
 		{
-			_cpuDispatcher = PxDefaultCpuDispatcherCreate(1);
+			_cpuDispatcher = physx::unique_ptr<PxDefaultCpuDispatcher>(PxDefaultCpuDispatcherCreate(1));
 			if(!_cpuDispatcher)
 				fatalError("PxDefaultCpuDispatcherCreate failed!");
-			sceneDesc.cpuDispatcher    = _cpuDispatcher;
+			sceneDesc.cpuDispatcher    = _cpuDispatcher.get();
 		}
 		if(!sceneDesc.filterShader)
 			sceneDesc.filterShader    = PxDefaultSimulationFilterShader;
@@ -181,7 +188,7 @@ public:
 		}
 #endif
 
-		_scene = _physics->createScene(sceneDesc);
+		_scene = physx::unique_ptr<PxScene>(_physics->createScene(sceneDesc));
 		if (!_scene)
 			fatalError("createScene failed!");
 
@@ -228,78 +235,50 @@ public:
 	//
 	void cleanup()
 	{
-		if (_scene)
-		{
-			_scene->release();
-			_scene = nullptr;
-		}
-
-		if (_cpuDispatcher)
-		{
-			_cpuDispatcher->release();
-			_cpuDispatcher = nullptr;
-		}
-
-		if (_visualDebuggerConnection)
-		{
-			_visualDebuggerConnection->release();
-			_visualDebuggerConnection = nullptr;
-		}
+		_scene.reset();
+		_cpuDispatcher.reset();
+		_visualDebuggerConnection.reset();
 
 		if (_physics)
 		{
 			PxCloseExtensions();
-
-			_physics->release();
-			_physics = nullptr;
+			_physics.reset();
 		}
 
-		if (_cudaContextManager)
-		{
-			_cudaContextManager->release();
-			_cudaContextManager = nullptr;
-		}
+		_cudaContextManager.reset();
 
-		if (_profileZoneManager)
-		{
-			_profileZoneManager->release();
-			_profileZoneManager = nullptr;
-		}
-
-		if (_foundation)
-		{
-			_foundation->release();
-			_foundation = nullptr;
-		}
+		_profileZoneManager.reset();
+		_foundation.reset();
 	}
 
 	void update()
 	{
-		PxReal remainingToSimulate = PxReal(Game<ITimeManager>()->currentTime() - Game<ITimeManager>()->lastFrameTime());
+		GameClock::duration remainingToSimulate = Game<ITimeManager>()->currentTime() - Game<ITimeManager>()->lastFrameTime();
 
-		while (remainingToSimulate > 0)
+		auto durationStep = 100ms;
+		while (remainingToSimulate > 0ms)
 		{
-			if (remainingToSimulate > 0.1f)
+			if (remainingToSimulate > durationStep)
 			{
-				_scene->simulate(0.1f);
-				remainingToSimulate -= 0.1f;
+				_scene->simulate(duration_cast<duration<PxReal>>(durationStep).count());
+				remainingToSimulate -= durationStep;
 			}
 			else
 			{
-				_scene->simulate(remainingToSimulate);
-				remainingToSimulate = 0;
+				_scene->simulate(duration_cast<duration<PxReal>>(remainingToSimulate).count());
+				remainingToSimulate = 0ms;
 			}
 			_scene->fetchResults(true);
 		}
 	}
 private:
-	PxFoundation *_foundation;
-	PxProfileZoneManager *_profileZoneManager;
-	PxPhysics *_physics;
-	PxScene* _scene;
-	PxDefaultCpuDispatcher *_cpuDispatcher;
-	PxCudaContextManager *_cudaContextManager;
-	debugger::comm::PvdConnection *_visualDebuggerConnection;
+	physx::unique_ptr<PxFoundation> _foundation;
+	physx::unique_ptr<PxProfileZoneManager> _profileZoneManager;
+	physx::unique_ptr<PxPhysics> _physics;
+	physx::unique_ptr<PxScene> _scene;
+	physx::unique_ptr<PxDefaultCpuDispatcher> _cpuDispatcher;
+	physx::unique_ptr<PxCudaContextManager> _cudaContextManager;
+	physx::unique_ptr<debugger::comm::PvdConnection> _visualDebuggerConnection;
 };
 
 SimulationManager::SimulationManager()

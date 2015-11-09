@@ -16,12 +16,12 @@ class IGameObject;
 class Controller;
 
 class GameObjectProxy;
-typedef std::shared_ptr<GameObjectProxy> GameObjectProxyRef;
-typedef std::weak_ptr<GameObjectProxy> GameObjectProxyWeakRef;
+using GameObjectProxyRef = std::shared_ptr<GameObjectProxy>;
+using GameObjectProxyWeakRef = std::weak_ptr<GameObjectProxy>;
 
 class IGameEngine;
-typedef std::shared_ptr<IGameEngine> GameEngineRef;
-typedef std::weak_ptr<IGameEngine> GameEngineWeakRef;
+using GameEngineRef = std::shared_ptr<IGameEngine>;
+using GameEngineWeakRef = std::weak_ptr<IGameEngine>;
 
 //=============================================================================
 // CLASS PlayerManager

@@ -20,7 +20,7 @@ namespace engine {
 //=============================================================================
 // CLASS SimulationComponentBase
 //=============================================================================
-template<class TDerived>
+template<class TDerived, class PXACTORTYPE>
 class SimulationComponentBase : 
 	public GameObjectComponent<TDerived>,
  	public IRigidSimulationInterface,
@@ -37,7 +37,7 @@ public:
 
 protected:
 	GameObjectWeakRef _go;
-	physx::PxActor* _pxActor;
+	physx::unique_ptr<PXACTORTYPE> _pxActor;
 	ICollisionHandlerRef _collisionHandler;
 };
 
@@ -45,11 +45,11 @@ protected:
 // CLASS DynamicSimulationComponent
 //=============================================================================
 class DynamicSimulationComponent : 
-	public SimulationComponentBase<DynamicSimulationComponent>, 
+	public SimulationComponentBase<DynamicSimulationComponent, physx::PxRigidDynamic>,
 	public IDynamicSimulationInterface
 {
 private:
-	typedef SimulationComponentBase base;
+	using base = SimulationComponentBase;
 
 public:
 	static IComponent::IdType TypeId();
@@ -69,7 +69,7 @@ public:
 	}
 
 public:
-	static physx::PxRigidDynamic* createPxActor();
+	static physx::unique_ptr<physx::PxRigidDynamic> createPxActor();
 
 	virtual physx::PxTransform pose() override;
 	virtual void setPose(const physx::PxTransform &iPose) override;
@@ -82,11 +82,11 @@ public:
 // CLASS StaticSimulationComponent
 //=============================================================================
 class StaticSimulationComponent : 
-	public SimulationComponentBase<StaticSimulationComponent>,
+	public SimulationComponentBase<StaticSimulationComponent, physx::PxRigidStatic>,
 	public IStaticSimulationInterface
 {
 private:
-	typedef SimulationComponentBase base;
+	using Base = SimulationComponentBase;
 
 public:
 	static IComponent::IdType TypeId();
@@ -106,7 +106,7 @@ public:
 	}
 
 public:
-	static physx::PxRigidStatic* createPxActor();
+	static physx::unique_ptr<physx::PxRigidStatic> createPxActor();
 
 public: // IStaticSimulationInterface
 	virtual physx::PxRigidStatic& pxActor() override;

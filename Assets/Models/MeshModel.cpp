@@ -13,9 +13,9 @@ namespace engine {
 
 //-----------------------------------------------------------------------------
 //
-LPD3DXMESH MeshModel::mesh() const
+ID3DXMesh* MeshModel::mesh() const
 {
-	return _d3dMesh;
+	return _d3dMesh.get();
 }
 
 //-----------------------------------------------------------------------------
@@ -26,31 +26,13 @@ MeshModel::MeshModel(LPD3DXMESH iMesh)
 
 //-----------------------------------------------------------------------------
 //
-MeshModel::MeshModel()
-	: _d3dMesh(nullptr)
-{}
-
-//-----------------------------------------------------------------------------
-//
-MeshModel::~MeshModel()
-{
-	// cleanup render objects
-	if (_d3dMesh)
-	{
-		_d3dMesh->Release();
-		_d3dMesh = nullptr;
-	}
-}
-
-//-----------------------------------------------------------------------------
-//
 void MeshModel::render() const 
 {
 	_d3dMesh->DrawSubset(0);
 }
 
-void MeshModel::setMesh( LPD3DXMESH iMesh )
+void MeshModel::setMesh( d3d9::unique_ptr<ID3DXMesh> iMesh )
 {
-	_d3dMesh = iMesh;
+	_d3dMesh = std::move(iMesh);
 }
 } // namespace engine

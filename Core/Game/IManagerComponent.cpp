@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Precompiled.h"
-#include "IGameManager.h"
+#include "IManagerComponent.h"
 
 namespace engine
 {
@@ -11,6 +11,6 @@ namespace engine
 //=============================================================================
 // CLASS IComponent
 //=============================================================================
-IGameManager::IdType IGameManager::NullId = nullptr;
+IManagerComponent::IdType IManagerComponent::NullId = nullptr;
 
 } // namespace engine

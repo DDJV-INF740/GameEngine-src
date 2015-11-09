@@ -11,7 +11,7 @@ namespace engine
 //=============================================================================
 // CONSTANTS
 //=============================================================================
-typedef enum
+enum class ControllerKey
 {
 	KEY_UP,
 	KEY_LEFT,
@@ -22,7 +22,7 @@ typedef enum
 	KEY_CTRLBUTTON,
 	KEY_COUNT,
 	KEY_NONE = KEY_COUNT
-} ControllerKey;
+};
 
 //=============================================================================
 // CLASS InputInterface

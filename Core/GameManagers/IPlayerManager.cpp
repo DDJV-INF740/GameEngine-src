@@ -4,5 +4,5 @@
 namespace engine
 {
 
-IGameInterface::IdType IPlayerManager::TypeId() { return "IPlayerManager"; }
+IManager::IdType IPlayerManager::TypeId() { return "IPlayerManager"; }
 } // namespace engine

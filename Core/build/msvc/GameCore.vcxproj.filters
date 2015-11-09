@@ -50,23 +50,11 @@
     <ClInclude Include="..\..\GameObjects\IBehaviour.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GameObjects\igameobject.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\GameObjects\IGameObjectData.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\GameObjects\gameobjectfactory.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="..\..\GameObjects\GameObjectProxy.h">
       <Filter>GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Game\IGameInterface.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Game\IGameManager.h">
-      <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Game\Game.h">
       <Filter>Game</Filter>
@@ -158,6 +146,22 @@
     <ClInclude Include="..\..\GameManagers\IWindowManager.h">
       <Filter>GameManagers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Game\IManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Game\IManagerComponent.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\StaticAsserts.h" />
+    <ClInclude Include="..\..\GameObjects\GameObjectFactory.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameObjects\IGameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Game\GameClockBase.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Precompiled.cpp" />
@@ -185,16 +189,10 @@
     <ClCompile Include="..\..\GameObjects\GameObjectProxy.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Game\IGameManager.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Game\Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Game\IGameEngine.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Game\IGameInterface.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Factories\ObjectFactory.cpp">
@@ -277,6 +275,15 @@
     </ClCompile>
     <ClCompile Include="..\..\GameManagers\IWindowManager.cpp">
       <Filter>GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\IManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\IManagerComponent.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\GameClockBase.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

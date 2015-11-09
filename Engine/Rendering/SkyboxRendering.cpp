@@ -29,9 +29,9 @@ void SkyboxRendering::render( const GameObjectRef &iGameObject )
 	d3ddev->SetFVF(SkyboxRenderData::CUSTOMVERTEX::FORMAT);
 
 	// select the vertex buffer to display
-	d3ddev->SetStreamSource(0, _data._vbuffer, 0, sizeof(SkyboxRenderData::CUSTOMVERTEX));
-	d3ddev->SetIndices(_data._ibuffer);
-	d3ddev->SetTexture(0, _data._texture);
+	d3ddev->SetStreamSource(0, _data._vbuffer.get(), 0, sizeof(SkyboxRenderData::CUSTOMVERTEX));
+	d3ddev->SetIndices(_data._ibuffer.get());
+	d3ddev->SetTexture(0, _data._texture.get());
 
 	PxTransform t = iGameObject->as<IPoseInterface>()->pose();
 

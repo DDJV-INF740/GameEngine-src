@@ -11,9 +11,9 @@ namespace engine {
 struct SkyboxRenderData
 {
 public:
-	LPDIRECT3DVERTEXBUFFER9 _vbuffer;
-	LPDIRECT3DINDEXBUFFER9 _ibuffer;
-	LPDIRECT3DTEXTURE9 _texture;
+	d3d9::unique_ptr<IDirect3DVertexBuffer9> _vbuffer;
+	d3d9::unique_ptr<IDirect3DIndexBuffer9> _ibuffer;
+	d3d9::unique_ptr<IDirect3DTexture9> _texture;
 
 	struct CUSTOMVERTEX
 	{
@@ -23,9 +23,6 @@ public:
 	};
 
 public:
-	SkyboxRenderData();
-	~SkyboxRenderData();
-
 	int load(const TCHAR *iTexturePath, LPDIRECT3DDEVICE9 iD3dDev);
 };
 } // namespace engine

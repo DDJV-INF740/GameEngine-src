@@ -25,6 +25,7 @@
 #include "OLEImageImporter.h"
 
 #include <windows.h>
+#include <memory>
 #include <olectl.h>
 
 //==============================================================================
@@ -235,7 +236,7 @@ public:
 		int rowLength = b.bmWidthBytes;
 
 		// load the texture into the data buffer
-		if (format == FORMAT_BGRA)
+		if (format == PixelFormat::FORMAT_BGRA)
 		{
 			if (GetBitmapBits(bm, b.bmHeight*rowLength, data) == 0)
 			{
@@ -271,11 +272,11 @@ public:
 			}
 
 		}
-		else if (format == FORMAT_L8)
+		else if (format == PixelFormat::FORMAT_L8)
 		{
 			// load in temp BGRA buffer and convert
-			unsigned char *tmpBGRA = (unsigned char*)malloc(width*height*4);
-			if (GetBitmapBits(bm, b.bmHeight*rowLength, tmpBGRA) == 0)
+			std::unique_ptr<unsigned char[]> tmpBGRA(new unsigned char[width*height*4]);
+			if (GetBitmapBits(bm, b.bmHeight*rowLength, tmpBGRA.get()) == 0)
 			{
 				return;
 			}
@@ -289,7 +290,6 @@ public:
 						0.3f * tmpBGRA[(x + y*width)*4+2]);   // R
 				}
 			}
-			free(tmpBGRA);
 		}
 
 		DeleteObject(bm);
@@ -307,7 +307,7 @@ public:
 	//
 	PixelFormat nativePixelFormat() const
 	{
-		return FORMAT_BGRA;
+		return PixelFormat::FORMAT_BGRA;
 	}
 
 private:
@@ -389,10 +389,10 @@ void OLEImageImporter::draw(unsigned char *data, PixelFormat format) const
 void OLEImageImporter::supportedExtensions(std::vector<std::string> *outExts)
 {
 	outExts->clear();
-	outExts->push_back("jpeg");
-	outExts->push_back("jpg");
-	outExts->push_back("gif");
-	outExts->push_back("bmp");
+	outExts->emplace_back("jpeg");
+	outExts->emplace_back("jpg");
+	outExts->emplace_back("gif");
+	outExts->emplace_back("bmp");
 }
 
 
@@ -413,12 +413,12 @@ int OLEImageImporter::bytesPerPixel(PixelFormat format)
 //		case (FORMAT_RGB):		return 3;
 //		case (FORMAT_ARGB):		return 4;
 //		case (FORMAT_BGR):		return 3;
-		case (FORMAT_BGRA):		return 4;
+		case (PixelFormat::FORMAT_BGRA):		return 4;
 //		case (FORMAT_ABGR):		return 4;
 //		case (FORMAT_RGBA):		return 4;
 //		case (FORMAT_YUYV422):	return 2;
 //		case (FORMAT_UYVY422):	return 2;
-		case (FORMAT_L8):		return 1;
+		case (PixelFormat::FORMAT_L8):		return 1;
 	}
 
 	return 4;

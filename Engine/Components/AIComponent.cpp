@@ -26,7 +26,7 @@ void AIComponent::setBehaviour(const IBehaviourRef &iBehaviour)
 void AIComponent::onAttached( const GameObjectRef &iGameObject )
 {
 	_go = iGameObject;
-	Game<IAIManager>()->addComponent(this);
+	Game<IAIManager>()->createComponent(this);
 }
 
 //-----------------------------------------------------------------------------

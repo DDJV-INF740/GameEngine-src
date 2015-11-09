@@ -11,6 +11,10 @@ namespace engine
 //=============================================================================
 // INTERFACE IBehaviour
 //=============================================================================
+// A Behaviour is a callback which acts on a GameObject. It can use used
+// to customize the inner workings of a component. For instance, the AIComponent
+// or the PlayerComponent may be configured with custom behaviours that can be
+// changed at runtime - making some AI smarter or faster at specific moments.
 class IBehaviour
 {
 public:
@@ -20,5 +24,6 @@ public:
 //=============================================================================
 // TYPE DEFINITIONS
 //=============================================================================
-typedef std::shared_ptr<IBehaviour> IBehaviourRef;
+using IBehaviourRef = std::shared_ptr<IBehaviour>;
+
 } // namespace engine

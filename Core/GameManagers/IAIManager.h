@@ -2,7 +2,7 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 
 namespace engine
 {
@@ -15,13 +15,13 @@ class IAIInterface;
 //=============================================================================
 // INTERFACE IRenderManager
 //=============================================================================
-class IAIManager: virtual public IGameInterface
+class IAIManager: virtual public IManager
 {
 public:
 	static IdType TypeId();
 
 public:
-	virtual void addComponent(IAIInterface *iAIInstance) = 0;
+	virtual void createComponent(IAIInterface *iAIInstance) = 0;
 	virtual void removeComponent(IAIInterface *iAIInstance) = 0;
 	virtual void update() = 0;
 };

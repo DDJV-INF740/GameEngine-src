@@ -2,7 +2,7 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 #include "Core/d3d/d3d9.forward.h"
 #include <vector>
 
@@ -18,11 +18,11 @@ class IRenderInterface;
 //=============================================================================
 // INTERFACE IRenderManager
 //=============================================================================
-class IRenderManager: virtual public IGameInterface
+class IRenderManager: virtual public IManager
 {
 public:
 	static IdType TypeId();
-	typedef std::vector<IRenderInterface*> RenderList;
+	using RenderList = std::vector<IRenderInterface*>;
 public:
 
 	virtual IDirect3D9* d3d() = 0;

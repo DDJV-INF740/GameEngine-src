@@ -48,23 +48,21 @@ static const short indices[] = {
 	2, 3, 12, 13// Bottom
 };
 
-//-----------------------------------------------------------------------------
-//
-SkyboxRenderData::SkyboxRenderData() 
-	: _vbuffer(nullptr)
-	, _ibuffer(nullptr)
-	, _texture(nullptr)
-{}
 
 //-----------------------------------------------------------------------------
 //
 int SkyboxRenderData::load( const TCHAR *iTexturePath, LPDIRECT3DDEVICE9 iD3dDev )
 {
-	::D3DXCreateTextureFromFile(iD3dDev, iTexturePath, &_texture);
+	LPDIRECT3DTEXTURE9 texture;
+	::D3DXCreateTextureFromFile(iD3dDev, iTexturePath, &texture);
+	_texture = d3d9::unique_ptr<IDirect3DTexture9>(texture);
 	_tprintf("loaded %TS\n", iTexturePath);
 
 	// create a vertex buffer interface called _vbuffer
-	iD3dDev->CreateVertexBuffer(sizeof(vertices), 0, CUSTOMVERTEX::FORMAT, D3DPOOL_MANAGED, &_vbuffer, NULL);
+	LPDIRECT3DVERTEXBUFFER9 vbuffer;
+	iD3dDev->CreateVertexBuffer(sizeof(vertices), 0, CUSTOMVERTEX::FORMAT, D3DPOOL_MANAGED, &vbuffer, NULL);
+	_vbuffer = d3d9::unique_ptr<IDirect3DVertexBuffer9>(vbuffer);
+	
 	VOID* pVoid;    // a void pointer
 
 	// lock _vbuffer and load the vertices into it
@@ -72,7 +70,9 @@ int SkyboxRenderData::load( const TCHAR *iTexturePath, LPDIRECT3DDEVICE9 iD3dDev
 	memcpy(pVoid, vertices, sizeof(vertices));
 	_vbuffer->Unlock();
 
-	iD3dDev->CreateIndexBuffer(sizeof(indices), D3DUSAGE_WRITEONLY, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &_ibuffer, NULL);
+	LPDIRECT3DINDEXBUFFER9 ibuffer;
+	iD3dDev->CreateIndexBuffer(sizeof(indices), D3DUSAGE_WRITEONLY, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &ibuffer, NULL);
+	_ibuffer = d3d9::unique_ptr<IDirect3DIndexBuffer9>(ibuffer);
 
 	_ibuffer->Lock(0, sizeof(indices), &pVoid, NULL);
 	memcpy(pVoid, indices, sizeof(indices));
@@ -81,26 +81,4 @@ int SkyboxRenderData::load( const TCHAR *iTexturePath, LPDIRECT3DDEVICE9 iD3dDev
 	return 0;
 }
 
-//-----------------------------------------------------------------------------
-//
-SkyboxRenderData::~SkyboxRenderData()
-{
-	if (_texture)
-	{
-		_texture->Release();
-		_texture = nullptr;
-	}
-
-	if (_vbuffer)
-	{
-		_vbuffer->Release();
-		_vbuffer = nullptr;
-	}
-
-	if (_ibuffer)
-	{
-		_ibuffer->Release();
-		_ibuffer = nullptr;
-	}
-}
 } // namespace engine

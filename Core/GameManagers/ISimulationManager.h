@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 #include "Core/physx/PxPhysicsAPI.forward.h"
 
 namespace engine
 {
 
-class ISimulationManager: virtual public IGameInterface
+class ISimulationManager: virtual public IManager
 {
 public:
 	static IdType TypeId();
@@ -17,4 +17,8 @@ public:
 
 	virtual void update() = 0;
 };
+
+using ISimulationManagerRef = std::shared_ptr<ISimulationManager>;
+using ISimulationManagerWeakRef = std::weak_ptr<ISimulationManager>;
+
 } // namespace engine

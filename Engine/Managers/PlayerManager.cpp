@@ -31,7 +31,7 @@ void PlayerManager::removePlayer( IPlayerInterface *aPlayer )
 
 void PlayerManager::addPlayer( IPlayerInterface *aPlayer )
 {
-	_player.push_back(aPlayer);
+	_player.emplace_back(aPlayer);
 
 	if (_player.size() == 1)
 	{

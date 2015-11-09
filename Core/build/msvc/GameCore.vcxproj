@@ -169,19 +169,21 @@
     <ClInclude Include="..\..\GameManagers\ISpawnManager.h" />
     <ClInclude Include="..\..\GameManagers\ITimeManager.h" />
     <ClInclude Include="..\..\GameManagers\IWindowManager.h" />
-    <ClInclude Include="..\..\GameObjects\gameobjectfactory.h" />
+    <ClInclude Include="..\..\GameObjects\GameObjectFactory.h" />
     <ClInclude Include="..\..\GameObjects\GameObjectProxy.h" />
     <ClInclude Include="..\..\GameObjects\IBehaviour.h" />
-    <ClInclude Include="..\..\GameObjects\igameobject.h" />
+    <ClInclude Include="..\..\GameObjects\IGameObject.h" />
     <ClInclude Include="..\..\GameObjects\IGameObjectData.h" />
+    <ClInclude Include="..\..\Game\GameClockBase.h" />
     <ClInclude Include="..\..\Game\Game.h" />
     <ClInclude Include="..\..\Game\IGameEngine.h" />
-    <ClInclude Include="..\..\Game\IGameInterface.h" />
-    <ClInclude Include="..\..\Game\IGameManager.h" />
+    <ClInclude Include="..\..\Game\IManager.h" />
+    <ClInclude Include="..\..\Game\IManagerComponent.h" />
     <ClInclude Include="..\..\Models\IModel.h" />
     <ClInclude Include="..\..\physx\PxPhysicsAPI.forward.h" />
     <ClInclude Include="..\..\Precompiled.h" />
     <ClInclude Include="..\..\Rendering\IRenderPrimitive.h" />
+    <ClInclude Include="..\..\StaticAsserts.h" />
     <ClInclude Include="..\..\targetver.h" />
     <ClInclude Include="..\..\Tasks\IGameTask.h" />
   </ItemGroup>
@@ -218,10 +220,11 @@
     <ClCompile Include="..\..\GameObjects\IBehaviour.cpp" />
     <ClCompile Include="..\..\GameObjects\IGameObject.cpp" />
     <ClCompile Include="..\..\GameObjects\IGameObjectData.cpp" />
+    <ClCompile Include="..\..\Game\GameClockBase.cpp" />
     <ClCompile Include="..\..\Game\Game.cpp" />
     <ClCompile Include="..\..\Game\IGameEngine.cpp" />
-    <ClCompile Include="..\..\Game\IGameInterface.cpp" />
-    <ClCompile Include="..\..\Game\IGameManager.cpp" />
+    <ClCompile Include="..\..\Game\IManager.cpp" />
+    <ClCompile Include="..\..\Game\IManagerComponent.cpp" />
     <ClCompile Include="..\..\Models\IModel.cpp" />
     <ClCompile Include="..\..\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

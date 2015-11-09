@@ -4,6 +4,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/physx/PxPhysicsAPI.forward.h"
+#include <memory>
 
 namespace engine {
 
@@ -15,7 +16,7 @@ class MeshModel;
 class ModelFactory
 {
 public:
-	static MeshModel* createSphere(float iRadius);
-	static physx::PxConvexMesh* convexMeshFromModel(const MeshModel &iMeshModel);
+	static std::unique_ptr<MeshModel> createSphere(float iRadius);
+	static physx::unique_ptr<physx::PxConvexMesh> convexMeshFromModel(const MeshModel &iMeshModel);
 };
 } // namespace engine

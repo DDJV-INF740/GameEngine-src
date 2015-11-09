@@ -4,15 +4,15 @@
 //=============================================================================
 #include <memory>
 
-namespace engine
-{
+namespace engine {
+
 //=============================================================================
 // FORWARD DEFINITIONS
 //=============================================================================
 class IRenderViewInterface;
 class IGameObject;
-typedef std::shared_ptr<IGameObject> GameObjectRef;
-typedef std::weak_ptr<IGameObject> GameObjectWeakRef;
+using GameObjectRef = std::shared_ptr<IGameObject>;
+using GameObjectWeakRef = std::weak_ptr<IGameObject>;
 
 //=============================================================================
 // CLASS RenderPrimitive
@@ -20,14 +20,15 @@ typedef std::weak_ptr<IGameObject> GameObjectWeakRef;
 class IRenderPrimitive
 {
 public:
-	virtual ~IRenderPrimitive() {}
+	virtual ~IRenderPrimitive() = default;
 
 public:
 	virtual void render(const GameObjectRef &iGameObject) = 0;
 };
 
 //=============================================================================
-// TYPE DEFINITION
+// TYPE DEFINITIONS
 //=============================================================================
-typedef std::shared_ptr<IRenderPrimitive> IRenderPrimitiveRef;
+using IRenderPrimitiveRef = std::shared_ptr<IRenderPrimitive>;
+
 } // namespace engine

@@ -38,9 +38,9 @@ public:
 		}
 	}
 
-	void addComponent(IInputInterface *iInputInterface)
+	void createComponent(IInputInterface *iInputInterface)
 	{
-		_inputInterfaces.push_back(iInputInterface);
+		_inputInterfaces.emplace_back(iInputInterface);
 	}
 
 	void removeComponent(IInputInterface *iInputInterface)

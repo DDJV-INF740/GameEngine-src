@@ -6,7 +6,7 @@
 #include "Engine/Components/PlayerComponent.h"
 #include "Engine/Game/GameComponent.h"
 #include "Core/GameManagers/ITimeManager.h"
-#include "Engine/Game/GameTimer.h"
+#include "Engine/Game/GameClock.h"
 
 namespace engine {
 
@@ -16,8 +16,8 @@ namespace engine {
 class IGameObject;
 
 class IGameEngine;
-typedef std::shared_ptr<IGameEngine> GameEngineRef;
-typedef std::weak_ptr<IGameEngine> GameEngineWeakRef;
+using GameEngineRef = std::shared_ptr<IGameEngine>;
+using GameEngineWeakRef = std::weak_ptr<IGameEngine>;
 
 //=============================================================================
 // CLASS TimeManager
@@ -26,6 +26,9 @@ class TimeManager
 	: public GameComponent<TimeManager>
 	, public ITimeManager
 {
+public:
+	using time_point = GameClock::time_point;
+
 public:
 	static IComponent::IdType TypeId();
 	static IComponentInterface::IdType* Interfaces()
@@ -43,18 +46,18 @@ public: // IComponent
 	virtual void onDetached(const GameEngineRef &iGameEngine) override {}
 
 public: // IPlayerManager
-	virtual double currentTime();
-	virtual double lastFrameTime();
-	virtual void setGameRate(float iRate);
+	virtual time_point currentTime() noexcept override;
+	virtual time_point lastFrameTime() noexcept override;
+	virtual void setGameRate(float iRate) override;
 
-	virtual void startFrame();
-	virtual void startSession();
+	virtual void startFrame() override;
+	virtual void startSession() override;
 
 	TimeManager();
 
 private:
-	double _lastFrameTime;
-	double _currentTime;
-	GameTimer _sessionTimer;
+	time_point _lastFrameTime;
+	time_point _currentTime;
+	GameClock _sessionTimer;
 };
 } // namespace engine

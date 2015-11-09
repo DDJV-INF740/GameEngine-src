@@ -3,6 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "ComponentObject.h"
+#include <Core/StaticAsserts.h>
 
 namespace engine
 {
@@ -35,7 +36,7 @@ void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory
 //-----------------------------------------------------------------------------
 //
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
-std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::getComponentType(ComponentIdType type)
+std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::getComponent(ComponentIdType type)
 {
 	auto wFound = _components.find(type);
 	if (wFound != _components.end())
@@ -48,16 +49,16 @@ std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInter
 //-----------------------------------------------------------------------------
 //
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
-std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::addComponentType(ComponentIdType type)
+std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::createComponent(ComponentIdType type)
 {
-	ASSERT(getComponentType(type) == nullptr);
+	ASSERT(getComponent(type) == nullptr);
 	std::shared_ptr<TComponent> wComponent = TComponentFactory::Instance().resolve(type);
 	_components[type] = wComponent;
 
 	InterfaceIdType *wInterfaces = wComponent->interfaces();
 	while (*wInterfaces != TComponentInterface::NullId)
 	{
-		addInterfaceType(*wInterfaces, std::dynamic_pointer_cast<TComponentInterface>(wComponent));
+		registerInterface(*wInterfaces, std::dynamic_pointer_cast<TComponentInterface>(wComponent));
 		++wInterfaces;
 	}
 
@@ -69,7 +70,7 @@ std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInter
 //-----------------------------------------------------------------------------
 //
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
-void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::removeComponentType(ComponentIdType type)
+void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::removeComponent(ComponentIdType type)
 {
 	auto wComponentFound = _components.find(type);
 	ASSERT(wComponentFound != _components.end());
@@ -79,7 +80,7 @@ void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory
 	InterfaceIdType *wInterfaces = component->interfaces();
 	while (*wInterfaces != TComponentInterface::NullId)
 	{
-		removeInterfaceType(*wInterfaces);
+		unregisterInterface(*wInterfaces);
 		++wInterfaces;
 	}
 }
@@ -87,7 +88,7 @@ void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory
 //-----------------------------------------------------------------------------
 //
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
-std::shared_ptr<TComponentInterface> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::getInterfaceType(InterfaceIdType type)
+std::shared_ptr<TComponentInterface> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::getInterface(InterfaceIdType type)
 {
 	auto wFound = _interfaces.find(type);
 	if (wFound != _interfaces.end())
@@ -100,9 +101,9 @@ std::shared_ptr<TComponentInterface> ComponentObject<TObject, TComponent, TCompo
 //-----------------------------------------------------------------------------
 //
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
-std::shared_ptr<TComponentInterface> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::addInterfaceType(InterfaceIdType iType, const std::shared_ptr<TComponentInterface> &iInterface)
+std::shared_ptr<TComponentInterface> ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::registerInterface(InterfaceIdType iType, const std::shared_ptr<TComponentInterface> &iInterface)
 {
-	ASSERT(getInterfaceType(iType) == nullptr);
+	ASSERT(getInterface(iType) == nullptr);
 	ASSERT(iInterface != nullptr);
 
 	_interfaces[iType] = iInterface;
@@ -112,11 +113,20 @@ std::shared_ptr<TComponentInterface> ComponentObject<TObject, TComponent, TCompo
 //-----------------------------------------------------------------------------
 //
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
-void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::removeInterfaceType(InterfaceIdType iType)
+void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::unregisterInterface(InterfaceIdType iType)
 {
 	auto wFound = _interfaces.find(iType);
 	ASSERT(wFound != _interfaces.end());
 	_interfaces.erase(wFound);
 }
+
+//-----------------------------------------------------------------------------
+//
+template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
+void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::assert_has_ref_method()
+{
+	static_assert(_internal::has_ref_method<TObject>::value, "Object must have a ref() method that returns a shared_ptr of itself");
+}
+
 
 } // namespace engine

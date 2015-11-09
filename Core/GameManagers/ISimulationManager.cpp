@@ -4,5 +4,5 @@
 namespace engine
 {
 
-IGameInterface::IdType ISimulationManager::TypeId() { return "ISimulationManager";}
+IManager::IdType ISimulationManager::TypeId() { return "ISimulationManager";}
 } // namespace engine

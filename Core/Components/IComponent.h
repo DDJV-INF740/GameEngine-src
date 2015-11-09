@@ -12,8 +12,8 @@ namespace engine
 // FORWARD DECLARATIONS
 //=============================================================================
 class IGameObject;
-typedef std::shared_ptr<IGameObject> GameObjectRef;
-typedef std::weak_ptr<IGameObject> GameObjectWeakRef;
+using GameObjectRef = std::shared_ptr<IGameObject>;
+using GameObjectWeakRef = std::weak_ptr<IGameObject>;
 
 //=============================================================================
 // INTERFACE IComponent
@@ -24,7 +24,7 @@ public:
 	virtual ~IComponent() {}
 
 public:
-	typedef const char* IdType;
+	using IdType = const char*;
 	static IdType NullId;
 
 public:

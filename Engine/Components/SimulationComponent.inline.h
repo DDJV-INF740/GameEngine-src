@@ -11,8 +11,8 @@ namespace engine {
 //=============================================================================
 // CLASS SimulationComponentBase
 //=============================================================================
-template<class TDerived>
-void SimulationComponentBase<TDerived>::onAttached( const GameObjectRef &iGameObject )
+template<class TDerived, class PXACTORTYPE>
+void SimulationComponentBase<TDerived, PXACTORTYPE>::onAttached( const GameObjectRef &iGameObject )
 {
 	_go = iGameObject;
 	_pxActor = TDerived::createPxActor();
@@ -20,18 +20,14 @@ void SimulationComponentBase<TDerived>::onAttached( const GameObjectRef &iGameOb
 	Game<ISimulationManager>()->scene().addActor(*_pxActor);
 }
 
-template<class TDerived>
-void SimulationComponentBase<TDerived>::onDetached( const GameObjectRef &iGameObject )
+template<class TDerived, class PXACTORTYPE>
+void SimulationComponentBase<TDerived, PXACTORTYPE>::onDetached( const GameObjectRef &iGameObject )
 {
-	if (_pxActor)
-	{
-		_pxActor->release();
-		_pxActor = nullptr;
-	}
+	_pxActor.reset();
 }
 
-template<class TDerived>
-void SimulationComponentBase<TDerived>::onContact( const physx::PxContactPair &aContactPair )
+template<class TDerived, class PXACTORTYPE>
+void SimulationComponentBase<TDerived, PXACTORTYPE>::onContact( const physx::PxContactPair &aContactPair )
 {
 	if (_collisionHandler)
 	{
@@ -39,8 +35,8 @@ void SimulationComponentBase<TDerived>::onContact( const physx::PxContactPair &a
 	}
 }
 
-template<class TDerived>
-void SimulationComponentBase<TDerived>::onTrigger( bool triggerEnter, physx::PxShape *actorShape, physx::PxShape *contactShape )
+template<class TDerived, class PXACTORTYPE>
+void SimulationComponentBase<TDerived, PXACTORTYPE>::onTrigger( bool triggerEnter, physx::PxShape *actorShape, physx::PxShape *contactShape )
 {
 	if (_collisionHandler)
 	{
@@ -48,8 +44,8 @@ void SimulationComponentBase<TDerived>::onTrigger( bool triggerEnter, physx::PxS
 	}
 }
 
-template<class TDerived>
-void SimulationComponentBase<TDerived>::setHandler( ICollisionHandlerRef iHandler )
+template<class TDerived, class PXACTORTYPE>
+void SimulationComponentBase<TDerived, PXACTORTYPE>::setHandler( ICollisionHandlerRef iHandler )
 {
 	_collisionHandler = iHandler;
 }

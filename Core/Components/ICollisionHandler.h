@@ -18,6 +18,6 @@ public:
 	virtual void onTrigger(bool triggerEnter, physx::PxShape *actorShape, physx::PxShape *contactShape) = 0;
 };
 
-typedef std::shared_ptr<ICollisionHandler> ICollisionHandlerRef;
+using ICollisionHandlerRef = std::shared_ptr<ICollisionHandler>;
 
 } // namespace engine

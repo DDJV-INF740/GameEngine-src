@@ -27,7 +27,7 @@ struct GameObjectFactoryEntry
 
 //-----------------------------------------------------------------------------
 //
-typedef std::map<GameObjectFactory::GameObjectId, GameObjectFactoryEntry> GameObjectFactoryRegistry;
+using GameObjectFactoryRegistry = std::map<GameObjectFactory::GameObjectId, GameObjectFactoryEntry>;
 
 //=============================================================================
 // CLASS GameObjectFactoryRegistry
@@ -66,16 +66,24 @@ GameObjectRef GameObjectFactory::createInstance(const GameObjectId &aGameObjectI
 	if (found == reg.end())
 		return nullptr;
 
-	IGameObjectDataRef dataRef = found->second._data.lock();
-	if (!dataRef)
+	GameObjectDataRef dataRef = found->second._data.lock();
+	if (dataRef == nullptr)
 	{
-		dataRef.reset(found->second._createGameObjectDataProc());
+		dataRef = found->second._createGameObjectDataProc();
 		found->second._data = dataRef;
 	}
 	
 	GameObjectRef newGameObject(found->second._createGameObjectProc(dataRef));
-	newGameObject->setRef(newGameObject);
 	return newGameObject;
 }
+
+//-----------------------------------------------------------------------------
+//
+void GameObjectFactory::reset()
+{
+	GameObjectFactoryRegistry &reg = GetGameObjectFactoryRegistry();
+	reg.clear();
+}
+
 
 } // namespace engine

@@ -1,14 +1,22 @@
+#pragma once
+
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Precompiled.h"
-#include "IGameInterface.h"
+#include <chrono>
 
-namespace engine
+namespace engine {
+
+//=============================================================================
+// CLASS GameGameClockBase
+//=============================================================================
+struct GameClockBase
 {
+	using duration = std::chrono::duration<double>;
+	using rep = duration::rep;
+	using period = duration::period;
+	using time_point = std::chrono::time_point<GameClockBase>;
+	static const bool is_steady = true;
+};
 
-//=============================================================================
-// CLASS IComponentInterface
-//=============================================================================
-IGameInterface::IdType IGameInterface::NullId = nullptr;
 } // namespace engine

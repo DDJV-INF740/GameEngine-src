@@ -11,6 +11,7 @@
 #include "Core/GameManagers/ISimulationManager.h"
 #include <vector>
 #include "Assets/Models/MeshModel.h"
+#include "Core/physx/PxPhysicsAPI.forward.h"
 
 using namespace physx;
 
@@ -47,14 +48,14 @@ public:
 //=============================================================================
 // PRIVATE FUNCTIONS
 //=============================================================================
-static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &iPhysics, ID3DXMesh *iMesh)
+static physx::unique_ptr<PxConvexMesh> GenerateConvexFromDXMesh(PxPhysics &iPhysics, ID3DXMesh *iMesh)
 {
 	//Used to retrieve information from X file
-	typedef struct {
+	struct Mesh_FVF {
 		D3DXVECTOR3 VertexPos;
 		D3DXVECTOR3 Normal;
 		D3DXVECTOR2 TexCoord;
-	} Mesh_FVF;
+	};
 
 	int aNumVerticies = iMesh->GetNumVertices();
 	DWORD FVFSize = D3DXGetFVFVertexSize(iMesh->GetFVF());
@@ -86,16 +87,17 @@ static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &iPhysics, ID3DXMesh *iM
 
 	assert(toleranceScale.isValid());
 
-	PxCooking *cooker = PxCreateCooking(PX_PHYSICS_VERSION, iPhysics.getFoundation(), PxCookingParams(toleranceScale));
+	physx::unique_ptr<PxCooking> cooker = physx::unique_ptr<PxCooking>(
+		PxCreateCooking(PX_PHYSICS_VERSION, iPhysics.getFoundation(), PxCookingParams(toleranceScale))
+		);
 
 	// Cooking from memory
 	MemoryStream buf;
-	PxConvexMesh *convexMesh = nullptr;
+	physx::unique_ptr<PxConvexMesh> convexMesh;
 	if(cooker->cookConvexMesh(convexDesc, buf))
 	{
-		convexMesh = iPhysics.createConvexMesh(buf);
+		convexMesh = physx::unique_ptr<PxConvexMesh>(iPhysics.createConvexMesh(buf));
 	}	
-	cooker->release();
 
 	delete[] verts;
 
@@ -105,17 +107,17 @@ static PxConvexMesh* GenerateConvexFromDXMesh(PxPhysics &iPhysics, ID3DXMesh *iM
 //=============================================================================
 // CLASS ModelFactory
 //=============================================================================
-MeshModel* ModelFactory::createSphere( float iRadius )
+std::unique_ptr<MeshModel> ModelFactory::createSphere( float iRadius )
 {
 	LPDIRECT3DDEVICE9 d3dDevice = Game<IRenderManager>()->d3dDevice();
 	LPD3DXMESH wD3DMesh = nullptr;;
 	D3DXCreateSphere(d3dDevice, iRadius, 8, 8, &wD3DMesh, nullptr);
-	return new MeshModel(wD3DMesh);
+	return std::make_unique<MeshModel>(wD3DMesh);
 }
 
 //-----------------------------------------------------------------------------
 //
-PxConvexMesh* ModelFactory::convexMeshFromModel(const MeshModel &iModel)
+physx::unique_ptr<PxConvexMesh> ModelFactory::convexMeshFromModel(const MeshModel &iModel)
 {
 	return GenerateConvexFromDXMesh(Game<ISimulationManager>()->physics(), iModel.mesh());
 }

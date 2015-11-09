@@ -16,7 +16,7 @@ public:
 	static IdType TypeId();
 
 public:
-	typedef physx::PxTransform (*AdjustPoseCb)(const physx::PxTransform &iPose);
+	using AdjustPoseCb = physx::PxTransform (*)(const physx::PxTransform &iPose);
 
 public:
 	virtual void follow(const GameObjectRef &iGameObject) = 0;

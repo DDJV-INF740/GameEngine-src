@@ -16,7 +16,7 @@ namespace engine {
 //
 physx::PxRigidDynamic& DynamicSimulationComponent::pxActor()
 {
-	return (physx::PxRigidDynamic&)*_pxActor;
+	return *_pxActor;
 }
 
 //-----------------------------------------------------------------------------
@@ -35,9 +35,11 @@ void DynamicSimulationComponent::setPose(const physx::PxTransform &iPose)
 
 //-----------------------------------------------------------------------------
 //
-physx::PxRigidDynamic* DynamicSimulationComponent::createPxActor()
+physx::unique_ptr<physx::PxRigidDynamic> DynamicSimulationComponent::createPxActor()
 {
-	return Game<ISimulationManager>()->physics().createRigidDynamic(physx::PxTransform::createIdentity());
+	return physx::unique_ptr<physx::PxRigidDynamic>(
+		Game<ISimulationManager>()->physics().createRigidDynamic(physx::PxTransform::createIdentity())
+		);
 }
 
 
@@ -62,14 +64,16 @@ void StaticSimulationComponent::setPose(const physx::PxTransform &iPose)
 //
 physx::PxRigidStatic& StaticSimulationComponent::pxActor()
 {
-	return (physx::PxRigidStatic&)*_pxActor;
+	return *_pxActor;
 }
 
 //-----------------------------------------------------------------------------
 //
-physx::PxRigidStatic* StaticSimulationComponent::createPxActor()
+physx::unique_ptr<physx::PxRigidStatic> StaticSimulationComponent::createPxActor()
 {
-	return Game<ISimulationManager>()->physics().createRigidStatic(physx::PxTransform::createIdentity());
+	return physx::unique_ptr<physx::PxRigidStatic>(
+		Game<ISimulationManager>()->physics().createRigidStatic(physx::PxTransform::createIdentity())
+		);
 }
 
 } // namespace engine

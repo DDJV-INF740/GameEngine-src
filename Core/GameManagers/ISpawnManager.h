@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 #include "Core/GameObjects/IGameObject.h"
 #include <set>
 
@@ -9,7 +9,7 @@ namespace engine
 
 class IGameObject;
 
-class ISpawnManager: virtual public IGameInterface
+class ISpawnManager: virtual public IManager
 {
 public:
 	static IdType TypeId();
@@ -26,5 +26,5 @@ public:
 	{	return std::dynamic_pointer_cast<T>(spawn(T::TypeId(), aInitialPose)); }
 };
 
-typedef std::shared_ptr<ISpawnManager> GameSpawnerRef;
+using GameSpawnerRef = std::shared_ptr<ISpawnManager>;
 } // namespace engine

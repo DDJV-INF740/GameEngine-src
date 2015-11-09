@@ -39,11 +39,11 @@ class OLEImageImporter
 public:
 
 	// Supported pixel formats
-	typedef enum
+	enum class PixelFormat
 	{
 		FORMAT_BGRA,
 		FORMAT_L8
-	} PixelFormat;
+	};
 
 	//--------------------------------------------------------------------------
 	//

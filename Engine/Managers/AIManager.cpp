@@ -7,9 +7,9 @@
 
 namespace engine {
 
-void AIManager::addComponent( IAIInterface *iAIInstance )
+void AIManager::createComponent( IAIInterface *iAIInstance )
 {
-	_aiInstances.push_back(iAIInstance);
+	_aiInstances.emplace_back(iAIInstance);
 }
 
 void AIManager::removeComponent( IAIInterface *iAIInstance )

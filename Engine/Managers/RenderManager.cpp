@@ -34,7 +34,7 @@ void RenderManager::removeFromRenderList( IRenderInterface *primitive )
 //
 void RenderManager::insertInRenderList( IRenderInterface *primitive )
 {
-	_renderList.push_back(primitive);
+	_renderList.emplace_back(primitive);
 }
 
 //-----------------------------------------------------------------------------
@@ -48,14 +48,14 @@ const RenderManager::RenderList& RenderManager::renderList()
 //
 LPDIRECT3DDEVICE9 RenderManager::d3dDevice()
 {
-	return _d3ddev;
+	return _d3ddev.get();
 }
 
 //-----------------------------------------------------------------------------
 //
 IDirect3D9* RenderManager::d3d()
 {
-	return _d3d;
+	return _d3d.get();
 }
 
 #define SCREEN_WIDTH 800
@@ -69,17 +69,8 @@ namespace engine {
 
 void RenderManager::onDetached( const GameEngineRef &iGameEngine )
 {
-	if (_d3ddev != nullptr)
-	{
-		_d3ddev->Release();    // close and release the 3D device
-		_d3ddev = nullptr;
-	}
-
-	if (_d3d != nullptr)
-	{
-		_d3d->Release();    // close and release Direct3D
-		_d3d = nullptr;
-	}
+	_d3ddev.reset();
+	_d3d.reset();
 }
 
 void RenderManager::onAttached( const GameEngineRef &iGameEngine )
@@ -88,7 +79,7 @@ void RenderManager::onAttached( const GameEngineRef &iGameEngine )
 	ASSERT(wGameWindow != nullptr); // The engine must have a window before the render manager is initialized
 	HWND hWnd = wGameWindow->window();
 
-	_d3d = Direct3DCreate9(D3D_SDK_VERSION);
+	_d3d = d3d9::unique_ptr<IDirect3D9>(Direct3DCreate9(D3D_SDK_VERSION));
 
 	D3DPRESENT_PARAMETERS d3dpp;
 
@@ -103,14 +94,16 @@ void RenderManager::onAttached( const GameEngineRef &iGameEngine )
 	d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
 
 
+	IDirect3DDevice9 *d3ddev;
 	// create a device class using this information and the info from the d3dpp stuct
 	_d3d->CreateDevice(D3DADAPTER_DEFAULT,
 		D3DDEVTYPE_HAL,
 		hWnd,
 		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
 		&d3dpp,
-		&_d3ddev);
+		&d3ddev);
 
+	_d3ddev = d3d9::unique_ptr<IDirect3DDevice9>(d3ddev);
 
 	_d3ddev->SetRenderState(D3DRS_LIGHTING, FALSE);    // turn off the 3D lighting}
 }

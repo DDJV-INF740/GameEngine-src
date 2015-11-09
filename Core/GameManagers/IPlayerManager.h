@@ -2,7 +2,7 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 #include <memory>
 
 namespace engine
@@ -13,13 +13,13 @@ namespace engine
 //=============================================================================
 class IPlayerInterface;
 class GameObjectProxy;
-typedef std::shared_ptr<GameObjectProxy> GameObjectProxyRef;
-typedef std::weak_ptr<GameObjectProxy> GameObjectProxyWeakRef;
+using GameObjectProxyRef = std::shared_ptr<GameObjectProxy>;
+using GameObjectProxyWeakRef = std::weak_ptr<GameObjectProxy>;
 
 //=============================================================================
 // CLASS IPlayerManager
 //=============================================================================
-class IPlayerManager: virtual public IGameInterface
+class IPlayerManager: virtual public IManager
 {
 public:
 	static IdType TypeId();

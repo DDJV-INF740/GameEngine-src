@@ -19,7 +19,7 @@ public:
 public:
 	int _width, _height;
 	physx::PxVec3 _scale;
-	LPDIRECT3DVERTEXBUFFER9 _vbuffer;
-	LPDIRECT3DINDEXBUFFER9 _ibuffer;
+	d3d9::unique_ptr<IDirect3DVertexBuffer9> _vbuffer;
+	d3d9::unique_ptr<IDirect3DIndexBuffer9> _ibuffer;
 };
 } // namespace engine

@@ -2,7 +2,7 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 
 namespace engine
 {
@@ -14,7 +14,7 @@ namespace engine
 //=============================================================================
 // INTERFACE IRenderManager
 //=============================================================================
-class IGameLoopManager: virtual public IGameInterface
+class IGameLoopManager: virtual public IManager
 {
 public:
 	static IdType TypeId();

@@ -2,7 +2,7 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "Core/Game/IGameInterface.h"
+#include "Core/Game/IManager.h"
 #include <memory>
 
 namespace engine
@@ -12,24 +12,24 @@ namespace engine
 // FORWARD DECLARATIONS
 //=============================================================================
 class IGameEngine;
-typedef std::shared_ptr<IGameEngine> GameEngineRef;
-typedef std::weak_ptr<IGameEngine> GameEngineWeakRef;
+using GameEngineRef = std::shared_ptr<IGameEngine>;
+using GameEngineWeakRef = std::weak_ptr<IGameEngine>;
 
 
 //=============================================================================
-// INTERFACE IGameManager
+// INTERFACE IManagerComponent
 //=============================================================================
-class IGameManager
+class IManagerComponent
 {
 public:
-	virtual ~IGameManager() {}
+	virtual ~IManagerComponent() {}
 
 public:
-	typedef const char* IdType;
+	using IdType = const char*;
 	static IdType NullId;
 
 public:
-	virtual IGameInterface::IdType* interfaces() = 0;
+	virtual IManager::IdType* interfaces() = 0;
 	virtual void onAttached(const GameEngineRef &iGameEngine) = 0;
 	virtual void onDetached(const GameEngineRef &iGameEngine) = 0;
 };

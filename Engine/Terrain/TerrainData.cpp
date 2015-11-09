@@ -63,21 +63,24 @@ int TerrainData::load()
 	_renderData._scale = heightMapScale();
 
 	// Load the image file
-	unsigned char *buffer;
+	std::unique_ptr<unsigned char[]> buffer;
 	OLEImageImporter imgLoader(kHeightPixMapFile);
 	imgLoader.getNativeSize(&_renderData._width, &_renderData._height);
-	buffer = (unsigned char*)malloc(_renderData._width*_renderData._height);
-	imgLoader.draw(buffer, OLEImageImporter::FORMAT_L8);
+	buffer.reset(new unsigned char [_renderData._width*_renderData._height]);
+	imgLoader.draw(buffer.get(), OLEImageImporter::PixelFormat::FORMAT_L8);
 	_tprintf("loaded  %TS\n", kHeightPixMapFile);
 
 	LPDIRECT3DDEVICE9 d3ddev = Game<IRenderManager>()->d3dDevice();
 	int verticeCount = _renderData._width*_renderData._height;
 
 	// create a vertex buffer interface called _vbuffer
-	d3ddev->CreateVertexBuffer(verticeCount*sizeof(CUSTOMVERTEX), 0, CUSTOMVERTEX::FORMAT, D3DPOOL_MANAGED, &_renderData._vbuffer, NULL);
+	LPDIRECT3DVERTEXBUFFER9 vbuffer;
+	d3ddev->CreateVertexBuffer(verticeCount*sizeof(CUSTOMVERTEX), 0, CUSTOMVERTEX::FORMAT, D3DPOOL_MANAGED, &vbuffer, NULL);
+	_renderData._vbuffer = d3d9::unique_ptr<IDirect3DVertexBuffer9>(vbuffer);
+
 	CUSTOMVERTEX* pVoid;    // a void pointer
 
-	_heightMap = new PxHeightFieldSample[_renderData._width*_renderData._height];
+	_heightMap = std::make_unique<physx::PxHeightFieldSample[]>(_renderData._width*_renderData._height);
 
 	// lock _vbuffer and load the vertices into it
 	_renderData._vbuffer->Lock(0, 0, (void**)&pVoid, 0);
@@ -91,6 +94,8 @@ int TerrainData::load()
 			pVoid[x+y*_renderData._width].COLOR = ColorForHeight(buffer[x+y*_renderData._width]);
 		}
 	}
+
+	buffer.reset();
 
 	// compute normals
 	for (int y = 0; y < _renderData._height; ++y)
@@ -141,8 +146,9 @@ int TerrainData::load()
 	}
 	_renderData._vbuffer->Unlock();
 
-	d3ddev->CreateIndexBuffer(2*_renderData._width*(_renderData._height-1)*sizeof(int), D3DUSAGE_WRITEONLY, D3DFMT_INDEX32, D3DPOOL_DEFAULT, &_renderData._ibuffer, NULL);
-
+	LPDIRECT3DINDEXBUFFER9 ibuffer;
+	d3ddev->CreateIndexBuffer(2*_renderData._width*(_renderData._height-1)*sizeof(int), D3DUSAGE_WRITEONLY, D3DFMT_INDEX32, D3DPOOL_DEFAULT, &ibuffer, NULL);
+	_renderData._ibuffer = d3d9::unique_ptr<IDirect3DIndexBuffer9>(ibuffer);
 	int* pIdx;    // a void pointer
 	_renderData._ibuffer->Lock(0, 0, (VOID**)&pIdx, NULL);
 	int i = 0;
@@ -158,54 +164,15 @@ int TerrainData::load()
 
 	PxPhysics &physics = Game<ISimulationManager>()->physics();
 
-	_material = physics.createMaterial(0.5f, 0.5f, 0.1f);    //static friction, dynamic friction, restitution
+	_material = physx::unique_ptr<physx::PxMaterial>(physics.createMaterial(0.5f, 0.5f, 0.1f));    //static friction, dynamic friction, restitution
 
 	PxHeightFieldDesc heightMapDesc;
 	heightMapDesc.format = PxHeightFieldFormat::eS16_TM;
 	heightMapDesc.nbColumns = _renderData._width;
 	heightMapDesc.nbRows = _renderData._height;
-	heightMapDesc.samples.data = _heightMap;
+	heightMapDesc.samples.data = _heightMap.get();
 	heightMapDesc.samples.stride = sizeof(PxHeightFieldSample);
-	_heightField = physics.createHeightField(heightMapDesc);
+	_heightField = physx::unique_ptr<physx::PxHeightField>(physics.createHeightField(heightMapDesc));
 	return 0;
-}
-
-TerrainData::TerrainData() : _renderData()
-	, _material(nullptr)
-	, _heightMap(nullptr)
-	, _heightField(nullptr)
-{
-
-}
-
-TerrainData::~TerrainData()
-{
-	if (_renderData._vbuffer)
-	{
-		_renderData._vbuffer->Release();
-		_renderData._vbuffer = nullptr;
-	}
-	if (_renderData._ibuffer)
-	{
-		_renderData._ibuffer->Release();
-		_renderData._ibuffer = nullptr;
-	}
-
-	if (_heightField)
-	{
-		_heightField->release();
-		_heightField = nullptr;
-	}
-
-	if (_material)
-	{
-		_material->release();
-		_material = nullptr;
-	}
-
-	if (_heightMap)
-	{
-		delete [] _heightMap;
-	}
 }
 } // namespace engine

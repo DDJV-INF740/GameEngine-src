@@ -30,8 +30,8 @@ void HeightMapRendering::render( const GameObjectRef &iGameObject )
 	d3ddev->SetFVF(TerrainData::CUSTOMVERTEX::FORMAT);
 
 	// select the vertex buffer to display
-	d3ddev->SetStreamSource(0, _data->_vbuffer, 0, sizeof(TerrainData::CUSTOMVERTEX));
-	d3ddev->SetIndices(_data->_ibuffer);
+	d3ddev->SetStreamSource(0, _data->_vbuffer.get(), 0, sizeof(TerrainData::CUSTOMVERTEX));
+	d3ddev->SetIndices(_data->_ibuffer.get());
 
 	PxMat44 transfo = PxMat44::createIdentity();
 	d3ddev->SetTransform(D3DTS_WORLD, (D3DMATRIX*)&transfo);
