@@ -24,10 +24,15 @@ ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::~C
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
 void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::removeAllComponents()
 {
+	for (auto &entry : _interfaces)
+	{
+		LOG_INFO("[go:0x%p]    - interface %s (0x%p)", this, entry.first, entry.second.get());
+	}
 	_interfaces.clear();
 
 	for (auto iter = _components.begin(); iter != _components.end(); ++iter)
 	{
+		LOG_INFO("[go:0x%p] - component %s (0x%p)", this, iter->first, iter->second.get());
 		iter->second->onDetached(dynamic_cast<TObject*>(this)->ref());
 	}
 	_components.clear();
@@ -54,11 +59,13 @@ std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInter
 	ASSERT(getComponent(type) == nullptr);
 	std::shared_ptr<TComponent> wComponent = TComponentFactory::Instance().resolve(type);
 	_components[type] = wComponent;
+	LOG_INFO("[go:0x%p] + component %s (0x%p)", this, type, wComponent.get());
 
 	InterfaceIdType *wInterfaces = wComponent->interfaces();
 	while (*wInterfaces != TComponentInterface::NullId)
 	{
 		registerInterface(*wInterfaces, std::dynamic_pointer_cast<TComponentInterface>(wComponent));
+		LOG_INFO("[go:0x%p]     + interface %s (0x%p)", this, *wInterfaces, wComponent.get());
 		++wInterfaces;
 	}
 
@@ -72,6 +79,7 @@ std::shared_ptr<TComponent> ComponentObject<TObject, TComponent, TComponentInter
 template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
 void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>::removeComponent(ComponentIdType type)
 {
+	LOG_INFO("[go:0x%p] - component %s", this, type);
 	auto wComponentFound = _components.find(type);
 	ASSERT(wComponentFound != _components.end());
 	std::shared_ptr<TComponent> component = wComponentFound->second;
@@ -80,6 +88,7 @@ void ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory
 	InterfaceIdType *wInterfaces = component->interfaces();
 	while (*wInterfaces != TComponentInterface::NullId)
 	{
+		LOG_INFO("[go:0x%p]     - interface %s", this, *wInterfaces);
 		unregisterInterface(*wInterfaces);
 		++wInterfaces;
 	}

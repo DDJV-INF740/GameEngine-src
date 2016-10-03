@@ -5,6 +5,7 @@
 #include "Precompiled.h"
 #include "SkyboxRenderData.h"
 #include <d3dx9tex.h>
+#include "Core/Logging/Logger.h"
 
 namespace engine {
 
@@ -56,7 +57,7 @@ int SkyboxRenderData::load( const TCHAR *iTexturePath, LPDIRECT3DDEVICE9 iD3dDev
 	LPDIRECT3DTEXTURE9 texture;
 	::D3DXCreateTextureFromFile(iD3dDev, iTexturePath, &texture);
 	_texture = d3d9::unique_ptr<IDirect3DTexture9>(texture);
-	_tprintf("loaded %TS\n", iTexturePath);
+	LOG_INFO("loaded %TS\n", iTexturePath);
 
 	// create a vertex buffer interface called _vbuffer
 	LPDIRECT3DVERTEXBUFFER9 vbuffer;

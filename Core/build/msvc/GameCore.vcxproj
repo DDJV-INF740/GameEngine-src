@@ -87,6 +87,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -179,6 +180,7 @@
     <ClInclude Include="..\..\Game\IGameEngine.h" />
     <ClInclude Include="..\..\Game\IManager.h" />
     <ClInclude Include="..\..\Game\IManagerComponent.h" />
+    <ClInclude Include="..\..\Logging\Level.h" />
     <ClInclude Include="..\..\Models\IModel.h" />
     <ClInclude Include="..\..\physx\PxPhysicsAPI.forward.h" />
     <ClInclude Include="..\..\Precompiled.h" />
@@ -225,6 +227,7 @@
     <ClCompile Include="..\..\Game\IGameEngine.cpp" />
     <ClCompile Include="..\..\Game\IManager.cpp" />
     <ClCompile Include="..\..\Game\IManagerComponent.cpp" />
+    <ClCompile Include="..\..\Logging\Logger.cpp" />
     <ClCompile Include="..\..\Models\IModel.cpp" />
     <ClCompile Include="..\..\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

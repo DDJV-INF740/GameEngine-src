@@ -5,6 +5,7 @@
 #include "Core/GameManagers/IGameLoopManager.h"
 #include "Core/GameManagers/ITimeManager.h"
 #include "Core/Game/Game.h"
+#include "Core/Logging/Logger.h"
 
 #include "SimulationManager.h"
 #include "PxPhysicsAPI.h"
@@ -88,6 +89,16 @@ static SimulationEventCallback gDefaultSimulationCallback;
 
 class SimulationManager::SimulationManagerImp
 {
+public:
+	SimulationManagerImp()
+		: _foundation(nullptr)
+		, _profileZoneManager(nullptr)
+		, _physics(nullptr)
+		, _scene(nullptr)
+		, _cpuDispatcher(nullptr)
+		, _cudaContextManager(nullptr)
+		, _visualDebuggerConnection(nullptr)
+	{}
 
 public:
 	//-------------------------------------------------------------------------
@@ -103,14 +114,6 @@ public:
 	{
 		return *_scene;
 	}
-	
-	//-------------------------------------------------------------------------
-	//
-	void fatalError(const char *str)
-	{
-		printf("%s", str);
-		Game<IGameLoopManager>()->requestExit(true);
-	}
 
 	//-------------------------------------------------------------------------
 	//
@@ -119,16 +122,16 @@ public:
 		_foundation = physx::unique_ptr<PxFoundation>(
 			PxCreateFoundation(PX_PHYSICS_VERSION, gDefaultAllocatorCallback, gDefaultErrorCallback));
 		if(!_foundation)
-			fatalError("PxCreateFoundation failed!");
+			LOG_FATAL("PxCreateFoundation failed");
 
 		bool recordMemoryAllocations = true;
 		_profileZoneManager = physx::unique_ptr<PxProfileZoneManager>(
 			&PxProfileZoneManager::createProfileZoneManager(_foundation.get())
 			);
 		if(!_profileZoneManager)
-			fatalError("PxProfileZoneManager::createProfileZoneManager failed!");
+			LOG_FATAL("PxProfileZoneManager::createProfileZoneManager failed");
 
-#ifdef PX_WINDOWS
+#if PX_SUPPORT_GPU_PHYSX
 		PxCudaContextManagerDesc cudaContextManagerDesc;
 		_cudaContextManager = physx::unique_ptr<PxCudaContextManager>(
 			PxCreateCudaContextManager(*_foundation, cudaContextManagerDesc, _profileZoneManager.get()));
@@ -145,11 +148,11 @@ public:
 			PxCreatePhysics(PX_PHYSICS_VERSION, *_foundation,
 			PxTolerancesScale(), recordMemoryAllocations, _profileZoneManager.get()));
 		if(!_physics)
-			fatalError("PxCreatePhysics failed!");
+			LOG_FATAL("PxCreatePhysics failed");
 
 
 		if (!PxInitExtensions(*_physics))
-			fatalError("PxInitExtensions failed!");
+			LOG_FATAL("PxInitExtensions failed");
 
 
 		if (_physics->getPvdConnectionManager() != nullptr)
@@ -159,9 +162,9 @@ public:
 				PxVisualDebuggerExt::createConnection(_physics->getPvdConnectionManager(),
 				"localhost", 5425, 100, connectionFlags));
 			if (_visualDebuggerConnection == nullptr)
-				printf("    NOT CONNECTED!\n");
+				LOG_INFO("    NOT CONNECTED!\n");
 			else
-				printf("    CONNECTED!\n");
+				LOG_INFO("    CONNECTED!\n");
 		}
 
 
@@ -175,13 +178,13 @@ public:
 		{
 			_cpuDispatcher = physx::unique_ptr<PxDefaultCpuDispatcher>(PxDefaultCpuDispatcherCreate(1));
 			if(!_cpuDispatcher)
-				fatalError("PxDefaultCpuDispatcherCreate failed!");
+				LOG_FATAL("PxDefaultCpuDispatcherCreate failed!");
 			sceneDesc.cpuDispatcher    = _cpuDispatcher.get();
 		}
 		if(!sceneDesc.filterShader)
 			sceneDesc.filterShader    = PxDefaultSimulationFilterShader;
 
-#ifdef PX_WINDOWS
+#if PX_SUPPORT_GPU_PHYSX
 		if(!sceneDesc.gpuDispatcher && _cudaContextManager)
 		{
 			sceneDesc.gpuDispatcher = _cudaContextManager->getGpuDispatcher();
@@ -190,7 +193,7 @@ public:
 
 		_scene = physx::unique_ptr<PxScene>(_physics->createScene(sceneDesc));
 		if (!_scene)
-			fatalError("createScene failed!");
+			LOG_FATAL("createScene failed!");
 
 		_scene->setSimulationEventCallback(&gDefaultSimulationCallback);
 	}

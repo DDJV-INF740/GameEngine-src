@@ -10,6 +10,8 @@
 #include "Engine/Components/ComponentFactory.h"
 #include <algorithm>
 
+using namespace std;
+
 namespace engine {
 
 template<class T>
@@ -17,7 +19,7 @@ struct unique_ptr_equals_ptr_t
 {
 	T *_ptr;
 	unique_ptr_equals_ptr_t(T *ptr) : _ptr(ptr) {}
-	bool operator()(const std::unique_ptr<T> &rhs)
+	bool operator()(const unique_ptr<T> &rhs)
 	{
 		return rhs.get() == _ptr;
 	}
@@ -36,30 +38,30 @@ GameTasks::~GameTasks()
 
 void GameTasks::init()
 {
-	for (auto taskGroupIter = _tasks.begin(); taskGroupIter != _tasks.end(); ++taskGroupIter)
+	for (pair<const int, vector<unique_ptr<IGameTask>>> &taskGroup : _tasks)
 	{
-		for (auto taskIter = taskGroupIter->second.begin(); taskIter != taskGroupIter->second.end(); ++taskIter)
+		for (unique_ptr<IGameTask> &task : taskGroup.second)
 		{
-			(*taskIter)->init();
+			task->init();
 		}
 	}
 }
 
 void GameTasks::update()
 {
-	for (auto taskGroupIter = _tasks.begin(); taskGroupIter != _tasks.end(); ++taskGroupIter)
+	for (pair<const int, vector<unique_ptr<IGameTask>>> &taskGroup : _tasks)
 	{
-		for (auto taskIter = taskGroupIter->second.begin(); taskIter != taskGroupIter->second.end(); ++taskIter)
+		for (unique_ptr<IGameTask> &task : taskGroup.second)
 		{
-			(*taskIter)->update();
+			task->update();
 		}
 	}
 }
 
-IGameTask* GameTasks::addTask(std::unique_ptr<IGameTask> iTask, int iPriority)
+IGameTask* GameTasks::addTask(unique_ptr<IGameTask> iTask, int iPriority)
 {
 	IGameTask* ref = iTask.get();
-	_tasks[iPriority].emplace_back(std::move(iTask));
+	_tasks[iPriority].emplace_back(move(iTask));
 	ref->init();
 	return ref;
 }
@@ -81,7 +83,7 @@ int GameTasks::getPriority(IGameTask *iTask)
 {
 	for (auto &taskBucket : _tasks)
 	{
-		auto found = std::find_if(taskBucket.second.begin(), taskBucket.second.end(), unique_ptr_equals_ptr(iTask));
+		auto found = find_if(taskBucket.second.begin(), taskBucket.second.end(), unique_ptr_equals_ptr(iTask));
 		if (found != taskBucket.second.end())
 			return taskBucket.first;
 	}
@@ -94,21 +96,21 @@ void GameTasks::setPriority(IGameTask *iTask, int iPriority)
 	std::unique_ptr<IGameTask> task = removeTask(iTask);
 	if (task)
 	{
-		addTask(std::move(task), iPriority);
+		addTask(move(task), iPriority);
 	}
 }
 
-std::unique_ptr<IGameTask> GameTasks::removeTask(IGameTask *iTask)
+unique_ptr<IGameTask> GameTasks::removeTask(IGameTask *iTask)
 {
-	std::unique_ptr<IGameTask> task;
+	unique_ptr<IGameTask> task;
 
-	for (auto &taskBucket : _tasks) 
+	for (pair<const int, vector<unique_ptr<IGameTask>>> &taskGroup : _tasks)
 	{
-		auto found = std::find_if(taskBucket.second.begin(), taskBucket.second.end(), unique_ptr_equals_ptr(iTask));
-		if (found != taskBucket.second.end())
+		auto found = find_if(taskGroup.second.begin(), taskGroup.second.end(), unique_ptr_equals_ptr(iTask));
+		if (found != taskGroup.second.end())
 		{
-			std::unique_ptr<IGameTask> ptr = std::move(*found);
-			taskBucket.second.erase(found);
+			unique_ptr<IGameTask> ptr = move(*found);
+			taskGroup.second.erase(found);
 			ptr->cleanup();
 			return ptr;
 		}
@@ -129,7 +131,6 @@ bool GameEngine::run()
 	return Game<IGameLoopManager>()->exitRequested() == false;
 }
 
-
 bool GameEngine::cleanup()
 {
 	_tasks.reset();
@@ -137,15 +138,14 @@ bool GameEngine::cleanup()
 	removeAllComponents();
 
 	return true;
-
 }
 
-IGameTask* GameEngine::addTask(std::unique_ptr<IGameTask> iTask, int iPriority )
+IGameTask* GameEngine::addTask(unique_ptr<IGameTask> iTask, int iPriority )
 {
-	return _tasks.addTask(std::move(iTask), iPriority);
+	return _tasks.addTask(move(iTask), iPriority);
 }
 
-std::unique_ptr<IGameTask> GameEngine::removeTask(IGameTask *iTask)
+unique_ptr<IGameTask> GameEngine::removeTask(IGameTask *iTask)
 {
 	return _tasks.removeTask(iTask);
 }

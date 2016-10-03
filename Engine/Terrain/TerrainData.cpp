@@ -5,6 +5,7 @@
 #include "Core/GameManagers/IRenderManager.h"
 #include "Core/GameManagers/ISimulationManager.h"
 #include "Core/Game/Game.h"
+#include "Core/Logging/Logger.h"
 #include <d3d9.h>
 
 
@@ -68,7 +69,7 @@ int TerrainData::load()
 	imgLoader.getNativeSize(&_renderData._width, &_renderData._height);
 	buffer.reset(new unsigned char [_renderData._width*_renderData._height]);
 	imgLoader.draw(buffer.get(), OLEImageImporter::PixelFormat::FORMAT_L8);
-	_tprintf("loaded  %TS\n", kHeightPixMapFile);
+	LOG_INFO("loaded  %TS\n", kHeightPixMapFile);
 
 	LPDIRECT3DDEVICE9 d3ddev = Game<IRenderManager>()->d3dDevice();
 	int verticeCount = _renderData._width*_renderData._height;

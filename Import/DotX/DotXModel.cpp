@@ -3,6 +3,8 @@
 //=============================================================================
 #include "DotXModel.h"
 
+#include "Core/Logging/Logger.h"
+
 #include <d3d9.h>
 #include <d3dx9mesh.h>
 #include <cstdio>
@@ -56,7 +58,7 @@ public:
 				LPDIRECT3DTEXTURE9 texture;
 				D3DXCreateTextureFromFileA(_d3ddev, path, &texture);
 				_meshTextures[i] = d3d9::unique_ptr<IDirect3DTexture9>(texture);
-				printf("loaded %s\n", path);
+				LOG_INFO("loaded %s\n", path);
 			}
 		}
 	}

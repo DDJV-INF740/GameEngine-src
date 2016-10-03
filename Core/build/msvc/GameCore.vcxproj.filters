@@ -31,6 +31,9 @@
     <Filter Include="Tasks">
       <UniqueIdentifier>{4b3e3ed5-03c3-48bb-be81-be717077633e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{34c5df4d-63f3-42a2-93ae-a9a8506561c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Precompiled.h" />
@@ -162,6 +165,9 @@
     <ClInclude Include="..\..\Game\GameClockBase.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Logging\Level.h">
+      <Filter>Logging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Precompiled.cpp" />
@@ -284,6 +290,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Game\GameClockBase.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Logging\Logger.cpp">
+      <Filter>Logging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -52,7 +52,7 @@ public:
 	{
 		static_assert(std::is_base_of<TComponent, T>::value, "T must be a subclass of TComponent");
 
-		return dynamic_cast<T*>(getComponent(T::TypeId()));
+		return std::dynamic_pointer_cast<T>(getComponent(T::TypeId()));
 	}
 
 	// decorate this object with a new component of type T
@@ -72,7 +72,9 @@ public:
 
 		std::shared_ptr<T> c = component<T>();
 		if (c == nullptr)
-			return createComponent<T>();
+			c = createComponent<T>();
+
+		return c;
 	}
 
 	// removes the component of type T from this object

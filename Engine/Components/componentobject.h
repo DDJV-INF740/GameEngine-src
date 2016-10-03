@@ -3,6 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponentObject.h"
+#include "Core/Logging/Logger.h"
 #include <map>
 
 namespace engine
