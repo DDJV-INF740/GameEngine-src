@@ -3,6 +3,7 @@
 //=============================================================================
 #include "Precompiled.h"
 #include "SpawnManager.h"
+#include "Core/Logging/Logger.h"
 #include "Core/GameObjects/IGameObject.h"
 #include "Core/GameObjects/GameObjectFactory.h"
 
@@ -59,7 +60,10 @@ void SpawnManager::unspawn(const GameObjectRef &aGameObjectToUnspawn)
 	_imp->_unspawnList.insert(aGameObjectToUnspawn);
 	auto foundIter = _imp->_existingGameObjects.find(aGameObjectToUnspawn);
 	if (foundIter != _imp->_existingGameObjects.end())
+	{
+		LOG_INFO("[go:0x%p] UNSPAWNED", foundIter->get());
 		_imp->_existingGameObjects.erase(foundIter);
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -77,6 +81,7 @@ GameObjectRef SpawnManager::spawn(const IGameObject::IdType &aGameObjectID, cons
 	GameObjectRef wGameObject(GameObjectFactory::createInstance(aGameObjectID));
 	wGameObject->onSpawn(aPose);
 	_imp->_existingGameObjects.insert(wGameObject);
+	LOG_INFO("[go:0x%p] SPAWNED %s", wGameObject.get(), aGameObjectID);
 	return wGameObject;
 }
 
