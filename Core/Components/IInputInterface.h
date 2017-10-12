@@ -4,6 +4,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponentInterface.h"
+#include "Core/Components/IdType.h"
 
 namespace engine
 {
@@ -30,7 +31,7 @@ enum class ControllerKey
 class IInputInterface: virtual public IComponentInterface
 {
 public:
-	static IInputInterface::IdType TypeId();
+	static constexpr IdType TypeId = "IInputInterface";
 
 public:
 	virtual bool isPressed(ControllerKey aKey) const = 0;

@@ -3,6 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Game/IManager.h"
+#include "Core/Components/IdType.h"
 #include <memory>
 
 namespace engine
@@ -22,7 +23,7 @@ using GameObjectProxyWeakRef = std::weak_ptr<GameObjectProxy>;
 class IPlayerManager: virtual public IManager
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IPlayerManager";
 
 public:
 	virtual int playerCount() = 0;

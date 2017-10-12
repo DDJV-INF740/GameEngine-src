@@ -4,7 +4,7 @@
 //=============================================================================
 #include "Core/Components/IComponent.h"
 #include "Core/GameManagers/ISimulationManager.h"
-#include "Engine/Game/GameComponent.h"
+#include "Engine/Game/GameManager.h"
 
 namespace engine {
 
@@ -12,20 +12,14 @@ namespace engine {
 // CLASS SimulationManager
 //=============================================================================
 class SimulationManager
-	: public GameComponent<SimulationManager>
+	: public GameManager<SimulationManager>
 	, public ISimulationManager
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			ISimulationManager::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "SimulationManager";
+	static constexpr IdType Interfaces[] = {
+		ISimulationManager::TypeId
+	};
 
 public:
 	SimulationManager();

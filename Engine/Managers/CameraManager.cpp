@@ -94,11 +94,6 @@ void CameraManager::render()
 	}
 }
 
-IComponent::IdType CameraManager::TypeId()
-{
-	return "CameraManager";
-}
-
 CameraManager::CameraManager()
 	: _imp(new CameraManagerImp)
 {}
@@ -111,7 +106,3 @@ CameraManager::~CameraManager()
 
 #include "Engine/Managers/GameManagerFactory.h"
 
-namespace engine {
-
-RegisterGameManagerType<CameraManager> gCameraManagerRegistration;
-} // namespace engine

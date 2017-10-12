@@ -3,6 +3,4 @@
 
 namespace engine
 {
-
-IComponentInterface::IdType IInputInterface::TypeId() { return  "IInputInterface"; }
 } // namespace engine

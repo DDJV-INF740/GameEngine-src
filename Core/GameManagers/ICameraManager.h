@@ -4,6 +4,7 @@
 //=============================================================================
 #include "Core/Game/IManager.h"
 #include "Core/GameObjects/IGameObject.h"
+#include "Core/Components/IdType.h"
 #include "Core/GameObjects/GameObjectProxy.h"
 
 namespace engine
@@ -15,7 +16,7 @@ namespace engine
 class ICameraManager: virtual public IManager
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "ICameraManager";
 
 public:
 	virtual int cameraCount() = 0;

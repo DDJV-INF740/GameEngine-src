@@ -3,5 +3,4 @@
 namespace engine
 {
 
-IComponentInterface::IdType ISimulationInterface::TypeId() { return  "ISimulationInterface"; }
 } // namespace engine

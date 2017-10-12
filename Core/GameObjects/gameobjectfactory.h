@@ -20,7 +20,7 @@ namespace engine
 class GameObjectFactory
 {
 public:
-	using GameObjectId = IGameObject::IdType ;
+	using GameObjectId = IdType ;
 	using CreateInstanceProc = GameObjectRef (*)(const GameObjectDataRef &aDataRef);
 	using CreateDataProc = GameObjectDataRef (*)();
 
@@ -46,35 +46,6 @@ public:
 
 	// release all memory
 	static void reset();
-};
-
-//=============================================================================
-// CLASS RegisterGameObjectType<T>
-//=============================================================================
-// Convenience class to automatically register a GameObject. Typically, you
-// would create a global variable in your .cpp file that registers the GameObject
-// defined in this .cpp file like this:
-//
-//	RegisterGameObjectType<MyGameObject> gRegisterGameObject;
-//
-template<class T>
-class RegisterGameObjectType
-{
-private:
-	RegisterGameObjectType(const RegisterGameObjectType&) = delete;
-	RegisterGameObjectType& operator=(const RegisterGameObjectType&) = delete;
-	RegisterGameObjectType& operator=(const RegisterGameObjectType&&) = delete;
-
-public:
-	RegisterGameObjectType()
-	{
-		GameObjectFactory::registerGameObjectType(T::TypeId(), &T::createInstance, &T::loadData);
-	}
-
-	~RegisterGameObjectType()
-	{
-		GameObjectFactory::unregisterGameObjectType(T::TypeId());
-	}
 };
 
 } // namespace engine

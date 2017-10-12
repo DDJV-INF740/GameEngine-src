@@ -13,7 +13,7 @@ namespace engine
 class IFollowPoseInterface: virtual public IPoseInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IFollowPoseInterface";
 
 public:
 	using AdjustPoseCb = physx::PxTransform (*)(const physx::PxTransform &iPose);

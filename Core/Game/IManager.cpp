@@ -9,5 +9,5 @@ namespace engine
 //=============================================================================
 // CLASS IComponentInterface
 //=============================================================================
-IManager::IdType IManager::NullId = nullptr;
+
 } // namespace engine

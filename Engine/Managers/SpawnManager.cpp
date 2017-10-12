@@ -76,12 +76,12 @@ void SpawnManager::unspawnAll()
 
 //-----------------------------------------------------------------------------
 //
-GameObjectRef SpawnManager::spawn(const IGameObject::IdType &aGameObjectID, const PxTransform &aPose)
+GameObjectRef SpawnManager::spawn(const IdType &aGameObjectID, const PxTransform &aPose)
 {
 	GameObjectRef wGameObject(GameObjectFactory::createInstance(aGameObjectID));
 	wGameObject->onSpawn(aPose);
 	_imp->_existingGameObjects.insert(wGameObject);
-	LOG_INFO("[go:0x%p] SPAWNED %s", wGameObject.get(), aGameObjectID);
+	LOG_INFO("[go:0x%p] SPAWNED %s", wGameObject.get(), aGameObjectID.toString().c_str());
 	return wGameObject;
 }
 
@@ -92,17 +92,4 @@ const std::set<GameObjectRef>& SpawnManager::gameObjects()
 	return _imp->_existingGameObjects;
 }
 
-//-----------------------------------------------------------------------------
-//
-IComponent::IdType SpawnManager::TypeId()
-{
-	return "SpawnManager";
-}
-} // namespace engine
-
-#include "Engine/Managers/GameManagerFactory.h"
-
-namespace engine {
-
-RegisterGameManagerType<SpawnManager> gSpawnManagerRegistration;
 } // namespace engine

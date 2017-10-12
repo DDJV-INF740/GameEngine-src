@@ -10,6 +10,5 @@ namespace engine
 //=============================================================================
 // INTERFACE IRenderManager
 //=============================================================================
-IGameLoopManager::IdType IGameLoopManager::TypeId() { return "IGameLoopManager"; }
 
 } // namespace engine

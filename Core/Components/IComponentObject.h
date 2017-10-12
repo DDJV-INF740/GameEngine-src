@@ -3,10 +3,12 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include <memory>
-
+#include <Core/Game/IManager.h>
+#include <Core/Components/IdType.h>
+#include <Core/Game/IManagerComponent.h>
 namespace engine
 {
-	
+
 //=============================================================================
 // INTERFACE IComponentObject
 //=============================================================================
@@ -25,24 +27,20 @@ public:
 	virtual ~IComponentObject() = default;
 
 public:
-	using ComponentIdType = typename TComponent::IdType;
-	using InterfaceIdType = typename TComponentInterface::IdType;
-
-public:
 	// Get an existing component by type identifier
-	virtual std::shared_ptr<TComponent> getComponent(ComponentIdType type) = 0;
+	virtual std::shared_ptr<TComponent> getComponent(IdType type) = 0;
 
 	// Add a new component to this object
-	virtual std::shared_ptr<TComponent> createComponent(ComponentIdType type) = 0;
+	virtual std::shared_ptr<TComponent> createComponent(IdType type) = 0;
 
 	// remove an existing component
-	virtual void removeComponent(ComponentIdType type) = 0;
+	virtual void removeComponent(IdType type) = 0;
 
 	// removes all the components on this object
 	virtual void removeAllComponents() = 0;
 
 	// returns an existing component interface
-	virtual std::shared_ptr<TComponentInterface> getInterface(InterfaceIdType type) = 0;
+	virtual std::shared_ptr<TComponentInterface> getInterface(const IdType &type) = 0;
 
 public:
 
@@ -52,7 +50,7 @@ public:
 	{
 		static_assert(std::is_base_of<TComponent, T>::value, "T must be a subclass of TComponent");
 
-		return std::dynamic_pointer_cast<T>(getComponent(T::TypeId()));
+		return std::dynamic_pointer_cast<T>(getComponent(T::TypeId));
 	}
 
 	// decorate this object with a new component of type T
@@ -61,7 +59,12 @@ public:
 	{
 		static_assert(std::is_base_of<TComponent, T>::value, "T must be a subclass of TComponent");
 
-		return std::dynamic_pointer_cast<T>(createComponent(T::TypeId()));
+		std::shared_ptr<T> ptr = std::dynamic_pointer_cast<T>(createComponent(T::TypeId));
+		if (ptr != nullptr)
+			return ptr;
+
+
+		return ptr;
 	}
 
 	// creates a component only if it does not already exist
@@ -83,7 +86,7 @@ public:
 	{
 		static_assert(std::is_base_of<TComponent, T>::value, "T must be a subclass of TComponent");
 
-		removeComponent(T::TypeId());
+		removeComponent(T::TypeId);
 	}
 
 	// returns the component interface T if found on this object
@@ -92,7 +95,7 @@ public:
 	{	
 		static_assert(std::is_base_of<TComponentInterface, T>::value, "T must be a subclass of TComponent");
 
-		return std::dynamic_pointer_cast<T>(getInterface(T::TypeId()));
+		return std::dynamic_pointer_cast<T>(getInterface(T::TypeId));
 	}
 };
 

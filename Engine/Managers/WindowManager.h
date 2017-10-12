@@ -4,7 +4,7 @@
 //=============================================================================
 #include "Core/Components/IComponent.h"
 #include "Core/GameManagers/IWindowManager.h"
-#include "Engine/Game/GameComponent.h"
+#include "Engine/Game/GameManager.h"
 #include <windows.h>
 
 namespace engine {
@@ -13,20 +13,14 @@ namespace engine {
 // CLASS WindowManager
 //=============================================================================
 class WindowManager
-	: public GameComponent<WindowManager>
+	: public GameManager<WindowManager>
 	, virtual public IWindowManager
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IWindowManager::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "WindowManager";
+	static constexpr IdType Interfaces[] = {
+		IWindowManager::TypeId,
+	};
 
 public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override;

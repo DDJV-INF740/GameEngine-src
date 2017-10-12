@@ -3,6 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Game/IManager.h"
+#include "Core/Components/IdType.h"
 
 namespace engine
 {
@@ -17,7 +18,7 @@ namespace engine
 class IGameLoopManager: virtual public IManager
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IGameLoopManager";
 
 public:
 	virtual bool exitRequested() = 0;

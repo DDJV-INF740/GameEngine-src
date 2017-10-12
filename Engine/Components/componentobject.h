@@ -3,32 +3,30 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponentObject.h"
+#include "Core/Components/IComponent.h"
 #include "Core/Logging/Logger.h"
 #include <map>
 
 namespace engine
 {
-
 //=============================================================================
-// CLASS ComponentObject<TObject, TComponent, TComponentInterface, TComponentFactory>
+// CLASS ComponentObject<TObject, TComponentFactory>
 // Template parameters:
 //		- TObject:				The object on which components will be attached and detached
-//		- TComponent:			The base class of any component
-//		- TComponentInterface:	The base class of any component interface
 //		- TComponentFactory:	The factory to use to create components
 //=============================================================================
-template<class TObject, class TComponent, class TComponentInterface, class TComponentFactory>
-class ComponentObject: virtual public IComponentObject<TComponent, TComponentInterface>
+template<class TObject, class TComponentFactory>
+class ComponentObject: virtual public IComponentObject<IComponent, IComponentInterface>
 {
 private:
-	using Super = IComponentObject<TComponent, TComponentInterface>;
+	using Super = IComponentObject<IComponent, IComponentInterface>;
 public:
 	virtual ~ComponentObject();
 	virtual void removeAllComponents() override;
 
 public:
-	virtual std::shared_ptr<TComponent> getComponent(ComponentIdType type) override;
-	virtual std::shared_ptr<TComponent> createComponent(ComponentIdType type) override;
+	virtual std::shared_ptr<IComponent> getComponent(IdType type) override;
+	virtual std::shared_ptr<IComponent> createComponent(IdType type) override;
 
 	template<class T>
 	std::shared_ptr<T> createComponent()
@@ -36,12 +34,12 @@ public:
 		return Super::createComponent<T>();
 	}
 
-	virtual void removeComponent(ComponentIdType type) override;
-	virtual std::shared_ptr<TComponentInterface> getInterface(InterfaceIdType type) override;
+	virtual void removeComponent(IdType type) override;
+	virtual std::shared_ptr<IComponentInterface> getInterface(const IdType &type) override;
 
 private:
-	virtual std::shared_ptr<TComponentInterface> registerInterface(InterfaceIdType iType, const std::shared_ptr<TComponentInterface> &iInterface);
-	virtual void unregisterInterface(InterfaceIdType iType);
+	virtual std::shared_ptr<IComponentInterface> registerInterface(const IdType &iType, const std::shared_ptr<IComponentInterface> &iInterface);
+	virtual void unregisterInterface(IdType iType);
 
 public:
 	ComponentObject()
@@ -53,8 +51,8 @@ private:
 	void assert_has_ref_method();
 
 private:
-	std::map<ComponentIdType, std::shared_ptr<TComponent>> _components;
-	std::map<InterfaceIdType, std::shared_ptr<TComponentInterface>> _interfaces;
+	std::map<IdType, std::shared_ptr<IComponent>> _components;
+	std::map<IdType, std::shared_ptr<IComponentInterface>> _interfaces;
 
 private:
 	ComponentObject(const ComponentObject &) = delete;

@@ -5,8 +5,4 @@
 namespace engine
 {
 
-IManager::IdType ISpawnManager::TypeId()
-{
-	return "ISpawnManager";
-}
 } // namespace engine

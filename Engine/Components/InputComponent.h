@@ -21,17 +21,12 @@ class KeyboardInputComponent
 	, virtual public IKeyboardInputInterface
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IKeyboardInputInterface::TypeId(),
-			IInputInterface::TypeId(),
-			0
-		};
+	static constexpr IdType TypeId = "KeyboardInputComponent";
+	static constexpr IdType Interfaces[] = {
+		IKeyboardInputInterface::TypeId,
+		IInputInterface::TypeId
+	};
 
-		return sInterfaces;
-	}
 
 public:
 	KeyboardInputComponent()

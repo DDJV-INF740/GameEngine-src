@@ -15,7 +15,7 @@ namespace engine
 class IKeyboardInputInterface : virtual public IInputInterface
 {
 public:
-	static IInputInterface::IdType TypeId();
+	static constexpr IdType TypeId = "IKeyboardInputComponent";
 
 public:
 	virtual void onKeyDown(int aVirtKey) = 0;

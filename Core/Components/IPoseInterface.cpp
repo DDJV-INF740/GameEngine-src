@@ -9,5 +9,4 @@ namespace engine
 //=============================================================================
 // INTERFACE IPoseInterface
 //=============================================================================
-IComponentInterface::IdType IPoseInterface::TypeId() { return "IPoseComponent";}
 } // namespace engine

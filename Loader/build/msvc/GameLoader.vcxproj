@@ -73,6 +73,7 @@
     <Import Project="..\..\..\..\config\msvc\GameLoader.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -80,6 +81,7 @@
     <Import Project="..\..\..\..\config\msvc\GameLoader.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -87,6 +89,7 @@
     <Import Project="..\..\..\..\config\msvc\GameLoader.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -94,6 +97,7 @@
     <Import Project="..\..\..\..\config\msvc\GameLoader.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -118,6 +122,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

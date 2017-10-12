@@ -43,10 +43,4 @@ void AIComponent::onDetached( const GameObjectRef &iGameObject )
 	Game<IAIManager>()->removeComponent(this);
 }
 
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-IComponent::IdType AIComponent::TypeId() { return "AIComponent"; }
-RegisterComponentType<AIComponent> *gRegisterAIComponent = new RegisterComponentType<AIComponent>();
-
 } // namespace engine

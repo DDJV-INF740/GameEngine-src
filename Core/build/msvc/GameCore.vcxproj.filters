@@ -168,6 +168,10 @@
     <ClInclude Include="..\..\Logging\Level.h">
       <Filter>Logging</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Components\IManagerObject.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\span.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Precompiled.cpp" />
@@ -285,14 +289,17 @@
     <ClCompile Include="..\..\Game\IManager.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Game\IManagerComponent.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Game\GameClockBase.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Logging\Logger.cpp">
       <Filter>Logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Components\IdType.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Game\IManagerComponent.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

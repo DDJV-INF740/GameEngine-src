@@ -39,9 +39,6 @@ using GameObjectWeakRef = std::weak_ptr<IGameObject>;
 class IGameObject: virtual public IComponentObject<IComponent, IComponentInterface>
 {
 public:
-	using IdType = const char*;
-
-public:
 	virtual ~IGameObject() = default;
 
 	// called when the game object is spawned in the game

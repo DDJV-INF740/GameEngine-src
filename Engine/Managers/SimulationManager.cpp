@@ -321,16 +321,3 @@ void SimulationManager::onDetached( const GameEngineRef &iGameEngine )
 }
 } // namespace engine
 
-  //=============================================================================
-  // COMPONENT REGISTRATION
-  //=============================================================================
-#include "Engine/Managers/GameManagerFactory.h"
-
-
-namespace engine {
-
-IComponent::IdType SimulationManager::TypeId() { return "SimulationManager"; }
-RegisterGameManagerType<SimulationManager> gManagerRegistration;
-} // namespace engine
-
-

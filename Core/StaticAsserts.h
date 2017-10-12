@@ -3,16 +3,16 @@
 namespace engine
 {
 	//-------------------------------------------------------------------------
-	// ensures that provided types support a TypeId() method
+	// ensures that provided types support a TypeId field
 	namespace _internal
 	{
 		template <typename T>
-		class has_typeid_static_method
+		class has_typeid_static_field
 		{
 			using one = char;
 			using two = long;
 
-			template <typename C> static one test(decltype(C::TypeId()));
+			template <typename C> static one test(decltype(C::TypeId));
 			template <typename C> static two test(...);
 
 		public:

@@ -78,13 +78,3 @@ physx::unique_ptr<physx::PxRigidStatic> StaticSimulationComponent::createPxActor
 
 } // namespace engine
 
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-namespace engine {
-IComponent::IdType DynamicSimulationComponent::TypeId() { return "DynamicSimulationComponent"; }
-IComponent::IdType StaticSimulationComponent::TypeId() { return "StaticSimulationComponent"; }
-
-RegisterComponentType<DynamicSimulationComponent>* gRegisterPxRigidDynamicSimulationComponent = new RegisterComponentType<DynamicSimulationComponent>();
-RegisterComponentType<StaticSimulationComponent>* gRegisterPxRigidStaticSimulationComponent = new RegisterComponentType<StaticSimulationComponent>();
-}

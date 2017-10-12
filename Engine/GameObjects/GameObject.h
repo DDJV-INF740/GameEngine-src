@@ -17,7 +17,7 @@ namespace engine  {
 //=============================================================================
 class GameObjectBase
 	: virtual public IGameObject
-	, public ComponentObject<IGameObject, IComponent, IComponentInterface, ComponentFactory>
+	, public ComponentObject<IGameObject, ComponentFactory>
 {
 public:
 	virtual void onSpawn(const physx::PxTransform &aPose) override {}
@@ -73,9 +73,9 @@ public:
 
 	//-------------------------------------------------------------------------
 	//
-	virtual typename TParent::IdType typeId() const override
+	virtual IdType typeId() const override
 	{
-		return TDerived::TypeId();
+		return TDerived::TypeId;
 	}
 
 	//-------------------------------------------------------------------------

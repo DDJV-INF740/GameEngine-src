@@ -20,7 +20,7 @@ class IGameObject;
 class IPlayerInterface: virtual public IComponentInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IPlayerInterface";
 
 public:
 	virtual void updatePlayer() = 0;

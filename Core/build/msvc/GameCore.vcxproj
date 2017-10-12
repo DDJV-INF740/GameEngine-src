@@ -59,24 +59,28 @@
     <Import Project="..\..\..\..\config\msvc\define root.props" />
     <Import Project="..\..\..\..\config\msvc\GameCore.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\..\config\msvc\define root.props" />
     <Import Project="..\..\..\..\config\msvc\GameCore.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\..\config\msvc\define root.props" />
     <Import Project="..\..\..\..\config\msvc\GameCore.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\..\config\msvc\define root.props" />
     <Import Project="..\..\..\..\config\msvc\GameCore.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -101,6 +105,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,6 +159,7 @@
     <ClInclude Include="..\..\Components\IIAInterface.h" />
     <ClInclude Include="..\..\Components\IInputInterface.h" />
     <ClInclude Include="..\..\Components\IKeyboardInputInterface.h" />
+    <ClInclude Include="..\..\Components\IManagerObject.h" />
     <ClInclude Include="..\..\Components\IPlayerInterface.h" />
     <ClInclude Include="..\..\Components\IPoseInterface.h" />
     <ClInclude Include="..\..\Components\IRenderInterface.h" />
@@ -187,6 +193,7 @@
     <ClInclude Include="..\..\physx\PxPhysicsAPI.forward.h" />
     <ClInclude Include="..\..\Precompiled.h" />
     <ClInclude Include="..\..\Rendering\IRenderPrimitive.h" />
+    <ClInclude Include="..\..\span.h" />
     <ClInclude Include="..\..\StaticAsserts.h" />
     <ClInclude Include="..\..\targetver.h" />
     <ClInclude Include="..\..\Tasks\IGameTask.h" />
@@ -197,6 +204,7 @@
     <ClCompile Include="..\..\Components\IComponent.cpp" />
     <ClCompile Include="..\..\Components\IComponentInterface.cpp" />
     <ClCompile Include="..\..\Components\IComponentObject.cpp" />
+    <ClCompile Include="..\..\Components\IdType.cpp" />
     <ClCompile Include="..\..\Components\IDynamicSimulationInterface.cpp" />
     <ClCompile Include="..\..\Components\IFollowPoseInterface.cpp" />
     <ClCompile Include="..\..\Components\IIAInterface.cpp" />

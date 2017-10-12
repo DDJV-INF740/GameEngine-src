@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core/Game/IManager.h"
+#include "core/Components/IdType.h"
 #include "Core/physx/PxPhysicsAPI.forward.h"
 
 namespace engine
@@ -9,7 +10,7 @@ namespace engine
 class ISimulationManager: virtual public IManager
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "ISimulationManager";
 	
 public:
 	virtual physx::PxPhysics& physics() = 0;

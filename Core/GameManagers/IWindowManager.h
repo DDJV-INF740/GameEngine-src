@@ -3,6 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Game/IManager.h"
+#include "Core/Components/IdType.h"
 
 //=============================================================================
 // FORWARD DECLARATIONS
@@ -18,7 +19,7 @@ namespace engine
 class IWindowManager: virtual public IManager
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IWindowManager";
 
 public:
 	virtual HWND window() = 0;

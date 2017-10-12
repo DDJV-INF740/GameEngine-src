@@ -55,10 +55,3 @@ void PlayerComponent::setBehaviour( IBehaviourRef iBehaviour )
 
 } // namespace engine
 
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-namespace engine {
-IComponent::IdType PlayerComponent::TypeId() { return "PlayerComponent"; }
-RegisterComponentType<PlayerComponent> *gRegisterPlayerComponent = new RegisterComponentType<PlayerComponent>();
-}

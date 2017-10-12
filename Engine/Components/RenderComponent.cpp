@@ -47,11 +47,3 @@ void RenderComponent::onAttached( const GameObjectRef &iGameObject )
 }
 } // namespace engine
 
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-namespace engine {
-
-IComponent::IdType RenderComponent::TypeId() { return "RenderComponent"; }
-RegisterComponentType<RenderComponent> *gRegisterRenderComponent = new RegisterComponentType<RenderComponent>();
-} // namespace engine

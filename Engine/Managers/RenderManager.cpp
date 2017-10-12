@@ -15,9 +15,6 @@ namespace engine {
 //=============================================================================
 // CLASS RenderManager
 //=============================================================================
-//-----------------------------------------------------------------------------
-//
-IComponent::IdType RenderManager::TypeId() { return "RenderManager"; }
 
 //-----------------------------------------------------------------------------
 //
@@ -107,12 +104,5 @@ void RenderManager::onAttached( const GameEngineRef &iGameEngine )
 
 	_d3ddev->SetRenderState(D3DRS_LIGHTING, FALSE);    // turn off the 3D lighting}
 }
-} // namespace engine
-
-#include "Engine/Managers/GameManagerFactory.h"
-
-namespace engine {
-
-RegisterGameManagerType<RenderManager> gRenderManagerRegistration;
 } // namespace engine
 

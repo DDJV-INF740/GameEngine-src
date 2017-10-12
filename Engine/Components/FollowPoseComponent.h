@@ -17,18 +17,13 @@ class FollowPoseComponent:
 	virtual public IPoseInterface
 {
 public:
-	static IComponent::IdType TypeId();
+	static constexpr IdType TypeId = "FollowPoseComponent";
 
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IFollowPoseInterface::TypeId(),
-			IPoseInterface::TypeId(),
-			0
-		};
+	static constexpr IdType Interfaces[] = {
+		IFollowPoseInterface::TypeId,
+		IPoseInterface::TypeId
+	};
 
-		return sInterfaces;
-	}
 
 public:
 	physx::PxTransform updatePose();

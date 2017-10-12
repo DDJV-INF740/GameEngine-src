@@ -4,5 +4,4 @@
 namespace engine
 {
 
-IComponentInterface::IdType IKeyboardInputInterface::TypeId()  { return "IKeyboardInputComponent"; }
 } // namespace engine

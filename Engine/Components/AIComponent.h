@@ -19,16 +19,10 @@ class AIComponent
 	, virtual public IAIInterface
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IAIInterface::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "AIComponent";
+	static constexpr IdType Interfaces[] = {
+		IAIInterface::TypeId
+	};
 
 	void setBehaviour(const IBehaviourRef &iBehaviour);
 

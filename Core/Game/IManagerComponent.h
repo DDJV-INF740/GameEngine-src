@@ -2,12 +2,13 @@
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
+#include <Core/Components/IdType.h>
 #include "Core/Game/IManager.h"
+#include <gsl/span>
 #include <memory>
 
 namespace engine
 {
-
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
@@ -25,11 +26,7 @@ public:
 	virtual ~IManagerComponent() {}
 
 public:
-	using IdType = const char*;
-	static IdType NullId;
-
-public:
-	virtual IManager::IdType* interfaces() = 0;
+	virtual gsl::span<IdType> interfaces() = 0;
 	virtual void onAttached(const GameEngineRef &iGameEngine) = 0;
 	virtual void onDetached(const GameEngineRef &iGameEngine) = 0;
 };

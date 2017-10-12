@@ -105,15 +105,3 @@ void RenderViewComponent::onDetached( const GameObjectRef &iGameObject )
 }
 } // namespace engine
 
-
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-#include "Engine/Components/ComponentFactory.h"
-
-namespace engine {
-
-IComponent::IdType RenderViewComponent::TypeId() { return "RenderViewComponent"; }
-RegisterComponentType<RenderViewComponent> gRegisteredComponent;
-
-} // namespace engine

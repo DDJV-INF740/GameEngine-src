@@ -2,7 +2,7 @@
 //=============================================================================
 // FORWARD DECLARATIONS
 //=============================================================================
-#include "Core/Components/IComponentObject.h"
+#include "Core/Components/IManagerObject.h"
 #include "Core/Game/IManagerComponent.h"
 #include "Core/Game/IManager.h"
 
@@ -59,7 +59,7 @@ using GameEngineWeakRef = std::weak_ptr<IGameEngine>;
 // IGameEngine::Instance()->as<IManagerType>() or more concisely
 // by using Game<IManagerType>().
 //
-class IGameEngine : virtual public IComponentObject<IManagerComponent, IManager>
+class IGameEngine : virtual public IManagerObject
 {
 public:
 	// Global instance of the IGameEngine - must be implemented by the game

@@ -3,6 +3,4 @@
 
 namespace engine
 {
-
-IManager::IdType ISimulationManager::TypeId() { return "ISimulationManager";}
 } // namespace engine

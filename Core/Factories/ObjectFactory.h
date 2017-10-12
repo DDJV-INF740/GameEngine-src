@@ -5,6 +5,7 @@
 #include <memory>
 #include <map>
 #include "../StaticAsserts.h"
+#include "Core/Components/IdType.h"
 
 namespace engine
 {
@@ -21,7 +22,6 @@ template<class TBase>
 class ObjectFactory
 {
 public:
-	using IdType = const char*;
 	using AllocationStrategy = std::shared_ptr<TBase>(*)();
 
 	//=========================================================================
@@ -40,9 +40,9 @@ public:
 
 private:
 	template<class T>
-	void assert_has_typeid_method()
+	void assert_has_typeid_field()
 	{
-		static_assert(_internal::has_typeid_static_method<T>::value, "The type provided does not have a TypeId() method");
+		static_assert(_internal::has_typeid_static_field<T>::value, "The type provided does not have a TypeId field");
 	}
 
 public:
@@ -52,24 +52,26 @@ public:
 public:
 	//-------------------------------------------------------------------------
 	// Register a type with the default allocator
-	// The type must have a static method called TypeId() which returns
+	// The type must have a static method called TypeId which returns
 	// the ID of this type.
 	template<class T>
 	void registerType()
 	{
-		assert_has_typeid_method<T>();
+		assert_has_typeid_field<T>();
 		registerType<T>(AllocateInstanceWithNewStrategy<T>::resolve);
 	}
 
 	//-------------------------------------------------------------------------
 	// Register a type with a custom allocator
-	// The type must have a static method called TypeId() which returns
+	// The type must have a static method called TypeId which returns
 	// the ID of this type.
 	template<class T>
 	void registerType(AllocationStrategy iAllocationStrategy)
 	{
-		assert_has_typeid_method<T>();
-		_registeredTypes[T::TypeId()] = iAllocationStrategy;
+ 		assert_has_typeid_field<T>();
+		IdType typeId = T::TypeId;
+		ASSERT(_registeredTypes.find(typeId) == _registeredTypes.end());
+		_registeredTypes[typeId] = iAllocationStrategy;
 	}
 
 	//-------------------------------------------------------------------------
@@ -77,8 +79,8 @@ public:
 	template<class T>
 	void unregisterType()
 	{
-		assert_has_typeid_method<T>();
-		auto wFound = _registeredTypes.find(T::TypeId());
+		assert_has_typeid_field<T>();
+		auto wFound = _registeredTypes.find(T::TypeId);
 		if (wFound != _registeredTypes.end())
 		{
 			_registeredTypes.erase(wFound);
@@ -90,8 +92,8 @@ public:
 	template<class T>
 	std::shared_ptr<T> resolve()
 	{
-		assert_has_typeid_method<T>();
-		auto wFound = _registeredTypes.find(T::TypeId());
+		assert_has_typeid_field<T>();
+		auto wFound = _registeredTypes.find(T::TypeId);
 		if (wFound != _registeredTypes.end())
 		{
 			return wFound->second().dynamic_pointer_cast<T>();

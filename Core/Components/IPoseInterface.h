@@ -3,6 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponent.h"
+#include "Core/Components/IdType.h"
 #include "Core/physx/PxPhysicsAPI.forward.h"
 #include "PxPhysicsAPI.h"
 #include <memory>
@@ -16,7 +17,7 @@ namespace engine
 class IPoseInterface: virtual public IComponentInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IPoseComponent";
 
 public:
 	virtual physx::PxTransform pose() = 0;

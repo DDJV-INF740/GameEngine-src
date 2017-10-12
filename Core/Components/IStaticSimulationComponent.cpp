@@ -3,6 +3,4 @@
 
 namespace engine
 {
-
-IComponentInterface::IdType IStaticSimulationInterface::TypeId() { return  "IStaticSimulationInterface";}
 } // namespace engine

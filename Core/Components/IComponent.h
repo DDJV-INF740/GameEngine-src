@@ -3,7 +3,9 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Components/IComponentInterface.h"
+#include "Core/Components/IdType.h"
 #include <memory>
+#include <gsl/span>
 
 namespace engine
 {
@@ -24,11 +26,7 @@ public:
 	virtual ~IComponent() {}
 
 public:
-	using IdType = const char*;
-	static IdType NullId;
-
-public:
-	virtual IComponentInterface::IdType* interfaces() = 0;
+	virtual gsl::span<IdType> interfaces() = 0;
 	virtual void onAttached(const GameObjectRef &iGameObject) = 0;
 	virtual void onDetached(const GameObjectRef &iGameObject) = 0;
 };

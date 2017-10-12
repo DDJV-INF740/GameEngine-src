@@ -10,6 +10,5 @@ namespace engine
 //=============================================================================
 // CLASS IComponent
 //=============================================================================
-IComponent::IdType IComponent::NullId = nullptr;
 
 } // namespace engine

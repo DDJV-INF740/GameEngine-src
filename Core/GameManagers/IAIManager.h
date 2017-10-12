@@ -3,7 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Game/IManager.h"
-
+#include "Core/Components/IdType.h"
 namespace engine
 {
 
@@ -18,7 +18,7 @@ class IAIInterface;
 class IAIManager: virtual public IManager
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IAIManager";
 
 public:
 	virtual void createComponent(IAIInterface *iAIInstance) = 0;

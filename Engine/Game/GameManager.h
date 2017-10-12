@@ -6,14 +6,15 @@
 #include "Core/Game/IManager.h"
 #include "Core/Game/IGameEngine.h"
 #include "Core/Components/ComponentBase.h"
+#include <gsl/span>
 
 namespace engine {
 
 //=============================================================================
-// CLASS GameComponent
+// CLASS GameManager
 //=============================================================================
 template<class TDerived>
-class GameComponent
+class GameManager
 	: virtual public IManagerComponent
 	, virtual public IManager
 {
@@ -21,9 +22,9 @@ public:
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}
 	virtual void onDetached(const GameEngineRef &iGameEngine) override {}
 
-	virtual IManager::IdType* interfaces() override
+	virtual gsl::span<IdType> interfaces() override
 	{
-		return TDerived::Interfaces();
+		return TDerived::Interfaces;
 	}
 };
 } // namespace engine

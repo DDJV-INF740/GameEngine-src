@@ -4,6 +4,7 @@
 //=============================================================================
 #include "Core/Game/IManager.h"
 #include "Core/Game/GameClockBase.h"
+#include "Core/Components/IdType.h"
 
 namespace engine {
 
@@ -22,7 +23,7 @@ public:
 	using time_point = GameClockBase::time_point;
 
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "ITimeManager";
 
 public:
 	virtual time_point currentTime() = 0;

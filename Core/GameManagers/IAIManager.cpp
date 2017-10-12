@@ -10,6 +10,5 @@ namespace engine
 //=============================================================================
 // INTERFACE IRenderManager
 //=============================================================================
-IAIManager::IdType IAIManager::TypeId() { return "IAIManager"; }
 
 }

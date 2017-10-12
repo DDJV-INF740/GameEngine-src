@@ -52,21 +52,15 @@ private:
 	using base = SimulationComponentBase;
 
 public:
-	static IComponent::IdType TypeId();
+	static constexpr IdType TypeId = "DynamicSimulationComponent";
 
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IPoseInterface::TypeId(),
-			IColliderInterface::TypeId(),
-			ISimulationInterface::TypeId(),
-			IRigidSimulationInterface::TypeId(),
-			IDynamicSimulationInterface::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType Interfaces[] = {
+		IPoseInterface::TypeId,
+		IColliderInterface::TypeId,
+		ISimulationInterface::TypeId,
+		IRigidSimulationInterface::TypeId,
+		IDynamicSimulationInterface::TypeId
+	};
 
 public:
 	static physx::unique_ptr<physx::PxRigidDynamic> createPxActor();
@@ -89,21 +83,15 @@ private:
 	using Base = SimulationComponentBase;
 
 public:
-	static IComponent::IdType TypeId();
+	static constexpr IdType TypeId = "StaticSimulationComponent";
 
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IPoseInterface::TypeId(),
-			IColliderInterface::TypeId(),
-			ISimulationInterface::TypeId(), 
-			IRigidSimulationInterface::TypeId(),
-			IStaticSimulationInterface::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType Interfaces[] = {
+		IPoseInterface::TypeId,
+		IColliderInterface::TypeId,
+		ISimulationInterface::TypeId, 
+		IRigidSimulationInterface::TypeId,
+		IStaticSimulationInterface::TypeId
+	};
 
 public:
 	static physx::unique_ptr<physx::PxRigidStatic> createPxActor();

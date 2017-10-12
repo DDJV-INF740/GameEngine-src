@@ -5,7 +5,7 @@
 #include "Core/Components/IComponent.h"
 #include "Core/GameManagers/ICameraManager.h"
 #include "Core/GameObjects/IGameObject.h"
-#include "Engine/Game/GameComponent.h"
+#include "Engine/Game/GameManager.h"
 #include <vector>
 
 namespace engine {
@@ -15,20 +15,14 @@ namespace engine {
 // CLASS CameraManager
 //=============================================================================
 class CameraManager
-	: public GameComponent<CameraManager>
+	: public GameManager<CameraManager>
 	, public ICameraManager
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			ICameraManager::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "CameraManager";
+	static constexpr IdType Interfaces[] = {
+		ICameraManager::TypeId
+	};
 
 public: // ICameraManager
 	virtual int cameraCount() override;

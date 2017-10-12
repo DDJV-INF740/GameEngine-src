@@ -4,7 +4,7 @@
 //=============================================================================
 #include <vector>
 #include "Engine/Components/PlayerComponent.h"
-#include "Engine/Game/GameComponent.h"
+#include "Engine/Game/GameManager.h"
 #include "Core/GameManagers/ITimeManager.h"
 #include "Engine/Game/GameClock.h"
 
@@ -23,23 +23,17 @@ using GameEngineWeakRef = std::weak_ptr<IGameEngine>;
 // CLASS TimeManager
 //=============================================================================
 class TimeManager
-	: public GameComponent<TimeManager>
+	: public GameManager<TimeManager>
 	, public ITimeManager
 {
 public:
 	using time_point = GameClock::time_point;
 
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			ITimeManager::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "TimeManager";
+	static constexpr IdType Interfaces[] = {
+		ITimeManager::TypeId
+	};
 
 public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}

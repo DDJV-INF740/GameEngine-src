@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Components\AIComponent.h" />
-    <ClInclude Include="..\..\Components\componentfactory.h" />
-    <ClInclude Include="..\..\Components\componentobject.h" />
-    <ClInclude Include="..\..\Components\componentobject.inline.h" />
+    <ClInclude Include="..\..\Components\ComponentFactory.h" />
+    <ClInclude Include="..\..\Components\ComponentObject.h" />
+    <ClInclude Include="..\..\Components\ComponentObject.inline.h" />
     <ClInclude Include="..\..\Components\FollowPoseComponent.h" />
     <ClInclude Include="..\..\Components\InputComponent.h" />
+    <ClInclude Include="..\..\Components\ManagerObject.h" />
+    <ClInclude Include="..\..\Components\ManagerObject.inline.h" />
     <ClInclude Include="..\..\Components\PlayerComponent.h" />
     <ClInclude Include="..\..\Components\RenderComponent.h" />
     <ClInclude Include="..\..\Components\RenderViewComponent.h" />
@@ -32,7 +34,7 @@
     <ClInclude Include="..\..\Components\SimulationComponent.inline.h" />
     <ClInclude Include="..\..\GameObjects\GameObject.h" />
     <ClInclude Include="..\..\GameObjects\GameObjectComponent.h" />
-    <ClInclude Include="..\..\Game\GameComponent.h" />
+    <ClInclude Include="..\..\Game\GameManager.h" />
     <ClInclude Include="..\..\Game\GameEngine.h" />
     <ClInclude Include="..\..\Game\GameClock.h" />
     <ClInclude Include="..\..\Managers\AIManager.h" />
@@ -75,7 +77,7 @@
     <ClCompile Include="..\..\Components\SimulationComponent.cpp" />
     <ClCompile Include="..\..\GameObjects\GameObject.cpp" />
     <ClCompile Include="..\..\GameObjects\GameObjectComponent.cpp" />
-    <ClCompile Include="..\..\Game\GameComponent.cpp" />
+    <ClCompile Include="..\..\Game\GameManager.cpp" />
     <ClCompile Include="..\..\Game\GameEngine.cpp" />
     <ClCompile Include="..\..\Game\GameClock.cpp" />
     <ClCompile Include="..\..\Managers\AIManager.cpp" />
@@ -152,6 +154,7 @@
     <Import Project="..\..\..\..\config\msvc\GameEngine.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -159,6 +162,7 @@
     <Import Project="..\..\..\..\config\msvc\GameEngine.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -166,6 +170,7 @@
     <Import Project="..\..\..\..\config\msvc\GameEngine.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -173,6 +178,7 @@
     <Import Project="..\..\..\..\config\msvc\GameEngine.props" />
     <Import Project="..\..\..\..\config\msvc\using d3d.props" />
     <Import Project="..\..\..\..\config\msvc\using physx.props" />
+    <Import Project="..\..\..\..\config\msvc\using gsl.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -197,6 +203,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

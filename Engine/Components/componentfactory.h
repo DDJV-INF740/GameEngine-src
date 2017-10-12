@@ -25,22 +25,4 @@ private:
 	ComponentFactory& operator=(const ComponentFactory&&) = delete;
 };
 
-//=============================================================================
-// CLASS RegisterComponentType<T>
-//=============================================================================
-template<class T>
-class RegisterComponentType
-{
-public:
-	RegisterComponentType()
-	{
-		ComponentFactory::Instance().registerType<T>();
-	}
-
-	~RegisterComponentType()
-	{
-		ComponentFactory::Instance().unregisterType<T>();
-	}
-};
-
 } // namespace engine

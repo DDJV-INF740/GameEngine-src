@@ -4,7 +4,7 @@
 //=============================================================================
 #include "Core/Components/IComponent.h"
 #include "Core/Components/ComponentBase.h"
-
+#include "Core/span.h"
 namespace engine {
 
 //=============================================================================
@@ -17,9 +17,9 @@ public:
 	virtual void onAttached(const GameObjectRef &iGameObject) override {}
 	virtual void onDetached(const GameObjectRef &iGameObject) override {}
 
-	virtual IComponentInterface::IdType* interfaces() override
+	virtual span<IdType> interfaces() override
 	{
-		return TDerived::Interfaces();
+		return TDerived::Interfaces;
 	}
 };
 } // namespace engine

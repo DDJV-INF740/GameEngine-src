@@ -16,7 +16,7 @@ namespace engine
 class IStaticSimulationInterface : public IRigidSimulationInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IStaticSimulationInterface";
 
 public:
 	virtual physx::PxRigidStatic& pxActor() = 0;

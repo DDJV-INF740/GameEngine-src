@@ -16,7 +16,7 @@ namespace engine
 class ISimulationInterface : virtual public IComponentInterface, virtual public IPoseInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "ISimulationInterface";
 
 public:
 	virtual physx::PxActor& pxActor() = 0;

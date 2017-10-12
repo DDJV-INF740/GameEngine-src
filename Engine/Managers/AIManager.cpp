@@ -29,14 +29,3 @@ void AIManager::update()
 }
 } // namespace engine
 
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-#include "Engine/Managers/GameManagerFactory.h"
-
-namespace engine {
-
-IComponent::IdType AIManager::TypeId() { return "AIManager"; }
-static RegisterGameManagerType<AIManager> gRegisteredComponent;
-
-}

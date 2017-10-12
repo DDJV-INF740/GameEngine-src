@@ -30,6 +30,7 @@ namespace engine
 class GameObjectProxy : public IGameObject
 {
 public: // INTERFACE IGameObject
+	static constexpr IdType TypeId = "GameObjectProxy";
 
 	// will never really be spawned or unspawned
 	virtual void onSpawn(const physx::PxTransform &aPose) override {}
@@ -42,11 +43,11 @@ public: // INTERFACE IGameObject
 public: // INTERFACE IComponentObject
 	virtual IdType typeId() const override;
 	virtual const char *debugName() const override;
-	virtual std::shared_ptr<IComponent> getComponent(ComponentIdType type) override;
-	virtual std::shared_ptr<IComponent> createComponent(ComponentIdType type) override;
-	virtual void removeComponent(ComponentIdType type) override;
+	virtual std::shared_ptr<IComponent> getComponent(IdType type) override;
+	virtual std::shared_ptr<IComponent> createComponent(IdType type) override;
+	virtual void removeComponent(IdType type) override;
 	virtual void removeAllComponents() override;
-	virtual std::shared_ptr<IComponentInterface> getInterface(InterfaceIdType type) override;
+	virtual std::shared_ptr<IComponentInterface> getInterface(const IdType &type) override;
 
 public:
 	void setProxy(const GameObjectRef iIGameObject);

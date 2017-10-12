@@ -4,5 +4,4 @@
 namespace engine
 {
 
-IComponentInterface::IdType IRigidSimulationInterface::TypeId() { return  "IRigidSimulationInterface"; }
 } // namespace engine

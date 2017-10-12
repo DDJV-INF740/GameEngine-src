@@ -5,6 +5,7 @@
 #include "Core/physx/PxPhysicsAPI.forward.h"
 #include "Core/Components/ICollisionHandler.h"
 #include "Core/Components/IComponentInterface.h"
+#include "Core/Components/IdType.h"
 
 namespace engine
 {
@@ -15,7 +16,7 @@ namespace engine
 class IColliderInterface: virtual public IComponentInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IColliderInterface";
 
 public:
 	virtual void onContact(const physx::PxContactPair &aContactPair) = 0;

@@ -34,25 +34,25 @@ GameObjectRef GameObjectProxy::proxy() const
 	return _proxy.lock();
 }
 
-IGameObject::IdType GameObjectProxy::typeId() const 
+IdType GameObjectProxy::typeId() const 
 {
 	GameObjectRef wProxy = proxy();
-	return wProxy == nullptr ? "GameObjectProxy" : wProxy->typeId();
+	return wProxy == nullptr ? TypeId : wProxy->typeId();
 }
 
-std::shared_ptr<IComponent> GameObjectProxy::getComponent( ComponentIdType type )
+std::shared_ptr<IComponent> GameObjectProxy::getComponent(IdType type )
 {
 	GameObjectRef wProxy = proxy();
 	return wProxy == nullptr ? nullptr : wProxy->getComponent(type);
 }
 
-std::shared_ptr<IComponent> GameObjectProxy::createComponent( ComponentIdType type )
+std::shared_ptr<IComponent> GameObjectProxy::createComponent(IdType type )
 {
 	GameObjectRef wProxy = proxy();
 	return wProxy == nullptr ? nullptr : wProxy->createComponent(type);
 }
 
-void GameObjectProxy::removeComponent( ComponentIdType type )
+void GameObjectProxy::removeComponent(IdType type )
 {
 	GameObjectRef wProxy = proxy();
 	if (wProxy != nullptr)
@@ -61,7 +61,7 @@ void GameObjectProxy::removeComponent( ComponentIdType type )
 	}
 }
 
-std::shared_ptr<IComponentInterface> GameObjectProxy::getInterface( InterfaceIdType type )
+std::shared_ptr<IComponentInterface> GameObjectProxy::getInterface(const IdType &type)
 {
 	GameObjectRef wProxy = proxy();
 	return wProxy == nullptr ? nullptr : wProxy->getInterface(type);

@@ -17,16 +17,10 @@ class RenderViewComponent
 	, virtual public IRenderViewInterface
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IRenderViewInterface::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "RenderViewComponent";
+	static constexpr IdType Interfaces[] = {
+		IRenderViewInterface::TypeId,
+	};
 
 public: // IComponent
 	virtual void onAttached(const GameObjectRef &iGameObject) override;

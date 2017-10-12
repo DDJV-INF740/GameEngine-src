@@ -81,14 +81,4 @@ void WindowManager::onDetached( const GameEngineRef &iGameEngine )
 	}
 }
 
-IComponent::IdType WindowManager::TypeId()
-{
-	return "WindowManager";
-}
-} // namespace engine
-
-#include "Engine/Managers/GameManagerFactory.h"
-namespace engine {
-
-RegisterGameManagerType<WindowManager> gWindowManagerRegistration;
 } // namespace engine

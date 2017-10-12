@@ -12,7 +12,7 @@ namespace engine {
 const char* GameObjectBase::debugName() const 
 {
 	static char name[256] = {0};
-	sprintf_s(name, sizeof(name), "%s-%p", typeId(), this);
+	sprintf_s(name, sizeof(name), "%s-%p", typeId().toString().c_str(), this);
 	return name;
 }
 

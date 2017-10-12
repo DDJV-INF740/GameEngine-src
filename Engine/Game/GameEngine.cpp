@@ -135,7 +135,7 @@ bool GameEngine::cleanup()
 {
 	_tasks.reset();
 	
-	removeAllComponents();
+	removeAllManagers();
 
 	return true;
 }

@@ -41,15 +41,3 @@ void TimeManager::startSession()
 }
 } // namespace engine
 
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-#include "Engine/Managers/GameManagerFactory.h"
-namespace engine 	{
-
-	
-IComponent::IdType TimeManager::TypeId() { return "TimeManager"; }
-static RegisterGameManagerType<TimeManager> gRegisteredComponent;
-
-} // namespace engine
-

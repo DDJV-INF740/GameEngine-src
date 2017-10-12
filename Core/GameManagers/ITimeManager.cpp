@@ -10,6 +10,5 @@ namespace engine
 //=============================================================================
 // INTERFACE IRenderManager
 //=============================================================================
-ITimeManager::IdType ITimeManager::TypeId() { return "ITimeManager"; }
 
 } // namespace engine

@@ -4,6 +4,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "IComponentInterface.h"
+#include "Core/Components/IdType.h"
 
 namespace engine
 {
@@ -19,7 +20,7 @@ class IRenderViewInterface;
 class IRenderInterface : virtual public IComponentInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IRenderInterface";
 
 public:
 	virtual void render() = 0;

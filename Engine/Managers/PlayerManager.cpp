@@ -78,10 +78,3 @@ PlayerManager::PlayerManager()
 //=============================================================================
 #include "Engine/Managers/GameManagerFactory.h"
 
-namespace engine {
-
-IComponent::IdType PlayerManager::TypeId() { return "PlayerManager"; }
-static RegisterGameManagerType<PlayerManager> gRegisteredComponent;
-} // namespace engine
-
-

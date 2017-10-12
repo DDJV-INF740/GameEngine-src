@@ -3,6 +3,4 @@
 
 namespace engine
 {
-
-IComponentInterface::IdType IRenderInterface::TypeId() { return  "IRenderInterface"; }
 } // namespace engine

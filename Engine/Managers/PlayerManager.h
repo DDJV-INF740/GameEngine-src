@@ -4,7 +4,7 @@
 //=============================================================================
 #include <vector>
 #include "Engine/Components/PlayerComponent.h"
-#include "Engine/Game/GameComponent.h"
+#include "Engine/Game/GameManager.h"
 #include "Core/GameManagers/IPlayerManager.h"
 
 namespace engine {
@@ -27,20 +27,14 @@ using GameEngineWeakRef = std::weak_ptr<IGameEngine>;
 // CLASS PlayerManager
 //=============================================================================
 class PlayerManager
-	: public GameComponent<PlayerManager>
+	: public GameManager<PlayerManager>
 	, public IPlayerManager
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IPlayerManager::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "PlayerManager";
+	static constexpr IdType Interfaces[] = {
+		IPlayerManager::TypeId,
+	};
 
 public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}

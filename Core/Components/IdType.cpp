@@ -1,11 +1,11 @@
-#include "Precompiled.h"
+#pragma once
 //=============================================================================
 // EXTERNAL DECLARATIONS
 //=============================================================================
-#include "IFollowPoseInterface.h"
+#include <Precompiled.h>
+#include <Core/Components/IdType.h>
 
 namespace engine
 {
-
 
 } // namespace engine

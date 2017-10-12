@@ -4,7 +4,7 @@
 //=============================================================================
 #include "Core/Components/IComponent.h"
 #include "Core/GameManagers/IRenderManager.h"
-#include "Engine/Game/GameComponent.h"
+#include "Engine/Game/GameManager.h"
 
 namespace engine {
 
@@ -12,20 +12,14 @@ namespace engine {
 // CLASS RenderManager
 //=============================================================================
 class RenderManager
-	: public GameComponent<RenderManager>
+	: public GameManager<RenderManager>
 	, public IRenderManager
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IRenderManager::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "RenderManager";
+	static constexpr IdType Interfaces[] = {
+		IRenderManager::TypeId
+	};
 
 public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override;

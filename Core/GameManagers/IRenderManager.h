@@ -3,6 +3,7 @@
 // EXTERNAL DECLARATIONS
 //=============================================================================
 #include "Core/Game/IManager.h"
+#include "Core/Components/IdType.h"
 #include "Core/d3d/d3d9.forward.h"
 #include <vector>
 
@@ -21,7 +22,7 @@ class IRenderInterface;
 class IRenderManager: virtual public IManager
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IRenderManager";
 	using RenderList = std::vector<IRenderInterface*>;
 public:
 

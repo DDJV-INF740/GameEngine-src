@@ -87,13 +87,3 @@ void KeyboardInputComponent::onDetached( const GameObjectRef &iGameObject )
 }
 } // namespace engine
 
-
-//=============================================================================
-// COMPONENT REGISTRATION
-//=============================================================================
-#include "Components/ComponentFactory.h"
-
-namespace engine {
-IComponent::IdType KeyboardInputComponent::TypeId() { return "KeyboardInputComponent"; }
-RegisterComponentType<KeyboardInputComponent> *gRegisterKeyboardInputComponent = new RegisterComponentType<KeyboardInputComponent>();
-} // namespace engine

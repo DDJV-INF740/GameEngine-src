@@ -4,7 +4,7 @@
 //=============================================================================
 #include "Core/Game/IGameEngine.h"
 #include "Core/Tasks/IGameTask.h"
-#include "Engine/Components/ComponentObject.h"
+#include "Engine/Components/ManagerObject.h"
 #include "Engine/Managers/GameManagerFactory.h"
 #include "Core/Components/IComponent.h"
 #include <vector>
@@ -37,7 +37,7 @@ private:
 //=============================================================================
 class GameEngine 
 	: virtual public IGameEngine
-	, public ComponentObject<IGameEngine, IManagerComponent, IManager, GameManagerFactory>
+	, public ManagerObject<IGameEngine, GameManagerFactory>
 {
 public:
 	virtual bool init() override;

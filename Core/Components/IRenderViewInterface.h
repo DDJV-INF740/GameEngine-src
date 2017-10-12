@@ -15,7 +15,7 @@ namespace engine
 class IRenderViewInterface: virtual public IComponentInterface
 {
 public:
-	static IdType TypeId();
+	static constexpr IdType TypeId = "IRenderViewInterface";
 
 public:
 	virtual void renderView() = 0;

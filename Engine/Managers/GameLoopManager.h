@@ -4,27 +4,21 @@
 //=============================================================================
 #include "Core/Components/IComponent.h"
 #include "Core/GameManagers/IGameLoopManager.h"
-#include "Engine/Game/GameComponent.h"
+#include "Engine/Game/GameManager.h"
 namespace engine {
 
 //=============================================================================
 // CLASS GameLoopManager
 //=============================================================================
 class GameLoopManager
-	: public GameComponent<GameLoopManager>
+	: public GameManager<GameLoopManager>
 	, public IGameLoopManager
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IGameLoopManager::TypeId(),
-			0
-		};
-
-		return sInterfaces;
-	}
+	static constexpr IdType TypeId = "GameLoopManager";
+	static constexpr IdType Interfaces[] = {
+		IGameLoopManager::TypeId
+	};
 
 public: // IComponent
 	virtual void onAttached(const GameEngineRef &iGameEngine) override {}

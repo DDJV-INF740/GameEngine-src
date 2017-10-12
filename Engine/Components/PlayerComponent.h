@@ -17,16 +17,11 @@ class PlayerComponent
 	, public IPlayerInterface
 {
 public:
-	static IComponent::IdType TypeId();
-	static IComponentInterface::IdType* Interfaces()
-	{
-		static IComponentInterface::IdType sInterfaces[] = {
-			IPlayerInterface::TypeId(),
-			0
-		};
+	static constexpr IdType TypeId = "PlayerComponent";
+	static constexpr IdType Interfaces[] =  {
+			IPlayerInterface::TypeId
+	};
 
-		return sInterfaces;
-	}
 
 public: // IComponent
 	virtual void onAttached(const GameObjectRef &iGameObject) override;
