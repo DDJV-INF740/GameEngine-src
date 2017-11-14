@@ -7,7 +7,7 @@
 #include <cstddef>
 #include <string>
 
-#define USE_CRC32_ID
+//#define USE_CRC32_ID
 
 #if defined(USE_CRC32_ID)
 #include "Core/crc32.h"
@@ -85,7 +85,8 @@ public:
 	{
 #if defined(USE_CRC32_ID)
 		char buffer[32];
-		return _itoa(id, buffer, 10);
+		_itoa_s(id, buffer, 10);
+		return buffer;
 #else
 		return id;
 #endif // USE_CRC32_ID
